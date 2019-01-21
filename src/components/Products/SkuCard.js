@@ -50,9 +50,10 @@ const SkuCard = class extends React.Component {
 
   render() {
     const sku = this.props.sku
+    console.log(sku)
     return (
       <div style={cardStyles}>
-        <h4>{sku.attributes.name}</h4>
+        {/* <h4>{sku.attributes.name}</h4> */}
         <p>Price: {formatPrice(sku.price, sku.currency)}</p>
         <button
           style={buttonStyles}
