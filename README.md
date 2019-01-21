@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby E-Commerce Starter
+  Made with Gatsby E-Commerce Starter
 </h1>
 
 This is a Gatsby e-commerce example based on https://www.gatsbyjs.org/docs/ecommerce-tutorial/

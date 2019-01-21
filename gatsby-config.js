@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby E-Commerce Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@thorwebdev`,
+    title: `HWA-IN Website`,
+    description: `Product e-commerce website`,
+    author: `@alocke12992`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
