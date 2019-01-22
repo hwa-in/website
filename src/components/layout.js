@@ -1,43 +1,26 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
+import base from './base.css'
+import Container from './container'
+import Navigation from './navigation'
 
-import Header from './header'
-import './layout.css'
+class Template extends React.Component {
+  render() {
+    const { location, children } = this.props
+    let header
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-          <footer>
-          </footer>
-        </div>
-      </>
-    )}
-  />
-)
+    let rootPath = `/`
+    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+      rootPath = __PATH_PREFIX__ + `/`
+    }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+    return (
+      <Container>
+        <Navigation />
+        {children}
+      </Container>
+    )
+  }
 }
 
-export default Layout
+export default Template
