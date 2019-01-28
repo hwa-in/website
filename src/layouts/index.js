@@ -4,7 +4,7 @@ import base from './base.css'
 import Container from '../components/container'
 import Navigation from '../components/navigation'
 
-class Template extends React.Component {
+export default class Template extends React.Component {
   render() {
     const { location, children } = this.props
     let header
@@ -22,5 +22,3 @@ class Template extends React.Component {
     )
   }
 }
-
-export default Template
