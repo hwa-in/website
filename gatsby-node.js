@@ -1,10 +1,15 @@
 const Promise = require('bluebird')
 const path = require('path')
 
+const handleErrors = (error) => {
+  console.error(error)
+  reject(error)
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
+  const blogPages = new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
     resolve(
       graphql(
@@ -22,8 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
           `
       ).then(result => {
         if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
+          handleErrors(result.errors);
         }
 
         const posts = result.data.allContentfulBlogPost.edges
@@ -39,4 +43,41 @@ exports.createPages = ({ graphql, actions }) => {
       })
     )
   })
+
+  const productPages = new Promise((resolve, reject) => {
+    const productPage = path.resolve('./src/templates/product-page.js');
+    resolve(
+      graphql(
+        `
+        {
+          allStripeSku {
+            products: edges {
+              product: node {
+                id
+              }
+            }
+          }
+        }
+        `
+      ).then(({ data, errors }) => {
+        if ( errors ) {
+          handleErrors(errors)
+        }
+        
+        const { products } = data.allStripeSku
+        products.forEach(({ product }, index) => {
+          console.log(product)
+          const { id } = product
+          createPage({
+            path: `/product/${id}/`,
+            component: productPage,
+            context: {
+              id 
+            },
+          })
+        })
+      })
+    )
+  })
+  return Promise.all([blogPages, productPages])
 }

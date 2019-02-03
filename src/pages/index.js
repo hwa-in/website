@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
@@ -8,23 +8,28 @@ import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
+    console.log(this.props)
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
-
+    const { products } = this.props.data.productQuery;
     return (
-      <Layout location={this.props.location} >
+      <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <Hero data={author.node} />
           <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
+            <h2 className="section-headline">Products</h2>
             <ul className="article-list">
-              {posts.map(({ node }) => {
+              {products.map(({ product }) => {
                 return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
+                  <Link key={product.id} to={`product/${product.id}`}>
+                      <h1>{product.product.name}</h1>
+                      <div>
+                        <img src={product.image} />
+                      </div>
+                    {/* <ArticlePreview article={node} /> */}
+                  </Link>
                 )
               })}
             </ul>
@@ -76,6 +81,17 @@ export const pageQuery = graphql`
             ) {
               ...GatsbyContentfulFluid_tracedSVG
             }
+          }
+        }
+      }
+    }
+    productQuery: allStripeSku {
+      products: edges {
+        product:node {
+          id
+          image
+          product {
+            name
           }
         }
       }
