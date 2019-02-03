@@ -26,6 +26,15 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-stripe',
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ["Sku"],
+        secretKey: process.env.STRIPE_SECRET_KEY,
+        downloadFiles: true,
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
