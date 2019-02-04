@@ -44,40 +44,28 @@ exports.createPages = ({ graphql, actions }) => {
     )
   })
 
-  // const productPages = new Promise((resolve, reject) => {
-  //   const productPage = path.resolve('./src/templates/product-page.js');
-  //   resolve(
-  //     graphql(
-  //       `
-  //       {
-  //         allStripeSku {
-  //           products: edges {
-  //             product: node {
-  //               id
-  //             }
-  //           }
-  //         }
-  //       }
-  //       `
-  //     ).then(({ data, errors }) => {
-  //       if ( errors ) {
-  //         handleErrors(errors, reject)
-  //       }
-        
-  //       const { products } = data.allStripeSku
-  //       products.forEach(({ product }, index) => {
-  //         console.log(product)
-  //         const { id } = product
-  //         createPage({
-  //           path: `/product/${id}/`,
-  //           component: productPage,
-  //           context: {
-  //             id 
-  //           },
-  //         })
-  //       })
-  //     })
-  //   )
-  // })
-  return Promise.all([blogPages])
+  const productPages = new Promise((resolve, reject) => {
+    const productPage = path.resolve('./src/templates/product-page.js');
+    resolve(
+      graphql(
+        `
+        {
+          allStripeSku {
+            products: edges {
+              product: node {
+                id
+              }
+            }
+          }
+        }
+        `
+      ).then(({ data, errors }) => {
+        if ( errors ) {
+          handleErrors(errors, reject)
+        }
+        console.log(data)
+      })
+    )
+  })
+  return Promise.all([blogPages, productPages])
 }

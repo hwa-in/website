@@ -20,8 +20,9 @@ class ProductPageTemplate extends React.Component {
           {/* <div className="wrapper">
             <img src={image} />
             <h1>{name}</h1>
-            <h4>{caption}</h4> */}
+            <h4>{caption}</h4> 
           </div>
+            */}
         </div>
       </Layout>
     )
@@ -30,15 +31,17 @@ class ProductPageTemplate extends React.Component {
 
 export default ProductPageTemplate
 
-// export const pageQuery = graphql`
-//   query ProductById($id: String!) {
-//     stripeSku(id: {eq: $id}) {
-//       id
-//       image
-//       product {
-//         name
-//         caption
-//       }
-//     } 
-//   }
-// `
+export const pageQuery = graphql`
+  query ProductById($id: String!) {
+    stripeSku(id: {eq: $id}) {
+      id
+      price
+      product {
+        name
+      	images
+      	caption
+        
+      }
+    } 
+  }
+`

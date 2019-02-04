@@ -4,15 +4,14 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+// import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
-    console.log(this.props)
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    // const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
-    // const { products } = this.props.data.productQuery;
+    const { products } = this.props.data.productQuery;
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
@@ -21,18 +20,20 @@ class RootIndex extends React.Component {
           <div className="wrapper">
             <h2 className="section-headline">Products</h2>
             <ul className="article-list">
-              {/* {products.map(({ product }) => {
+              {products.map(({ product }) => {
+                const {name, images, caption } = product.product
+                console.log(images)
                 return (
                   <Link key={product.id} to={`product/${product.id}`}>
-                      <h1>{product.product.name}</h1>
                       <div>
-                        <img src={product.image} />
+                        <img src={images[0]} alt={name} />
                       </div>
-                    <ArticlePreview article={node} /> 
+                      <h1>{name}</h1>
+                      <h5>{caption}</h5>
+                    {/* <ArticlePreview article={node} />  */}
                   </Link>
-                 
                 )
-              })} */}
+              })}
             </ul>
           </div>
         </div>
@@ -82,6 +83,18 @@ export const pageQuery = graphql`
             ) {
               ...GatsbyContentfulFluid_tracedSVG
             }
+          }
+        }
+      }
+    }
+    productQuery: allStripeSku {
+      products: edges {
+        product: node { 
+          id
+          product {
+            name
+            images
+            caption
           }
         }
       }
