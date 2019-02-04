@@ -1,5 +1,12 @@
-let contentfulConfig
 
+let contentfulConfig
+let activeEnv = process.env.NODE_ENV || "development"
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
 try {
   // Load the Contentful config from the .contentful.json
   contentfulConfig = require('./.contentful')

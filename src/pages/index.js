@@ -12,7 +12,7 @@ class RootIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
-    const { products } = this.props.data.productQuery;
+    // const { products } = this.props.data.productQuery;
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
@@ -21,17 +21,18 @@ class RootIndex extends React.Component {
           <div className="wrapper">
             <h2 className="section-headline">Products</h2>
             <ul className="article-list">
-              {products.map(({ product }) => {
+              {/* {products.map(({ product }) => {
                 return (
                   <Link key={product.id} to={`product/${product.id}`}>
                       <h1>{product.product.name}</h1>
                       <div>
                         <img src={product.image} />
                       </div>
-                    {/* <ArticlePreview article={node} /> */}
+                    <ArticlePreview article={node} /> 
                   </Link>
+                 
                 )
-              })}
+              })} */}
             </ul>
           </div>
         </div>
@@ -53,7 +54,7 @@ export const pageQuery = graphql`
           tags
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-             ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           description {
@@ -81,17 +82,6 @@ export const pageQuery = graphql`
             ) {
               ...GatsbyContentfulFluid_tracedSVG
             }
-          }
-        }
-      }
-    }
-    productQuery: allStripeSku {
-      products: edges {
-        product:node {
-          id
-          image
-          product {
-            name
           }
         }
       }
