@@ -1,0 +1,210 @@
+@import './variables.scss';
+
+@font-face {
+  font-family: 'Maax';
+  font-style: normal;
+  font-weight: 100;
+  src: url("https://dtxh53x5zi43j.cloudfront.net/fonts/maax/regular-205tf.woff2") format("woff2"), url("https://dtxh53x5zi43j.cloudfront.net/fonts/maax/regular-205tf.woff") format("woff");
+}
+@font-face {
+  font-family: 'GT-Pressura';
+  font-style: normal;
+  src: url("https://dtxh53x5zi43j.cloudfront.net/fonts/gt-pressura/regular.woff2") format("woff2"), url("https://dtxh53x5zi43j.cloudfront.net/fonts/gt-pressura/regular.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; // 1rem
+  font-weight: 100;
+}
+
+body {
+  font-family: "Maax", Tahoma, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+
+  color: $darkGrey;
+
+  margin: 0;
+  // background-color: #F3F1F0;
+
+  font-size: 1rem;
+  line-height: 1.375;
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  @media (min-width: 1280px) {
+    line-height: 1.3;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.18;
+
+  @media(min-width: 768px) {
+    font-size: 2.625rem;
+    line-height: 1.18;
+  }
+
+  @media(min-width: 1280px) {
+    line-height: 1.25rem;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.33;
+
+  @media(min-width: 768px) {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  @media(min-width: 1280px) {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+
+  @media(min-width: 768px) {
+    line-height: 1.75rem;
+  }
+
+  @media(min-width: 1280px) {
+    font-size: 1.5rem;
+    line-height: 2;
+  }
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+
+  @media(min-width: 768px) {
+    font-size: 1.13rem;
+  }
+  @media(min-width: 1280px) {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+}
+
+p {
+  margin: 0;
+  color: $midGrey;
+}
+
+a {
+  font-weight: 100;
+  color: $darkGrey;
+  border-bottom: 1px solid $midGrey;
+  text-decoration: none;
+  transition: all .3s ease;
+  &:hover {
+    color: $midGrey;
+    transition: all .3s ease;
+
+  }
+}
+
+small {
+  font-size: 0.875rem;
+  line-height: 1.25;
+  @media(min-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.375;
+  }
+}
+
+code {
+  background-color: #E3E3E3;
+  margin-top: .375em;
+  white-space: pre-wrap;
+}
+
+hr {
+  height: 1px;
+  border-width: 0;
+  color: #e4e4e4;
+  background-color: #e4e4e4;
+}
+
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.cta-plus {
+  font-size: 0.875em;
+  text-decoration: none;
+
+  &:before {
+    position: relative;
+    top: 2px;
+    padding-right: 10px;
+    content: url('/icons/add.svg')
+  }
+
+  &:hover {
+    color: #8b8a87;
+  }
+
+  /* Have to use a seperate svg because can't change fill color in :before */
+  /* Can fix this by trying to use a mask in the before, or by creating a */
+  /* React component that replicates behavior */
+  &:hover:before {
+    content: url('/icons/add-hover.svg')
+  }
+}
+
+.cta-back {
+  font-size: 0.875em;
+  text-decoration: none;
+  &:before {
+    position: relative;
+    top: -1px;
+    padding-right: 10px;
+    content: url('/icons/back-arrow.svg')
+  }
+
+  &:hover {
+    color: #8b8a87;
+  }
+
+  &:hover:before {
+    content: url('/icons/back-arrow-hover.svg')
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  cursor: hand;
+}

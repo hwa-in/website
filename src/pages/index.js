@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Layout from '../components/layout'
+import Layout from '../layouts'
 import Hero from '../components/Hero';
 import Section from '../components/styledComponents/Section';
 import Container from '../components/styledComponents/Container';
