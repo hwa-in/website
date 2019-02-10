@@ -14,7 +14,10 @@ const Footer = () => (
       <RouteContainer>
         {
           routes.map((link, index) => (
-            <Route to={link.route}>
+            <Route 
+              to={link.route}
+              key={index}
+            >
               {link.title}
             </Route>
           ))
