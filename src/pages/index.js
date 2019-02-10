@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Hero from '../components/hero'
+import Hero from '../components/Hero'
 import Layout from '../components/layout'
 // import ArticlePreview from '../components/article-preview'
 
