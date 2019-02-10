@@ -1,17 +1,12 @@
-import React from 'react'
-import Container from './Container';
+import React, { Fragment } from 'react'
 import Navbar from './Navbar';
 
-class Template extends React.Component {
-  render() {
-    const { children } = this.props
-    return (
-      <Container>
-        <Navbar />
-        {children}
-      </Container>
-    )
-  }
-}
+const Layout = ({ children }) => (
+  <Fragment>
+    <Navbar />
+    {children}
+  </Fragment>
+)
 
-export default Template
+export default Layout;
+
