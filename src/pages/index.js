@@ -10,14 +10,14 @@ class RootIndex extends React.Component {
   render() {
     console.log(this.props.data.hero)
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const image = get(this, 'props.data.hero.childImageSharp.fluid')
     const { products } = this.props.data.productQuery;
     return (
       <Layout location={this.props.location}>
         <Fragment>
           <Helmet title={siteTitle} />
-          <div>
-          
-          </div>
+          <Hero imageFluid={image}>
+          </Hero>
         </Fragment>
       </Layout>
     )
