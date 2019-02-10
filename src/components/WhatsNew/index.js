@@ -1,11 +1,33 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
-const WhatsNew = () => {
+
+
+const NewsArticle = ({ dateWritten, slug, title }) => {
+  console.log(dateWritten,slug, title)
   return (
     <div>
-      Whats New
+      <Link to={`news/${slug}`}> 
+        {title}<br/>{dateWritten}
+      </Link>
     </div>
   )
 }
 
-export default WhatsNew;
+const WhatsNew = ({ newsStories }) => (
+  <article>
+    <h1>Whats New</h1>
+      {
+        newsStories.map(({ newsArticle }) => {
+          return (
+            <NewsArticle 
+              key={newsArticle.slug}
+              {...newsArticle}
+            />
+          )
+        })
+      }
+  </article>
+)
+
+export default WhatsNew

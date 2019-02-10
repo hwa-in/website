@@ -12,21 +12,27 @@ import NewProducts from '../components/NewProducts';
 
 class RootIndex extends React.Component {
   render() {
-    console.log(this.props.data.hero)
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const image = get(this, 'props.data.hero.childImageSharp.fluid')
+    const {
+      hero,
+      allStripeSku,
+      allContentfulNewsStory,
+    } = this.props.data;
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
+    const { newsStories } = allContentfulNewsStory;
+    const { fluid } = hero.childImageSharp;
+    const { products } = allStripeSku;
     return (
       <Layout location={this.props.location}>
         <Fragment>
           <Helmet title={siteTitle} />
-          <Hero imageFluid={image}>
+          <Hero imageFluid={fluid}>
             <h1>Site Title</h1>
             <h3>Site Description</h3>
           </Hero>
           <Section>
             <Container>
-              <NewProducts />
-              <WhatsNew />
+              <NewProducts products={products} />
+              <WhatsNew  newsStories={ newsStories } />
             </Container>
           </Section>
         </Fragment>
@@ -43,6 +49,27 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid{
           ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    allContentfulNewsStory {
+    newsStories: edges {
+      newsArticle: node {
+          slug
+          title
+          dateWritten
+        }
+      }
+    }
+    allStripeSku {
+      products: edges {
+        product: node { 
+          id
+          product {
+            name
+            images
+            caption
+          }
         }
       }
     }
