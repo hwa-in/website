@@ -17,24 +17,8 @@ class RootIndex extends React.Component {
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Products</h2>
-            <ul className="article-list">
-              {products.map(({ product }) => {
-                const {name, images, caption } = product.product
-                console.log(images)
-                return (
-                  <Link key={product.id} to={`product/${product.id}`}>
-                      <div>
-                        <img src={images[0]} alt={name} />
-                      </div>
-                      <h1>{name}</h1>
-                      <h5>{caption}</h5>
-                    {/* <ArticlePreview article={node} />  */}
-                  </Link>
-                )
-              })}
-            </ul>
+          <div>
+            
           </div>
         </div>
       </Layout>
