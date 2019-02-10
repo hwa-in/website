@@ -1,5 +1,4 @@
-import React from 'react'
-import Container from './styledComponents/Container';
+import React, { Fragment } from 'react'
 import Navbar from './Navbar';
 import base from './base.css';
 
@@ -7,10 +6,10 @@ class Template extends React.Component {
   render() {
     const { children } = this.props
     return (
-      <Container>
+      <Fragment>
         <Navbar />
         {children}
-      </Container>
+      </Fragment>
     )
   }
 }

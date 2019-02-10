@@ -4,6 +4,10 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import Hero from '../components/Hero';
+import Section from '../components/styledComponents/Section';
+import Container from '../components/styledComponents/Container';
+import WhatsNew from '../components/WhatsNew';
+import NewProducts from '../components/NewProducts';
 // import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
@@ -17,7 +21,15 @@ class RootIndex extends React.Component {
         <Fragment>
           <Helmet title={siteTitle} />
           <Hero imageFluid={image}>
+            <h1>Site Title</h1>
+            <h3>Site Description</h3>
           </Hero>
+          <Section>
+            <Container>
+              <NewProducts />
+              <WhatsNew />
+            </Container>
+          </Section>
         </Fragment>
       </Layout>
     )
