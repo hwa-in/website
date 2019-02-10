@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from './Container';
+import Container from './styledComponents/Container';
 import Navbar from './Navbar';
 
 class Template extends React.Component {
