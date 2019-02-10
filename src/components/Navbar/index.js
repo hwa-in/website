@@ -4,43 +4,13 @@ import {
   NavLinks,
   NavLink,
 } from './styles.js';
-
-const navLinks = [ 
-  {
-    title: 'About',
-    route: 'about/',
-  },
-  {
-    title: 'News',
-    route: 'news/',
-  },
-  {
-    title: 'Products',
-    route: 'products/',
-  },
-  {
-    title: 'Video',
-    route: 'video/',
-  },
-  {
-    title: 'Recruit',
-    route: 'recruit/',
-  },
-  {
-    title: 'FAQ',
-    route: 'faq/',
-  },
-  {
-    title: 'Contact',
-    route: 'contact/',
-  }
-];
+import routes from '../../routes';
 
 export default () => (
   <NavBar role="navigation">
     <NavLinks className='nav-links'>
       {
-        navLinks.map((link, index) => (
+        routes.map((link, index) => (
           <NavLink
             key={index}
             to={link.route}
