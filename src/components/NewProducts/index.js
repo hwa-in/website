@@ -1,41 +1,17 @@
-import React, { Fragment } from 'react';
-import { StaticQuery, graphql } from "gatsby"
+import React, { Fragment } from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
 const NewProductsPure = () => {
+  return <div>Pure Component</div>
+}
+
+const NewProducts = () => {
+  // console.log(data)
   return (
-    <div>
-      Pure Component
-    </div>
+    <Fragment>
+      <NewProductsPure />
+    </Fragment>
   )
-};
+}
 
-const NewProducts = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allStripeSku {
-          products: edges {
-            product: node { 
-              id
-              product {
-                name
-                images
-                caption
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={data => {
-      console.log(data)
-      return (
-        <Fragment>
-          <NewProductsPure />
-        </Fragment>
-      )
-    }}
-  />
-);
-
-export default NewProducts;
+export default NewProducts
