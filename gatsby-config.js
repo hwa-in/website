@@ -1,12 +1,14 @@
 
 let contentfulConfig
-let activeEnv = process.env.NODE_ENV || "development"
+const path = require('path');
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 console.log(`Using environment config: '${activeEnv}'`)
 
 require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
+
 try {
   // Load the Contentful config from the .contentful.json
   contentfulConfig = require('./.contentful')
@@ -45,6 +47,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: path.join(__dirname, 'static', 'images'),
+      },
+    },
   ],
 }
