@@ -15,7 +15,6 @@ class RootIndex extends React.Component {
     console.log(this.props.data.hero)
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const image = get(this, 'props.data.hero.childImageSharp.fluid')
-    const { products } = this.props.data.productQuery;
     return (
       <Layout location={this.props.location}>
         <Fragment>
@@ -44,18 +43,6 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid{
           ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-    productQuery: allStripeSku {
-      products: edges {
-        product: node { 
-          id
-          product {
-            name
-            images
-            caption
-          }
         }
       }
     }
