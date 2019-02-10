@@ -1,17 +1,46 @@
-import React, { Fragment } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
+import {
+  NewProductWrapper,
+  ProductContainer,
+  ImgWrapper,
+  ProductImg,
+  ProductInfo,
+} from './styles';
 
-const NewProductsPure = () => {
-  return <div>Pure Component</div>
-}
 
-const NewProducts = () => {
-  // console.log(data)
+const Product = ({id, product: {name, images, caption}}) => {
+  // console.log(product)
   return (
-    <Fragment>
-      <NewProductsPure />
-    </Fragment>
+    <ProductContainer>
+      <ImgWrapper>
+        <ProductImg src={images[0]} alt={name}/>
+      </ImgWrapper>
+      <ProductInfo>
+        <h3>{name}</h3>
+        <p>{caption}</p>
+        <Link to={`products/${id}`}>Buy me</Link>
+      </ProductInfo>
+    </ProductContainer>
   )
 }
 
-export default NewProducts
+const NewProducts = ({products}) => {
+  return (
+    <NewProductWrapper>
+      <h1>New Products</h1>
+        {
+          products.map(({ product }) => {
+            return (
+              <Product 
+                key={product.id}
+                {...product}
+              />
+            )
+          })
+        }
+    </NewProductWrapper>
+  )
+}
+
+export default NewProducts;

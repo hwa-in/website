@@ -17,7 +17,7 @@ const Container = styled.div`
   `}
 
   ${media.desktop`
-    width: 60%;
+    width: 80%;
     max-width: 1080px;
   `}
 `;

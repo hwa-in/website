@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 
 
 const NewsArticle = ({ dateWritten, slug, title }) => {
-  console.log(dateWritten,slug, title)
   return (
     <div>
       <Link to={`news/${slug}`}> 
