@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 const Recruit = (data) => {
-  console.log(data)
+  console.log("Recruit data", data)
   return (
     <div>
       Jobs

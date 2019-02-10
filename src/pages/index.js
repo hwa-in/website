@@ -22,21 +22,19 @@ class RootIndex extends React.Component {
     const { fluid } = hero.childImageSharp;
     const { products } = allStripeSku;
     return (
-      <Layout location={this.props.location}>
-        <Fragment>
-          <Helmet title={siteTitle} />
-          <Hero imageFluid={fluid}>
-            <h1>Site Title</h1>
-            <h3>Site Description</h3>
-          </Hero>
-          <Section>
-            <Container>
-              <NewProducts products={products} />
-              <WhatsNew  newsStories={ newsStories } />
-            </Container>
-          </Section>
-        </Fragment>
-      </Layout>
+      <Fragment>
+        <Helmet title={siteTitle} />
+        <Hero imageFluid={fluid}>
+          <h1>Site Title</h1>
+          <h3>Site Description</h3>
+        </Hero>
+        <Section>
+          <Container>
+            <NewProducts products={products} />
+            <WhatsNew  newsStories={ newsStories } />
+          </Container>
+        </Section>
+      </Fragment>
     )
   }
 }
