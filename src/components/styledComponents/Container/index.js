@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../../style';
 
@@ -22,8 +21,4 @@ const Container = styled.div`
   `}
 `;
 
-export default ({ children }) => (
-  <Container>
-    {children}
-  </Container>
-)
+export default Container;
