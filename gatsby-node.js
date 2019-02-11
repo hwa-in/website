@@ -98,5 +98,40 @@ exports.createPages = ({ graphql, actions }) => {
       })
     )
   })
-  return Promise.all([blogPages, productPages, jobPostPages])
+
+  const newsArticlePages = new Promise((resolve, reject) => {
+    const newsArticleTemplate = path.resolve('./src/templates/NewsArticle/index.js');
+    resolve(
+      graphql(
+        `
+        {
+          allContentfulNewsStory {
+            articles: edges {
+              article: node {
+                  slug
+                }
+              }
+            }
+        }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const { articles } = result.data.allContentfulNewsStory
+        articles.forEach(({ article }, index) => {
+          createPage({
+            path: `/news/${article.slug}/`,
+            component: newsArticleTemplate,
+            context: {
+              slug: article.slug,
+            },
+          })
+        })
+      })
+    )
+  })
+  return Promise.all([blogPages, productPages, jobPostPages, newsArticlePages,])
 }

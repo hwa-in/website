@@ -1,17 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
-
-
-const NewsArticle = ({ dateWritten, slug, title }) => {
-  return (
-    <div>
-      <Link to={`news/${slug}`}> 
-        {title}<br/>{dateWritten}
-      </Link>
-    </div>
-  )
-}
+import { ArticlePreview } from '../previews';
 
 const WhatsNew = ({ newsStories }) => (
   <article>
@@ -19,7 +7,7 @@ const WhatsNew = ({ newsStories }) => (
       {
         newsStories.map(({ newsArticle }) => {
           return (
-            <NewsArticle 
+            <ArticlePreview
               key={newsArticle.slug}
               {...newsArticle}
             />
