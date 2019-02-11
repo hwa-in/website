@@ -6,6 +6,10 @@ const NavBar = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 1;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 const NavLinks = styled.div`
