@@ -2,13 +2,11 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Layout from '../layouts'
 import Hero from '../components/Hero';
 import Section from '../components/styledComponents/Section';
 import Container from '../components/styledComponents/Container';
 import WhatsNew from '../components/WhatsNew';
 import NewProducts from '../components/NewProducts';
-// import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
@@ -22,21 +20,19 @@ class RootIndex extends React.Component {
     const { fluid } = hero.childImageSharp;
     const { products } = allStripeSku;
     return (
-      <Layout location={this.props.location}>
-        <Fragment>
-          <Helmet title={siteTitle} />
-          <Hero imageFluid={fluid}>
-            <h1>Site Title</h1>
-            <h3>Site Description</h3>
-          </Hero>
-          <Section>
-            <Container>
-              <NewProducts products={products} />
-              <WhatsNew  newsStories={ newsStories } />
-            </Container>
-          </Section>
-        </Fragment>
-      </Layout>
+      <Fragment>
+        <Helmet title={siteTitle} />
+        <Hero imageFluid={fluid}>
+          <h1>Site Title</h1>
+          <h3>Site Description</h3>
+        </Hero>
+        <Section>
+          <Container>
+            <NewProducts products={products} />
+            <WhatsNew  newsStories={ newsStories } />
+          </Container>
+        </Section>
+      </Fragment>
     )
   }
 }

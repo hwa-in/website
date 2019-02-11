@@ -1,11 +1,6 @@
 const Promise = require('bluebird')
 const path = require('path')
 
-const handleErrors = (error, reject) => {
-  console.error(error)
-  reject(error)
-}
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -27,7 +22,8 @@ exports.createPages = ({ graphql, actions }) => {
           `
       ).then(result => {
         if (result.errors) {
-         handleErrors(result.errors, reject)
+          console.error(result.errors);
+          reject(result.errors);
         }
 
         const posts = result.data.allContentfulBlogPost.edges
@@ -59,13 +55,48 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         `
-      ).then(({ data, errors }) => {
-        if ( errors ) {
-          handleErrors(errors, reject)
+      ).then((result) => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
         }
-        console.log(data)
       })
     )
   })
-  return Promise.all([blogPages, productPages])
+
+  const jobPostPages = new Promise((resolve, reject) => {
+    const jobPageTemplate = path.resolve('./src/templates/JobPage/index.js');
+    resolve(
+      graphql(
+        `
+        {
+          allContentfulJobs {
+            jobs: edges {
+              job: node {
+                id: contentful_id
+              }
+            }
+          }
+        }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const { jobs } = result.data.allContentfulJobs
+        jobs.forEach(({ job }, index) => {
+          createPage({
+            path: `/recruit/${job.id}/`,
+            component: jobPageTemplate,
+            context: {
+              id: job.id
+            },
+          })
+        })
+      })
+    )
+  })
+  return Promise.all([blogPages, productPages, jobPostPages])
 }
