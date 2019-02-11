@@ -21,7 +21,7 @@ const routes = [
   },
   {
     title: 'FAQ',
-    route: 'faq/',
+    route: 'faqs/',
   },
   {
     title: '聯絡我們',

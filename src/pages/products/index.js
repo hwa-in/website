@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import Section from '../../components/styledComponents/Section';
 
-const NewsPage = (data) => {
+const ProductsPage = (data) => {
   console.log(data)
   return (
     <Fragment>
       <Section>
-        News Page
+        Products
       </Section>
     </Fragment>
   )
 };
 
-export default NewsPage;
+export default ProductsPage;

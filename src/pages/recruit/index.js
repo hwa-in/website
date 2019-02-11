@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Section from '../../components/styledComponents/Section';
 import { graphql } from 'gatsby';
 import { JobPreview } from '../../components/previews';
 
 const RecruitPage = ({ data }) => {
   const { jobs } = data.allContentfulJobs;
   return (
-    <div>
+    <Fragment>
+      <Section>
       {
         jobs.map(({ job }) => {
           return (
@@ -16,7 +18,8 @@ const RecruitPage = ({ data }) => {
           )
         })
       }
-    </div>
+      </Section>
+    </Fragment>
   )
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import Section from '../../components/styledComponents/Section';
 import { Wrapper } from './styles';
@@ -6,13 +6,15 @@ import { Wrapper } from './styles';
 const AboutPage = ({ data }) => {
   const { html } = data.contentfulAboutPage.description.childMarkdownRemark;
   return (
-    <Section>
-      <Wrapper
-      dangerouslySetInnerHTML={{
+    <Fragment>
+      <Section>
+        <Wrapper
+        dangerouslySetInnerHTML={{
           __html: html,
         }}
-      />
-    </Section>
+        />
+      </Section>
+    </Fragment>
   )
 };
 
