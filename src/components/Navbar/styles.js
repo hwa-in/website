@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 const NavBar = styled.nav`
-
+  background-color: ${props => props.scrolled ? 'white' : undefined};
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 `
 
 const NavLinks = styled.div`

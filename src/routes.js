@@ -1,5 +1,9 @@
 const routes = [ 
   {
+    title: 'Home',
+    route: '/',
+  },
+  {
     title: '關於我們',
     route: 'about/',
   },
