@@ -1,22 +1,32 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import { JobPreview } from '../../components/previews';
 
-const Recruit = (data) => {
-  console.log("Recruit data", data)
+const RecruitPage = ({ data }) => {
+  const { jobs } = data.allContentfulJobs;
   return (
     <div>
-      Jobs
+      {
+        jobs.map(({ job }) => {
+          return (
+            <JobPreview
+              key={job.contentful_id}
+              {...job}
+            />
+          )
+        })
+      }
     </div>
   )
 };
 
-export default Recruit;
+export default RecruitPage;
 
 export const jobsquery = graphql`
   query AllJobsQuery {
     allContentfulJobs {
-      edges {
-        node {
+      jobs: edges {
+        job: node {
           contentful_id
           jobTitle
           createdAt(formatString:"MMMM DD, YYYY")
