@@ -1,9 +1,6 @@
 import React from 'react';
-import tempFaqStyle from './styles'
-// import { bold } from 'ansi-colors';
+import {FaqStyleTitle, FaqStyleContent} from './styles'
 
-
-// export default tempFaqStyle;
 class FAQ extends React.Component {
   constructor() {
     super();
@@ -12,18 +9,13 @@ class FAQ extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
   }
-
+  
   handleClick() {
-    var value = this.state.clickedOn;
-    if (value) {
-      this.setState({
-        clickedOn: false
-      });
-    } else {
-      this.setState({
-        clickedOn: true
-      });
-    }
+    // var content = this.nextElementSibling;
+    // console.log("CONTENT STYLE", content.style.maxHeight);
+    this.setState({
+      clickedOn: !this.state.clickedOn
+    });
   }
   render() {
     const {title, answer} = this.props;
@@ -33,12 +25,17 @@ class FAQ extends React.Component {
       showAnswer = <div> {answer.answer}</div>
     }
     return (
-    <div>
-    <div style={tempFaqStyle} className='title' onClick={this.handleClick}>{title}</div>
-    {showAnswer}
-    </div>
-    )
+      <div>
+        <FaqStyleTitle onClick={this.handleClick}> 
+          {title}
+        </FaqStyleTitle>
+        <FaqStyleContent> 
+          {showAnswer}
+        {console.log("props", showAnswer)}
+        </FaqStyleContent>
+      </div>
+      )
+    }
   }
-}
-
-export default FAQ;
+  
+  export default FAQ;

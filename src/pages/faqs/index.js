@@ -1,17 +1,20 @@
 import React, { Fragment } from 'react';
 import Section from '../../components/styledComponents/Section';
 import FAQ from '../../components/Faq';
+import {FaqStyleContainer} from '../../components/Faq/styles';
 
 const FAQsPage = ({data}) => {
   const {faqs} = data.allContentfulFaq;
   return (
     <Fragment>
       <Section>
-        FAQs
+        <h2>FAQS</h2>
+        <FaqStyleContainer>
         {faqs.map(({faq}, index) => {
           console.log(faq)
           return <FAQ {...faq} key={index}/>
         })}
+        </FaqStyleContainer>
       </Section>
     </Fragment>
   )
