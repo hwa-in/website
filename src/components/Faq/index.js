@@ -11,31 +11,28 @@ class FAQ extends React.Component {
   }
   
   handleClick() {
-    // var content = this.nextElementSibling;
-    // console.log("CONTENT STYLE", content.style.maxHeight);
     this.setState({
       clickedOn: !this.state.clickedOn
     });
   }
   render() {
     const {title, answer} = this.props;
-    const questionSelected = this.state.clickedOn;
+    const {clickedOn} = this.state
     let showAnswer;
-    if (questionSelected) {
+    if (clickedOn) {
       showAnswer = <div> {answer.answer}</div>
     }
-    return (
-      <div>
+    return ( 
+      <div> 
         <FaqStyleTitle onClick={this.handleClick}> 
-          {title}
-        </FaqStyleTitle>
+          {title} 
+        </FaqStyleTitle> 
         <FaqStyleContent> 
-          {showAnswer}
-        {console.log("props", showAnswer)}
-        </FaqStyleContent>
-      </div>
-      )
+          { clickedOn && <div>{showAnswer}</div> } 
+        </FaqStyleContent> 
+      </div> 
+    )
     }
   }
-  
+
   export default FAQ;

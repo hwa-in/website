@@ -11,7 +11,6 @@ const FAQsPage = ({data}) => {
         <h2>FAQS</h2>
         <FaqStyleContainer>
         {faqs.map(({faq}, index) => {
-          console.log(faq)
           return <FAQ {...faq} key={index}/>
         })}
         </FaqStyleContainer>
