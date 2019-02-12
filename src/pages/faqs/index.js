@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Section from '../../components/styledComponents/Section';
 import FAQ from '../../components/Faq';
 import {FaqStyleContainer} from '../../components/Faq/styles';
+import { graphql } from 'gatsby';
 
 const FAQsPage = ({data}) => {
   const {faqs} = data.allContentfulFaq;

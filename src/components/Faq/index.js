@@ -18,17 +18,13 @@ class FAQ extends React.Component {
   render() {
     const {title, answer} = this.props;
     const {clickedOn} = this.state
-    let showAnswer;
-    if (clickedOn) {
-      showAnswer = <div> {answer.answer}</div>
-    }
     return ( 
       <div> 
         <FaqStyleTitle onClick={this.handleClick}> 
           {title} 
         </FaqStyleTitle> 
         <FaqStyleContent> 
-          { clickedOn && <div>{showAnswer}</div> } 
+          { clickedOn && <div>{answer.answer}</div> } 
         </FaqStyleContent> 
       </div> 
     )
