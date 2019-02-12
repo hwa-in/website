@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {FaqStyleTitle, FaqStyleContent} from './styles'
 
 class FAQ extends React.Component {
@@ -18,21 +18,17 @@ class FAQ extends React.Component {
   render() {
     const {title, answer} = this.props;
     const {clickedOn} = this.state
-    let showAnswer;
-    if (clickedOn) {
-      showAnswer = <div> {answer.answer}</div>
-    }
     return ( 
-      <div> 
+      <Fragment> 
         <FaqStyleTitle onClick={this.handleClick}> 
           {title} 
         </FaqStyleTitle> 
         <FaqStyleContent> 
-          { clickedOn && <div>{showAnswer}</div> } 
+          { clickedOn && <div>{answer.answer}</div> } 
         </FaqStyleContent> 
-      </div> 
+      </Fragment> 
     )
-    }
   }
+}
 
-  export default FAQ;
+export default FAQ;

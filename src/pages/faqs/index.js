@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Section from '../../components/styledComponents/Section';
 import FAQ from '../../components/Faq';
+import { graphql } from 'gatsby';
 import {FaqStyleContainer} from '../../components/Faq/styles';
 
 const FAQsPage = ({data}) => {
