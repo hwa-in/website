@@ -6,6 +6,7 @@ import { ArticlePreview } from '../../components/previews';
 
 const NewsPage = ({ data }) => {
   const { articles } = data.allContentfulNewsStory;
+  console.log(articles)
   return (
     <Fragment>
       <Section>

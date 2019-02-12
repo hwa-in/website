@@ -5,6 +5,8 @@ const variables = {
   white: '#FFFFFF',
   lightGreen: '#80ccae',
   darkGreen: '#408d44',
+  whitesmoke: 'whitesmoke',
+  darkWhiteSmoke: '#ddd',
 };
 
 export default variables;
