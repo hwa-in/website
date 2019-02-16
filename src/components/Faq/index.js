@@ -23,8 +23,8 @@ class FAQ extends React.Component {
         <FaqStyleTitle onClick={this.handleClick}> 
           {title} 
         </FaqStyleTitle> 
-        <FaqStyleContent> 
-          { clickedOn && <div>{answer.answer}</div> } 
+        <FaqStyleContent className={clickedOn ? "open" : ""}> 
+          {answer.answer}
         </FaqStyleContent> 
       </div> 
     )
