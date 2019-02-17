@@ -1,22 +1,25 @@
-import React, { Fragment } from 'react';
-import Section from '../../components/styledComponents/Section';
+import React from 'react';
 import FAQ from '../../components/Faq';
+import { Section, Container } from '../../components/styledComponents';
+import { FaqsContainer, FaqTitle } from './styles';
 import { graphql } from 'gatsby';
-import {FaqStyleContainer} from '../../components/Faq/styles';
 
 const FAQsPage = ({data}) => {
-  const {faqs} = data.allContentfulFaq;
+  const { faqs } = data.allContentfulFaq;
   return (
-    <Fragment>
-      <Section>
-        <h2>FAQS</h2>
-        <FaqStyleContainer>
-        {faqs.map(({faq}, index) => {
-          return <FAQ {...faq} key={index}/>
-        })}
-        </FaqStyleContainer>
-      </Section>
-    </Fragment>
+    <Section>
+      <Container 
+        flexDirection={"column"}
+      >
+        <FaqTitle>FAQS</FaqTitle>
+        <FaqsContainer>
+          {faqs.map(({faq}, index) => (
+              <FAQ {...faq} key={index}/>
+            ) 
+          )}
+        </FaqsContainer>
+      </Container>
+    </Section>
   )
 };
 
