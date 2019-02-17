@@ -57,7 +57,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allStripeSku {
+    allStripeSku(limit: 3) {
       products: edges {
         product: node { 
           id

@@ -47,9 +47,12 @@ exports.createPages = ({ graphql, actions }) => {
         `
         {
           allStripeSku {
-            products: edges {
-              product: node {
-                id
+            skus: edges {
+              sku: node {
+                skuId: id 
+                product {
+                  productId: id
+                }
               }
             }
           }
@@ -60,6 +63,18 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors);
           reject(result.errors);
         }
+
+        const { skus } = result.data.allStripeSku;
+        skus.forEach(({ sku }) => {
+          createPage({
+            path: `/products/${sku.product.productId}/${sku.skuId}/`,
+            component: productPage,
+            context: {
+              id: sku.skuId,
+              productId: sku.product.productId,
+            },
+          })
+        })
       })
     )
   })
@@ -133,5 +148,45 @@ exports.createPages = ({ graphql, actions }) => {
       })
     )
   })
-  return Promise.all([blogPages, productPages, jobPostPages, newsArticlePages,])
+  const productCategoryPages = new Promise((resolve, reject) => {
+    const productCategory = path.resolve('./src/templates/ProductCategoryPage/index.js');
+    resolve(
+      graphql(
+        `
+        {
+          allStripeProduct {
+            categories: edges {
+              category: node {
+                id
+              }
+            }
+          }
+        }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const { categories } = result.data.allStripeProduct;
+        categories.forEach(({ category }) => {
+          createPage({
+            path: `/products/${category.id}/`,
+            component: productCategory,
+            context: {
+              id: category.id,
+            },
+          })
+        })
+      })
+    )
+  })
+  return Promise.all([
+    blogPages,
+    productPages,
+    jobPostPages,
+    newsArticlePages,
+    productCategoryPages,
+  ])
 }
