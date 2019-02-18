@@ -1,35 +1,31 @@
 import React, { Fragment } from 'react';
 import { Section, Container } from '../../components/styledComponents';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { CategoryContainer } from './styles';
+import ProductContainer from './ProductContainer';
 
-const ProductsPage = ({ data }) => {
-  console.log(data)
-  const { categories } = data.allStripeProduct;
-  return (
-    <Fragment>
-      <Section>
-        <Container flexDirection={'column'}>
-          Products
-          <CategoryContainer>
-            {
-              categories.map(({category}) => (
-                <Link 
-                  to={`products/${category.id}`}
-                  key={category.id}
-                >
-                  <h1>
-                    {category.name}
-                  </h1>
-                </Link>
-              ))
-            }
-          </CategoryContainer>
-        </Container>
-      </Section>
-    </Fragment>
-  )
-};
+const ProductsPage = ({data}) => {
+    const { categories } = data.allStripeProduct;
+    return (
+      <Fragment>
+        <Section>
+          <Container flexDirection={'column'}>
+            Products
+            <CategoryContainer>
+              {
+                categories.map(({category}) => (
+                  <ProductContainer 
+                    key={category.id}
+                    {...category} 
+                  />
+                ))
+              }
+            </CategoryContainer>
+          </Container>
+        </Section>
+      </Fragment>
+    )
+  }
 
 export default ProductsPage;
 
@@ -40,6 +36,14 @@ export const ProductQuery = graphql`
         category: node {
           name
           id
+          skus {
+            skuList: data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
         }
       }
     }
