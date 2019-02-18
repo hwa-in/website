@@ -55,19 +55,17 @@ h5,
 h6 {
   font-weight: 100;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 h1 {
   font-size: 2rem;
-  line-height: 1.18;
 
   @media(min-width: 768px) {
     font-size: 2.625rem;
-    line-height: 1.18;
   }
 
   @media(min-width: 1280px) {
-    line-height: 1.25rem;
   }
 }
 
