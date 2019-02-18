@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Container } from '../../components/styledComponents';
+import { Section, Container } from 'styledComponents';
 import { graphql, Link } from 'gatsby';
 
 const ProductCategoryPage = ({data, pageContext}) => {

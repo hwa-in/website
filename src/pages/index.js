@@ -2,11 +2,10 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Hero from '../components/Hero';
-import Section from '../components/styledComponents/Section';
-import Container from '../components/styledComponents/Container';
-import WhatsNew from '../components/WhatsNew';
-import NewProducts from '../components/NewProducts';
+import Hero from 'components/Hero';
+import { Section, Container } from 'styledComponents';
+import WhatsNew from 'components/WhatsNew';
+import NewProducts from 'components/NewProducts';
 
 class RootIndex extends React.Component {
   render() {

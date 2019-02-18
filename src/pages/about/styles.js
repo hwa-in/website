@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Container from '../../components/styledComponents/Container';
-import { variables } from '../../style';
+import { Container } from 'styledComponents';
+import { variables } from 'style';
 
 const Wrapper = styled(Container)`
   width: 50% !important;

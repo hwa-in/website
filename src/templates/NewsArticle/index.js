@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import Section from '../../components/styledComponents/Section';
-import Container from '../../components/styledComponents/Container';
+import { Section, Container } from 'styledComponents';
 
 const NewsArticleTemplate = ({data}) => {
   const {

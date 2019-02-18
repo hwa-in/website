@@ -1,6 +1,6 @@
 import React from 'react';
-import FAQ from '../../components/Faq';
-import { Section, Container } from '../../components/styledComponents';
+import FAQ from 'components/Faq';
+import { Section, Container } from 'styledComponents';
 import { FaqsContainer, FaqTitle } from './styles';
 import { graphql } from 'gatsby';
 

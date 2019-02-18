@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styles from './blog.module.css'
 import Layout from "../../layouts"
-import { ArticlePreview } from '../../components/previews';
+import { ArticlePreview } from 'components/previews';
 
 class BlogIndex extends React.Component {
   render() {

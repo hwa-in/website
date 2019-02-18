@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { Section, Container } from '../../components/styledComponents';
+import { Section, Container } from 'styledComponents';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
   console.log(data)

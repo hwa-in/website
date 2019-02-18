@@ -1,31 +1,33 @@
 import React, { Fragment } from 'react';
-import { Section, Container } from '../../components/styledComponents';
+import { Section, Container } from 'styledComponents';
 import { graphql } from 'gatsby';
-import { CategoryContainer } from './styles';
-import ProductContainer from './ProductContainer';
+import Category from './Category';
+import {
+  CategorySection,
+} from './styles';
 
 const ProductsPage = ({data}) => {
-    const { categories } = data.allStripeProduct;
-    return (
-      <Fragment>
-        <Section>
-          <Container flexDirection={'column'}>
-            Products
-            <CategoryContainer>
-              {
-                categories.map(({category}) => (
-                  <ProductContainer 
-                    key={category.id}
-                    {...category} 
-                  />
-                ))
-              }
-            </CategoryContainer>
-          </Container>
-        </Section>
-      </Fragment>
-    )
-  }
+  const { categories } = data.allStripeProduct;
+  return (
+    <Fragment>
+      <Section>
+        <Container flexDirection={'column'}>
+          Products
+          <CategorySection>
+            {
+              categories.map(({category}) => (
+                <Category 
+                  key={category.id}
+                  {...category} 
+                />
+              ))
+            }
+          </CategorySection>
+        </Container>
+      </Section>
+    </Fragment>
+  )
+}
 
 export default ProductsPage;
 

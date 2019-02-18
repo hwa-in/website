@@ -1,8 +1,8 @@
 import React from 'react';
-import { Section } from '../../components/styledComponents';
+import { Section } from 'styledComponents';
 import Skus from './Skus';
 
-class ProductContainer extends React.Component {
+class Category extends React.Component {
   state = {
     showSkus: false,
   }
@@ -14,18 +14,18 @@ class ProductContainer extends React.Component {
   }
 
   render() {
-    const { name, skus } = this.props;
+    const { name, id, skus } = this.props;
     const { showSkus } = this.state;
     return (
-      <Section
-        noPadTop 
-        onClick={() => this.handleClick() }
-      >
-        <h1>
-          {name}
-        </h1>
+      <Section noPadTop>
+        <div onClick={() => this.handleClick() }>
+          <h1>
+            {name}
+          </h1>
+        </div>
         <Skus
-          {...skus} 
+          {...skus}
+          productId={id} 
           showSkus={showSkus} 
         />
       </Section>
@@ -33,4 +33,4 @@ class ProductContainer extends React.Component {
   }
 }
 
-export default ProductContainer;
+export default Category;

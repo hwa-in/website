@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from '../../style';
+import { variables } from 'style';
 
 const FaqStyleContainer = styled.div`
   transition: background-color 0.2s linear;

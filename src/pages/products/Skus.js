@@ -1,8 +1,9 @@
 import React from 'react';
 import { SkuWrapper } from './styles';
+import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 
-const Skus = ({skuList, showSkus}) => { 
+const Skus = ({skuList, productId, showSkus}) => { 
   return (
     <CSSTransition
       in={showSkus}
@@ -13,9 +14,11 @@ const Skus = ({skuList, showSkus}) => {
         <SkuWrapper className="skus">
             {
               skuList.map(({id, attributes}) => (
-                <div key={id}>
+                <Link
+                to={`/products/${productId}/${id}/`}
+                key={id}>
                   <h2>{attributes.name}</h2>
-                </div>
+                </Link>
               ))
             }
         </SkuWrapper> 

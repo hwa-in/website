@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-const CategoryContainer = styled.div`
+const CategorySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 `;
 
+const CategoryContainer = styled.div`
+  
+`;
+
 const SkuWrapper = styled.div`
-  pointer-events: none;
   z-index: -1;
   height: 0;
   overflow: hidden;
@@ -50,6 +53,7 @@ const SkuWrapper = styled.div`
 `;
 
 export {
+  CategorySection,
   CategoryContainer,
   SkuWrapper,
 };

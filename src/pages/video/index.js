@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import { VideoPreview } from '../../components/previews';
-import Section from '../../components/styledComponents/Section';
+import { VideoPreview } from 'components/previews';
+import { Section }from 'styledComponents';
 import {
   Wrapper,
 } from './styles';

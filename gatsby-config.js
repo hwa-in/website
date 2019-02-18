@@ -61,6 +61,18 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        pages: path.join(__dirname, 'src/pages'),
+        components: path.join(__dirname, 'src/components'),
+        style: path.join(__dirname, 'src/style'),
+        templates: path.join(__dirname, 'src/templates'),
+        helpers: path.join(__dirname, 'src/helpers'),
+        styledComponents: path.join(__dirname, 'src/styledComponents'),
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',

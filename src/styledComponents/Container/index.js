@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../../../style';
+import { media } from 'style';
 
 const Container = styled.div`
   width: ${props => props.width || '90%'};
