@@ -5,12 +5,14 @@ import Category from './Category';
 import {
   CategorySection,
 } from './styles';
+import ProductNav from 'components/ProductNav';
 
 const ProductsPage = ({data}) => {
   const { categories } = data.allStripeProduct;
   return (
     <Fragment>
       <Section>
+        <ProductNav />
         <Container>
           Products
           <CategorySection>

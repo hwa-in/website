@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section, Container } from 'styledComponents';
 import { graphql, Link } from 'gatsby';
+import ProductNav from 'components/ProductNav';
 
 const ProductCategoryPage = ({data, pageContext}) => {
 console.log(data)
@@ -8,10 +9,11 @@ const { skuList } = data.stripeProduct.skus;
 const { name } = data.stripeProduct;
 return (
   <Section>
+    <ProductNav
+      categoryId={pageContext.id}
+      categoryName={name}
+    />
     <Container>
-      <div>
-        <Link to="/products/">Products</Link>
-      </div>
       <h1>{name}</h1>
       <div>
       {

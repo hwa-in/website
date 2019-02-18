@@ -1,18 +1,20 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { Section, Container } from 'styledComponents';
+import ProductNav from 'components/ProductNav';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
-  console.log(data)
   const { name } = data.stripeSku.attributes;
   const { productName } = data.stripeSku.product;
   return (
     <Section>
+      <ProductNav
+        categoryId={pageContext.productId}
+        categoryName={productName}
+        skuName={name}
+        skuId={pageContext.id}
+      />
       <Container>
-        <div>
-          <Link to='/products/'>All Products</Link> 
-          <Link to={`/products/${pageContext.productId}/`}>{productName}</Link>
-        </div>
         <h1>{name}</h1>
       </Container>
     </Section>
