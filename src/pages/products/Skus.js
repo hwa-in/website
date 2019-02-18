@@ -17,7 +17,7 @@ const Skus = ({skuList, productId, showSkus}) => {
                 <Link
                 to={`/products/${productId}/${id}/`}
                 key={id}>
-                  <h2>{attributes.name}</h2>
+                  <h3>{attributes.name}</h3>
                 </Link>
               ))
             }

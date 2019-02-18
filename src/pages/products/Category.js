@@ -1,7 +1,6 @@
 import React from 'react';
-import { Section } from 'styledComponents';
 import Skus from './Skus';
-import { CategoryContainer } from './styles';
+import { CategoryContainer, CategoryTitle } from './styles';
 
 class Category extends React.Component {
   state = {
@@ -19,11 +18,9 @@ class Category extends React.Component {
     const { showSkus } = this.state;
     return (
       <CategoryContainer>
-        <div onClick={() => this.handleClick() }>
-          <h1>
-            {name}
-          </h1>
-        </div>
+        <CategoryTitle onClick={() => this.handleClick() }>
+          {name}
+        </CategoryTitle>
         <Skus
           {...skus}
           productId={id} 
