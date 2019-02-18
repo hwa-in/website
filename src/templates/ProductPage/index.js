@@ -8,7 +8,7 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
   const { productName } = data.stripeSku.product;
   return (
     <Section>
-      <Container flexDirection='column'>
+      <Container>
         <div>
           <Link to='/products/'>All Products</Link> 
           <Link to={`/products/${pageContext.productId}/`}>{productName}</Link>

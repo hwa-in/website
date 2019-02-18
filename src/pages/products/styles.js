@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Container } from 'styledComponents';
 
 const CategorySection = styled.section`
   display: flex;
@@ -7,7 +8,7 @@ const CategorySection = styled.section`
   justify-content: space-around;
 `;
 
-const CategoryContainer = styled.div`
+const CategoryContainer = styled(Container)`
   
 `;
 

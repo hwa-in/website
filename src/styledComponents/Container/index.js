@@ -6,13 +6,12 @@ const Container = styled.div`
   max-width: ${props => props.maxWidth || '335px'};
   margin: 0 auto;
   display: flex;
-  flex-direction:  ${props => props.flexDirection || 'column'};
+  flex-direction:  ${props => props.row ? 'row' : 'column'};
   justify-content: space-evenly;
 
   ${media.tablet`
     width: 85%;
     max-width: 690px;
-    flex-direction: ${props => props.flexDirection || 'row'};
   `}
 
   ${media.desktop`

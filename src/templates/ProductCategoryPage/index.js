@@ -8,7 +8,7 @@ const { skuList } = data.stripeProduct.skus;
 const { name } = data.stripeProduct;
 return (
   <Section>
-    <Container flexDirection="column">
+    <Container>
       <div>
         <Link to="/products/">Products</Link>
       </div>

@@ -16,7 +16,7 @@ const NewsArticleTemplate = ({data}) => {
   return (
     <Fragment>
       <Section>
-        <Container style={{flexDirection: 'column'}}>
+        <Container>
           <div>
             <h1>{title}</h1>
             <small>{dateWritten}</small>

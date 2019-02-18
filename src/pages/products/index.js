@@ -11,7 +11,7 @@ const ProductsPage = ({data}) => {
   return (
     <Fragment>
       <Section>
-        <Container flexDirection={'column'}>
+        <Container>
           Products
           <CategorySection>
             {
