@@ -1,5 +1,5 @@
 import React from 'react';
-import Skus from './Skus';
+import Skus from '../Skus';
 import { CategoryContainer, CategoryTitle } from './styles';
 
 class Category extends React.Component {

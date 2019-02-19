@@ -26,7 +26,7 @@ class RootIndex extends React.Component {
           <h3>Site Description</h3>
         </Hero>
         <Section>
-          <Container>
+          <Container row>
             <NewProducts products={products} />
             <WhatsNew  newsStories={ newsStories } />
           </Container>

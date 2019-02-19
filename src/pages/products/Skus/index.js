@@ -1,7 +1,13 @@
 import React from 'react';
-import { SkuWrapper } from './styles';
+import {
+  SkuWrapper,
+  SkuContainer,
+  Close,
+  SkuSlider,
+} from './styles';
 import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
+// import ProductPreview from 'components/preview'
 
 const Skus = ({skuList, productId, showSkus}) => { 
   return (
@@ -12,6 +18,9 @@ const Skus = ({skuList, productId, showSkus}) => {
     >
       {(state) => (
         <SkuWrapper className="skus">
+          <SkuContainer>
+            <Close>x</Close>
+            <SkuSlider>
             {
               skuList.map(({id, attributes}) => (
                 <Link
@@ -21,6 +30,8 @@ const Skus = ({skuList, productId, showSkus}) => {
                 </Link>
               ))
             }
+            </SkuSlider>
+            </SkuContainer>
         </SkuWrapper> 
       )}
     </CSSTransition>
