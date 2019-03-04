@@ -5,11 +5,11 @@ import ProductNav from 'components/ProductNav';
 
 const ProductCategoryPage = ({data, pageContext}) => {
 console.log(data)
-const { skuList } = data.stripeProduct.skus;
-const { name } = data.stripeProduct;
+// const { skuList } = data.stripeProduct.skus;
+// const { name } = data.stripeProduct;
 return (
   <Section>
-    <ProductNav
+    {/* <ProductNav
       categoryId={pageContext.id}
       categoryName={name}
     />
@@ -25,7 +25,7 @@ return (
         )
       }
       </div>
-    </Container>
+    </Container> */}
   </Section>      
 )}
 

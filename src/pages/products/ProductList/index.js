@@ -9,26 +9,29 @@ import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 // import ProductPreview from 'components/preview'
 
-const Skus = ({skuList, productId, showSkus}) => { 
+const ProductList = ({products, categoryId, showProducts, closeList}) => { 
+  console.log(products)
   return (
     <CSSTransition
-      in={showSkus}
+      in={showProducts}
       timeout={500}
       classNames="skus"
     >
       {(state) => (
         <SkuWrapper className="skus">
           <SkuContainer>
-            <Close>x</Close>
+            <Close onClick={() => closeList()}>x</Close>
             <SkuSlider>
             {
-              skuList.map(({id, attributes}) => (
-                <Link
-                to={`/products/${productId}/${id}/`}
-                key={id}>
-                  <h3>{attributes.name}</h3>
-                </Link>
-              ))
+              products.map(({id, title, slug}) => {
+                return (
+                  <Link
+                  to={`/products/${categoryId}/${slug}/`}
+                  key={id}>
+                    <h3>{title}</h3>
+                  </Link>
+                )
+              })
             }
             </SkuSlider>
             </SkuContainer>
@@ -38,4 +41,4 @@ const Skus = ({skuList, productId, showSkus}) => {
   )
 };
 
-export default Skus;
+export default ProductList;

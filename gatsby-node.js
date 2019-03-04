@@ -148,45 +148,51 @@ exports.createPages = ({ graphql, actions }) => {
       })
     )
   })
-  const productCategoryPages = new Promise((resolve, reject) => {
-    const productCategory = path.resolve('./src/templates/ProductCategoryPage/index.js');
-    resolve(
-      graphql(
-        `
-        {
-          allStripeProduct {
-            categories: edges {
-              category: node {
-                id
-              }
-            }
-          }
-        }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
-        }
+  // const productCategoryPages = new Promise((resolve, reject) => {
+  //   const productCategory = path.resolve('./src/templates/ProductCategoryPage/index.js');
+  //   resolve(
+  //     graphql(
+  //       `
+  //         allContentfulCategory {
+  //           categories: edges {
+  //             category: node {
+  //               slug
+  //               id
+  //             }
+  //           }
+  //         }
+  //       `
+  //     ).then(result => {
+  //       if (result.errors) {
+  //         console.log(result.errors);
+  //         reject(result.errors);
+  //       }
 
-        const { categories } = result.data.allStripeProduct;
-        categories.forEach(({ category }) => {
-          createPage({
-            path: `/products/${category.id}/`,
-            component: productCategory,
-            context: {
-              id: category.id,
-            },
-          })
-        })
-      })
-    )
-  })
+  //       const { categories } = result.data.allContentfulCategory;
+  //       categories.forEach(({ category }) => {
+  //         createPage({
+  //           path: `/products/${category.slug}/`,
+  //           component: productCategory,
+  //           context: {
+  //             slug: category.slug,
+  //           },
+  //         })
+  //       })
+
+  //       createPage({
+  //         path: `/products/lazer-systems/`,
+  //         component: productCategory,
+  //         context: {
+  //           slug: "lazer-systems",
+  //         },
+  //       })
+  //     })
+  //   )
+  // })
   return Promise.all([
     blogPages,
     productPages,
     jobPostPages,
     newsArticlePages,
-    productCategoryPages,
   ])
 }

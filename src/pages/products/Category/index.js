@@ -1,30 +1,30 @@
 import React from 'react';
-import Skus from '../Skus';
+import ProductList from '../ProductList';
 import { CategoryContainer, CategoryTitle } from './styles';
 
 class Category extends React.Component {
   state = {
-    showSkus: false,
+    showProducts: false,
   }
   
   handleClick = () => {
     this.setState({
-      showSkus: !this.state.showSkus,
+      showProducts: !this.state.showProducts,
     });
   }
-
   render() {
-    const { name, id, skus } = this.props;
-    const { showSkus } = this.state;
+    const { categoryTitle, slug, products } = this.props;
+    const { showProducts } = this.state;
     return (
       <CategoryContainer>
         <CategoryTitle onClick={() => this.handleClick() }>
-          {name}
+          {categoryTitle}
         </CategoryTitle>
-        <Skus
-          {...skus}
-          productId={id} 
-          showSkus={showSkus} 
+        <ProductList
+          products={products}
+          categoryId={slug}
+          showProducts={showProducts}
+          closeList={this.handleClick}
         />
       </CategoryContainer>
     )
