@@ -6,18 +6,27 @@ import Hero from 'components/Hero';
 import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
 import NewProducts from 'components/NewProducts';
+import Events from 'components/Events';
 
 class RootIndex extends React.Component {
   render() {
     const {
-      hero,
-      allStripeSku,
-      allContentfulNewsStory,
+      hero: {
+        childImageSharp: {
+          fluid,
+        },
+      },
+      allContentfulNewsStory: {
+        newsStories,
+      },
+      featuredProducts: {
+        products,
+      },
+      allContentfulEvent: {
+        events,
+      }
     } = this.props.data;
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const { newsStories } = allContentfulNewsStory;
-    const { fluid } = hero.childImageSharp;
-    const { products } = allStripeSku;
     return (
       <Fragment>
         <Helmet title={siteTitle} />
@@ -27,9 +36,12 @@ class RootIndex extends React.Component {
         </Hero>
         <Section>
           <Container row>
-            <NewProducts products={products} />
+            <Events events={events} />
             <WhatsNew  newsStories={ newsStories } />
           </Container>
+        </Section>
+        <Section dark>
+          <NewProducts products={products} />
         </Section>
       </Fragment>
     )
@@ -47,24 +59,56 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulNewsStory {
+    allContentfulNewsStory(limit: 2) {
     newsStories: edges {
       newsArticle: node {
           slug
           title
-          dateWritten
+          dateWritten,
+          description {
+            description
+          }
+          image {
+            fluid {
+              src
+            }
+          }
         }
       }
     }
-    allStripeSku(limit: 3) {
+    featuredProducts: allContentfulProducts {
       products: edges {
-        product: node { 
+        product: node {
           id
-          product {
-            name
-            images
-            caption
+          slug
+          title
+          imagePreview {
+            fluid(maxWidth: 350, maxHeight: 200) {
+              src
+            }
           }
+          description {
+            description
+          }
+          category {
+            slug
+          }
+        }
+      }
+    }
+    allContentfulEvent(limit: 2) {
+      events: edges {
+        event: node {
+          id
+          title
+          slug
+          startDate(formatString: "MM.DD.YY")
+          endDate(formatString: "MM.DD.YY")
+          location
+          description {
+            description
+          }
+          link
         }
       }
     }

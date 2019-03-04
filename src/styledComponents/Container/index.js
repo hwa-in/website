@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction:  ${props => props.row ? 'row' : 'column'};
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   ${media.tablet`
     width: 85%;

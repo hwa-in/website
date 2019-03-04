@@ -9,7 +9,6 @@ import ProductNav from 'components/ProductNav';
 
 const ProductsPage = ({data}) => {
   const { categories } = data.categoryQuery;
-  const { products } = data.lazerSystemQuery;
   let lazerSystems = {
     slug: 'lazer-systems',
     categoryTitle: 'Lazer Systems',
@@ -54,18 +53,6 @@ export default ProductsPage;
 
 export const ProductQuery = graphql`
   query {
-    lazerSystemQuery: allContentfulProducts(filter: {lazerSystem: { eq: true}}) {
-      products: edges {
-        node {
-          id
-          lazerSystem
-          title
-          price
-          subCategory
-          slug
-        }
-      }
-    }
     categoryQuery: allContentfulCategory {
       categories: edges {
         category: node {

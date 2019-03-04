@@ -3,7 +3,7 @@ import { variables, media } from 'style';
 
 const Section = styled.div`
   margin: 0 auto;
-  background: ${props => (props.dark ? variables.lightGrey : variables.white)};
+  background: ${props => (props.dark ? variables.offWhite : variables.white)};
   max-width: ${props => props.inner ? '768px' : undefined};
   padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
   padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '60px'};
