@@ -183,6 +183,7 @@ exports.createPages = ({ graphql, actions }) => {
                     title
                     slug
                     lazerSystem
+                    subCategory
                   }
                 }
               }

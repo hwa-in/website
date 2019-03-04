@@ -7,9 +7,8 @@ import {
 } from './styles';
 import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
-// import ProductPreview from 'components/preview'
 
-const ProductList = ({products, categoryId, showProducts, closeList}) => { 
+const ProductList = ({products, categorySlug, showProducts, closeList, subCategory}) => {
   return (
     <CSSTransition
       in={showProducts}
@@ -20,12 +19,13 @@ const ProductList = ({products, categoryId, showProducts, closeList}) => {
         <SkuWrapper className="skus">
           <SkuContainer>
             <Close onClick={() => closeList()}>x</Close>
+            {!subCategory && <Link to={`/products/${categorySlug}/`}>View All</Link>}
             <SkuSlider>
             {
               products.map(({id, title, slug}) => {
                 return (
                   <Link
-                  to={`/products/${categoryId}/${slug}/`}
+                  to={`/products/${categorySlug}/${slug}/`}
                   key={id}>
                     <h3>{title}</h3>
                   </Link>

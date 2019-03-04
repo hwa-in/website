@@ -13,21 +13,25 @@ class Category extends React.Component {
     });
   }
   render() {
-    const { categoryTitle, slug, products } = this.props;
+    const { categoryTitle, slug, products, subCategory } = this.props;
     const { showProducts } = this.state;
-    return (
-      <CategoryContainer>
-        <CategoryTitle onClick={() => this.handleClick() }>
-          {categoryTitle}
-        </CategoryTitle>
-        <ProductList
-          products={products}
-          categoryId={slug}
-          showProducts={showProducts}
-          closeList={this.handleClick}
-        />
-      </CategoryContainer>
-    )
+    if (products.length) {
+      return (
+        <CategoryContainer>
+          <CategoryTitle onClick={() => this.handleClick() }>
+            {categoryTitle}
+          </CategoryTitle>
+            <ProductList
+            products={products}
+            categorySlug={slug}
+            showProducts={showProducts}
+            closeList={this.handleClick}
+            subCategory={subCategory}
+            />
+        </CategoryContainer>
+      )
+    }
+    return null
   }
 }
 

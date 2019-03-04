@@ -37,7 +37,7 @@ const ProductsPage = ({data}) => {
             />
             {
               categories.map(({category}, index) => (
-                <Category 
+                <Category
                   key={index}
                   {...category} 
                 />
