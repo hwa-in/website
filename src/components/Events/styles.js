@@ -7,6 +7,7 @@ const EventSection = styled.article`
   max-width: 33.33333%;
   position: relative;
   min-height: 1px;
+  padding: 0 15px;
 `;
 
 const HeaderSection = styled.div`
@@ -25,11 +26,6 @@ const Title = styled.div`
   }
 
   
-`;
-
-const EventsBtn = styled(Link)`
-  color: #006890 !important;
-  background-color: #f5f7f9 !important;
 `;
 
 const ViewAll = styled.div`

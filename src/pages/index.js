@@ -59,12 +59,20 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulNewsStory {
+    allContentfulNewsStory(limit: 2) {
     newsStories: edges {
       newsArticle: node {
           slug
           title
-          dateWritten
+          dateWritten,
+          description {
+            description
+          }
+          image {
+            fluid {
+              src
+            }
+          }
         }
       }
     }
