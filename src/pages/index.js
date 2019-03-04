@@ -10,12 +10,19 @@ import NewProducts from 'components/NewProducts';
 class RootIndex extends React.Component {
   render() {
     const {
-      hero,
-      allContentfulNewsStory,
+      hero: {
+        childImageSharp: {
+          fluid,
+        },
+      },
+      allContentfulNewsStory: {
+        newsStories,
+      },
+      featuredProducts: {
+        products,
+      },
     } = this.props.data;
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const { newsStories } = allContentfulNewsStory;
-    const { fluid } = hero.childImageSharp;
     return (
       <Fragment>
         <Helmet title={siteTitle} />
@@ -25,9 +32,11 @@ class RootIndex extends React.Component {
         </Hero>
         <Section>
           <Container row>
-            {/* <NewProducts products={products} /> */}
             <WhatsNew  newsStories={ newsStories } />
           </Container>
+        </Section>
+        <Section dark>
+          <NewProducts products={products} />
         </Section>
       </Fragment>
     )
@@ -51,6 +60,26 @@ export const pageQuery = graphql`
           slug
           title
           dateWritten
+        }
+      }
+    }
+    featuredProducts: allContentfulProducts {
+      products: edges {
+        product: node {
+          id
+          slug
+          title
+          imagePreview {
+            fluid(maxWidth: 350, maxHeight: 200) {
+              src
+            }
+          }
+          description {
+            description
+          }
+          category {
+            slug
+          }
         }
       }
     }

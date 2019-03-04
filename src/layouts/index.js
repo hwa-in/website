@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 
 import '../style/normalize.scss';
 import '../style/base.scss';
+import "react-alice-carousel/lib/alice-carousel.css";
 
 const Layout = ({ children, location }) => (
   <Fragment>

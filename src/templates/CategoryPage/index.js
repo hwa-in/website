@@ -1,9 +1,7 @@
 import React from 'react';
 import { Section, Container } from 'styledComponents';
-import { graphql, Link } from 'gatsby';
 import ProductNav from 'components/ProductNav';
 import Category from '../../pages/products/Category';
-import ProductList from '../../pages/products/ProductList';
 
 const CategoryPage = ({data, pageContext}) => {
 const { slug, title, products } = pageContext;
