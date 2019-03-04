@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import Section from '../../components/styledComponents/Section';
+import { Section } from 'styledComponents';
 import { Wrapper } from './styles';
 
 const AboutPage = ({ data }) => {

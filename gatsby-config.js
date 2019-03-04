@@ -41,7 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-source-stripe`,
       options: {
-        objects: ["Sku"],
+        objects: ["Sku", "Product"],
         secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
       },
@@ -59,6 +59,18 @@ module.exports = {
         related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
         noIframeBorder: true //Optional: Disable insertion of <style> border: 0
       }
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        pages: path.join(__dirname, 'src/pages'),
+        components: path.join(__dirname, 'src/components'),
+        style: path.join(__dirname, 'src/style'),
+        templates: path.join(__dirname, 'src/templates'),
+        helpers: path.join(__dirname, 'src/helpers'),
+        styledComponents: path.join(__dirname, 'src/styledComponents'),
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',

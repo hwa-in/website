@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Section from '../../components/styledComponents/Section';
+import { Section } from 'styledComponents';
 
 const ContactPage = (data) => {
   console.log(data)

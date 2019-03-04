@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import Section from '../../components/styledComponents/Section';
-import Container from '../../components/styledComponents/Container';
-import { ArticlePreview } from '../../components/previews';
+import { Section, Container } from 'styledComponents';
+import { ArticlePreview } from 'components/previews';
 
 const NewsPage = ({ data }) => {
   const { articles } = data.allContentfulNewsStory;

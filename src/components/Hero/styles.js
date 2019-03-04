@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   variables,
   media
-} from '../../style';
+} from 'style';
 
 const Container = styled.div`
   height: 450px;

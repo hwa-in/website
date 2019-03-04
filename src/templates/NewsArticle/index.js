@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import Section from '../../components/styledComponents/Section';
-import Container from '../../components/styledComponents/Container';
+import { Section, Container } from 'styledComponents';
 
 const NewsArticleTemplate = ({data}) => {
   const {
@@ -17,7 +16,7 @@ const NewsArticleTemplate = ({data}) => {
   return (
     <Fragment>
       <Section>
-        <Container style={{flexDirection: 'column'}}>
+        <Container>
           <div>
             <h1>{title}</h1>
             <small>{dateWritten}</small>

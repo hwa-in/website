@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import variables from '../../../style/variables.js';
-import { media } from '../../../helpers/index.js';
+import { variables, media } from 'style';
 
 const Section = styled.div`
   margin: 0 auto;

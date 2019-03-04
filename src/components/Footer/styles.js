@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import Container from '../styledComponents/Container';
-import Section from '../styledComponents/Section';
+import { Container, Section } from 'styledComponents';
 import { Link } from 'gatsby';
-import { variables } from '../../style';
+import { variables } from 'style';
 
 const FooterContainer = styled.footer`
   width: 100vw;

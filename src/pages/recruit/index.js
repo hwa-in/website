@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import Section from '../../components/styledComponents/Section';
+import { Section } from 'styledComponents';
 import { graphql } from 'gatsby';
-import { JobPreview } from '../../components/previews';
+import { JobPreview } from 'components/previews';
 
 const RecruitPage = ({ data }) => {
   const { jobs } = data.allContentfulJobs;
