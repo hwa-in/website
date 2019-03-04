@@ -51,6 +51,7 @@ exports.createPages = ({ graphql, actions }) => {
               product: node {
                 id
                 slug
+                lazerSystem
                 category {
                   slug
                   categoryTitle
@@ -77,7 +78,20 @@ exports.createPages = ({ graphql, actions }) => {
               categoryTitle: product.category.categoryTitle,
             },
           })
+
+          if (product.lazerSystem) {
+            createPage({
+              path: `/products/lazer-systems/${product.slug}/`,
+              component: productPage,
+              context: {
+                id: product.id,
+                categorySlug: 'lazer-systems',
+                categoryTitle: 'Lazer Systems',
+              },
+            })
+          }
         })
+
       })
     )
   })
@@ -151,51 +165,74 @@ exports.createPages = ({ graphql, actions }) => {
       })
     )
   })
-  // const productCategoryPages = new Promise((resolve, reject) => {
-  //   const productCategory = path.resolve('./src/templates/ProductCategoryPage/index.js');
-  //   resolve(
-  //     graphql(
-  //       `
-  //         allContentfulCategory {
-  //           categories: edges {
-  //             category: node {
-  //               slug
-  //               id
-  //             }
-  //           }
-  //         }
-  //       `
-  //     ).then(result => {
-  //       if (result.errors) {
-  //         console.log(result.errors);
-  //         reject(result.errors);
-  //       }
+  
+  const categoryPages = new Promise((resolve, reject) => {
+    const productCategory = path.resolve('./src/templates/CategoryPage/index.js');
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulCategory {
+              categories: edges {
+                category: node {
+                  slug
+                  id
+                  categoryTitle
+                  products {
+                    id
+                    title
+                    slug
+                    lazerSystem
+                  }
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
 
-  //       const { categories } = result.data.allContentfulCategory;
-  //       categories.forEach(({ category }) => {
-  //         createPage({
-  //           path: `/products/${category.slug}/`,
-  //           component: productCategory,
-  //           context: {
-  //             slug: category.slug,
-  //           },
-  //         })
-  //       })
+        const { categories } = result.data.allContentfulCategory;
+        const lazerSystemProducts = []
+        categories.forEach(({ category }) => {
+          createPage({
+            path: `/products/${category.slug}/`,
+            component: productCategory,
+            context: {
+              slug: category.slug,
+              title: category.categoryTitle,
+              products: category.products,
+            },
+          })
 
-  //       createPage({
-  //         path: `/products/lazer-systems/`,
-  //         component: productCategory,
-  //         context: {
-  //           slug: "lazer-systems",
-  //         },
-  //       })
-  //     })
-  //   )
-  // })
+          category.products.forEach((product) => {
+            if (product.lazerSystem) {
+              lazerSystemProducts.push(product)
+            }
+          })
+        })
+
+        createPage({
+          path: `/products/lazer-systems/`,
+          component: productCategory,
+          context: {
+            slug: "lazer-systems",
+            title: "Lazer Systems",
+            products: lazerSystemProducts,
+          },
+        })
+      })
+    )
+  })
+
   return Promise.all([
     blogPages,
     productPages,
     jobPostPages,
     newsArticlePages,
+    categoryPages,
   ])
 }

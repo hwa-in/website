@@ -7,7 +7,6 @@ import {
 } from './styles';
 
 const ProductNav = ({categorySlug, categoryName, productName, productSlug }) => {
-  console.log(categorySlug, categoryName, productName)
   return (
     <Section noPadTop>
       <Container>
