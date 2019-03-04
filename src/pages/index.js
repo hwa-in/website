@@ -11,13 +11,11 @@ class RootIndex extends React.Component {
   render() {
     const {
       hero,
-      allStripeSku,
       allContentfulNewsStory,
     } = this.props.data;
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const { newsStories } = allContentfulNewsStory;
     const { fluid } = hero.childImageSharp;
-    const { products } = allStripeSku;
     return (
       <Fragment>
         <Helmet title={siteTitle} />
@@ -27,7 +25,7 @@ class RootIndex extends React.Component {
         </Hero>
         <Section>
           <Container row>
-            <NewProducts products={products} />
+            {/* <NewProducts products={products} /> */}
             <WhatsNew  newsStories={ newsStories } />
           </Container>
         </Section>
@@ -53,18 +51,6 @@ export const pageQuery = graphql`
           slug
           title
           dateWritten
-        }
-      }
-    }
-    allStripeSku(limit: 3) {
-      products: edges {
-        product: node { 
-          id
-          product {
-            name
-            images
-            caption
-          }
         }
       }
     }

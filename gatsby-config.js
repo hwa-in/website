@@ -36,16 +36,7 @@ module.exports = {
     'gatsby-plugin-layout',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-stripe',
     'gatsby-plugin-sass',
-    {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ["Sku", "Product"],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: true,
-      },
-    },
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
