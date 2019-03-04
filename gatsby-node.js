@@ -46,12 +46,14 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
         {
-          allStripeSku {
-            skus: edges {
-              sku: node {
-                skuId: id 
-                product {
-                  productId: id
+          allContentfulProducts{
+            products: edges {
+              product: node {
+                id
+                slug
+                category {
+                  slug
+                  categoryTitle
                 }
               }
             }
@@ -64,14 +66,15 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        const { skus } = result.data.allStripeSku;
-        skus.forEach(({ sku }) => {
+        const { products } = result.data.allContentfulProducts;
+        products.forEach(({ product }) => {
           createPage({
-            path: `/products/${sku.product.productId}/${sku.skuId}/`,
+            path: `/products/${product.category.slug}/${product.slug}/`,
             component: productPage,
             context: {
-              id: sku.skuId,
-              productId: sku.product.productId,
+              id: product.id,
+              categorySlug: product.category.slug,
+              categoryTitle: product.category.categoryTitle,
             },
           })
         })

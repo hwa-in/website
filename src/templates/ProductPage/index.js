@@ -4,18 +4,18 @@ import { Section, Container } from 'styledComponents';
 import ProductNav from 'components/ProductNav';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
-  const { name } = data.stripeSku.attributes;
-  const { productName } = data.stripeSku.product;
+  const { title, slug } = data.contentfulProducts;
+  const { categorySlug, categoryTitle } = pageContext;
   return (
     <Section>
       <ProductNav
-        categoryId={pageContext.productId}
-        categoryName={productName}
-        skuName={name}
-        skuId={pageContext.id}
+        categorySlug={categorySlug}
+        categoryName={categoryTitle}
+        productName={title}
+        productSlug={slug}
       />
       <Container>
-        <h1>{name}</h1>
+        <h1>{title}</h1>
       </Container>
     </Section>
   )
@@ -25,14 +25,10 @@ export default ProductPageTemplate
 
 export const pageQuery = graphql`
   query ProductById($id: String!) {
-    stripeSku(id: {eq: $id}) {
+    contentfulProducts(id: {eq: $id}) {
       id
-      attributes {
-        name
-      }
-      product {
-        productName: name
-      }
+      slug
+      title
     } 
   }
 `

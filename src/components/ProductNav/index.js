@@ -6,8 +6,8 @@ import {
   NavItem,
 } from './styles';
 
-const ProductNav = ({categoryId, categoryName, skuName, skuId }) => {
-  console.log(categoryId, categoryName, skuName)
+const ProductNav = ({categorySlug, categoryName, productName, productSlug }) => {
+  console.log(categorySlug, categoryName, productName)
   return (
     <Section noPadTop>
       <Container>
@@ -16,15 +16,15 @@ const ProductNav = ({categoryId, categoryName, skuName, skuId }) => {
         <NavItem>></NavItem>
         <NavItem><Link to="/products">Products</Link></NavItem>
         {
-          categoryId &&
+          categorySlug &&
             <Fragment>
               <NavItem>></NavItem>
-              <NavItem><Link to={`/products/${categoryId}/`}>{categoryName}</Link></NavItem>
+              <NavItem><Link to={`/products/${categorySlug}/`}>{categoryName}</Link></NavItem>
               {
-                skuId &&
+                productSlug &&
                 <Fragment>
                   <NavItem>></NavItem>
-                  <NavItem><Link to={`/products/${categoryId}/${skuId}`}>{skuName}</Link></NavItem>
+                  <NavItem><Link to={`/products/${categorySlug}/${productSlug}`}>{productName}</Link></NavItem>
                 </Fragment>
               }
             </Fragment>

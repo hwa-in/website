@@ -10,7 +10,6 @@ import { CSSTransition } from 'react-transition-group';
 // import ProductPreview from 'components/preview'
 
 const ProductList = ({products, categoryId, showProducts, closeList}) => { 
-  console.log(products)
   return (
     <CSSTransition
       in={showProducts}

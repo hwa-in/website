@@ -36,13 +36,12 @@ const ProductsPage = ({data}) => {
               {...lazerSystems}
             />
             {
-              categories.map(({category}, index) => {
-                return (
+              categories.map(({category}, index) => (
                 <Category 
                   key={index}
                   {...category} 
                 />
-              )})
+              ))
             }
           </CategorySection>
         </Container>
