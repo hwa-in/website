@@ -6,6 +6,7 @@ import Hero from 'components/Hero';
 import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
 import NewProducts from 'components/NewProducts';
+import Events from 'components/Events';
 
 class RootIndex extends React.Component {
   render() {
@@ -21,6 +22,9 @@ class RootIndex extends React.Component {
       featuredProducts: {
         products,
       },
+      allContentfulEvent: {
+        events,
+      }
     } = this.props.data;
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     return (
@@ -32,6 +36,7 @@ class RootIndex extends React.Component {
         </Hero>
         <Section>
           <Container row>
+            <Events events={events} />
             <WhatsNew  newsStories={ newsStories } />
           </Container>
         </Section>
@@ -80,6 +85,22 @@ export const pageQuery = graphql`
           category {
             slug
           }
+        }
+      }
+    }
+    allContentfulEvent(limit: 2) {
+      events: edges {
+        event: node {
+          id
+          title
+          slug
+          startDate(formatString: "MM.DD.YY")
+          endDate(formatString: "MM.DD.YY")
+          location
+          description {
+            description
+          }
+          link
         }
       }
     }
