@@ -1,7 +1,6 @@
 import React from 'react';
-import { ArticlePreview } from '../previews';
 import { Link } from 'gatsby';
-import { FaList, FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaList } from 'react-icons/fa';
 import {
   NewsSection,
   HeaderSection,

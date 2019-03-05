@@ -1,34 +1,37 @@
 const routes = [ 
   {
-    title: 'Home',
-    route: '/',
-  },
-  {
-    title: '關於我們',
-    route: 'about/',
-  },
-  {
-    title: '最新消息',
-    route: 'news/',
-  },
-  {
-    title: '代理產品',
+    title: 'Products',
+    titleTemp: '代理產品',
     route: 'products/',
   },
   {
-    title: '影片專區',
+    title: 'About',
+    titleTemp: '關於我們',
+    route: 'about/',
+  },
+  {
+    title: 'News',
+    titleTemp: '最新消息',
+    route: 'news/',
+  },
+  {
+    title: 'Videos',
+    titleTemp: '影片專區',
     route: 'video/',
   },
   {
-    title: '人才招募',
+    title: 'Jobs',
+    titleTemp: '人才招募',
     route: 'recruit/',
   },
   {
     title: 'FAQ',
+    titleTemp: 'FAQ',
     route: 'faqs/',
   },
   {
-    title: '聯絡我們',
+    title: 'Contact',
+    titleTemp: '聯絡我們',
     route: 'contact/',
   }
 ];

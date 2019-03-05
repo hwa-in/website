@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { variables } from 'style';
-import { Link } from 'gatsby';
 
 const EventSection = styled.article`
   flex: 0 0 33.33333%;
@@ -110,34 +109,12 @@ const EventCard = styled.div`
   }
 `;
 
-const LearnMore = styled.a`
-  white-space: nowrap;
-  padding: .25rem .75rem;
-  font-size: 12px;
-  line-height: .9rem;
-  border-radius: 2px;
-  width: 70px;
-  text-align: center;
-  border: 0;
-  font-weight: 100;
-  color: ${variables.white};
-  background-color: ${variables.darkGreen};
-  transition: background-color .5s ease, color .5s ease;
-
-
-  &:hover {
-    color: ${variables.darkGreen};
-    background-color: ${variables.white};
-  }
-`;
-
 export {
   EventSection,
   HeaderSection,
   Title,
   ViewAll,
   EventCard,
-  LearnMore,
 };
 
 

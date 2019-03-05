@@ -1,60 +1,94 @@
 import styled from 'styled-components';
-import {
-  variables,
-  media
-} from 'style';
+import { variables, } from 'style';
 
 const Container = styled.div`
-  height: 450px;
+  height: 600px;
+  min-height: 600px;
   position: relative;
-  .gatsby-image-wrapper {
-    height: 100%;
-  }
+  display: block;
+  background-image: url('${props => props.background}');
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: cover;
+`;
+
+const Spacer = styled.div`
+  background-color: #fff;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+`;
+
+const WaveContainer = styled.div`
+  position: absolute;
+  z-index: 20;
+  bottom: -20px;
+  left: 0
+  width: 100%;
+  height: 533px;
 `;
 
 const HeroContent = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+  flex-wrap: wrap;
   width: 100%;
-  text-align: center;
-  ${media.tablet`
-    width: 600px;
-    left: 50%;
-    margin-left: -300px;
-  `}
-  height: 100%;
-  top: 0;
+  max-width: 960px;
+  height: 600px;
+  margin: 0 auto;
+`;
 
-  color: ${variables.white};
+const HeroText = styled.div`
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%;
+  padding-top: 150px;
 
   h1 {
-    font-weight: 100;
-    margin-top: 0;
-    font-size: 2rem;
-    line-height: 1.18;
-    width: 75%;
-    ${media.tablet`
-      width: 100%;
-      font-size: 2.625rem;
-      margin-bottom: 2.5rem;
-    `}
-
-    ${media.desktop`
-      line-height: 1.25rem;
-    `}
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 3.375rem;
+    margin-bottom: 1.5rem;
+    color: ${variables.darkGreen};
+    text-transform: uppercase;
   }
 
-  p {
-    color: ${variables.white};
-    width: 80%;
-    ${media.tablet`
-      width: 500px;
-    `}
+  .lazer-systems {
+    font-weight: 500;
+    font-size: .75rem;
+  }
+
+  .sub-title {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    margin-bottom: 3rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    font-weight: 300;
   }
 `;
 
 
-export { Container, HeroContent };
+const ProductContainer = styled.div`
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%;
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+  }
+`;
+
+
+export {
+  Container,
+  WaveContainer,
+  Spacer,
+  HeroContent,
+  HeroText,
+  ProductContainer,
+};

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { LearnMore as Link } from 'styledComponents';
 import { variables } from 'style';
 
 const NewProductWrapper = styled.article`
@@ -120,21 +120,8 @@ const ProductInfo = styled.div`
 const LearnMore = styled(Link)`
   position: absolute;
   bottom: 16px;
-  background-color: ${variables.darkGreen};
-  white-space: nowrap;
-  font-size: 14px;
   width: 100px;
-  text-align: center;
   padding: 2px 0;
-  color: ${variables.white};
-  border: 0;
-  transition: background-color .5s ease, color .5s ease;
-  
-
-  &:hover {
-    color: ${variables.darkGreen};
-    background-color: ${variables.white};
-  }
 `;
 
 export {

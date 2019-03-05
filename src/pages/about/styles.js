@@ -5,6 +5,7 @@ import { variables } from 'style';
 const Wrapper = styled(Container)`
   width: 50% !important;
   flex-direction: column !important;
+  padding-top: 60px;
 
   section {
     margin-bottom: 30px;
@@ -50,3 +51,4 @@ const Wrapper = styled(Container)`
 export {
   Wrapper,
 };
+

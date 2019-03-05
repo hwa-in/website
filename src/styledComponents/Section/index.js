@@ -9,13 +9,13 @@ const Section = styled.div`
   padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '60px'};
 
   ${media.tablet`
-    padding-top: ${props => props.noPadTop || props.noPad ? '0' : '80px'};
+    padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
     padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '80px'};
   `}
 
   ${media.desktop`
     max-width: unset;
-    padding-top: ${props => props.noPadTop || props.noPad ? '0' : '120px'};
+    padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
     padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '120px'};
   `}
 `;

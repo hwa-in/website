@@ -1,16 +1,15 @@
 import React from 'react';
 import {
   NavBar,
-  NavLinks,
-  NavLink,
 } from './styles.js';
-import routes from '../../routes';
+import { StaticQuery, graphql } from "gatsby"
 import throttle from 'lodash/throttle';
+import NavMenu from './NavMenu';
 
-const SCROLLBREAK = 100;
+const SCROLLBREAK = 25;
 
 const CUSTOM_SCROLLBREAKS = {
-  '/': 50,
+  '/': 10,
 };
 
 class Navbar extends React.Component {
@@ -56,18 +55,25 @@ class Navbar extends React.Component {
         role="navigation"
         scrolled={scrolled}
       >
-        <NavLinks className='nav-links'>
-          {
-            routes.map((link, index) => (
-              <NavLink
-                key={index}
-                to={link.route}
-              >
-                {link.title}
-              </NavLink>
-            ))
+      <StaticQuery
+        query={graphql`
+          query NavQuery {
+            image: file(relativePath: {eq: "logo.png"}){
+              childImageSharp {
+                fixed(width: 68, height: 59) {
+                  src
+                }
+              }
+            }
           }
-        </NavLinks>
+        `}
+        render={({image}) => {
+          const { src } = image.childImageSharp.fixed;
+          return (
+            <NavMenu src={src} />
+          )
+        }}
+      />
       </NavBar>
     )
   }

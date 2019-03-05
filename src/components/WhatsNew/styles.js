@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { variables } from 'style';
 
 const NewsSection = styled.article`

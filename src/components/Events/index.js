@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FaList, FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
 import {
   EventSection,
   HeaderSection,
   Title,
   ViewAll,
   EventCard,
-  LearnMore,
 } from './styles';
 
 const Event = ({

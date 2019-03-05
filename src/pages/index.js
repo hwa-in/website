@@ -13,6 +13,13 @@ class RootIndex extends React.Component {
     const {
       hero: {
         childImageSharp: {
+          fluid: {
+            heroImg,
+          },
+        },
+      },
+      heroProduct: {
+        childImageSharp: {
           fluid,
         },
       },
@@ -30,7 +37,10 @@ class RootIndex extends React.Component {
     return (
       <Fragment>
         <Helmet title={siteTitle} />
-        <Hero imageFluid={fluid}>
+        <Hero 
+          background={heroImg}
+          heroProduct={fluid.src}
+        >
           <h1>Site Title</h1>
           <h3>Site Description</h3>
         </Hero>
@@ -52,10 +62,17 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    hero: file(relativePath: { eq: "index-hero.jpg" }) {
+    hero: file(relativePath: { eq: "bg-hero3.png" }) {
       childImageSharp {
         fluid{
-          ...GatsbyImageSharpFluid_withWebp
+          heroImg: src
+        }
+      }
+    }
+    heroProduct: file(relativePath: { eq: "hero-product.png" }) {
+      childImageSharp {
+        fluid{
+          src
         }
       }
     }
