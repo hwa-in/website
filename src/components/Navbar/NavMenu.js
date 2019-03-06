@@ -7,6 +7,7 @@ import {
   LogoContainer,
 } from './styles.js';
 import { Link } from 'gatsby';
+import Media from "react-media";
 import routes from '../../routes';
 
 const NavMenu = ({src}) => {
@@ -17,19 +18,27 @@ const NavMenu = ({src}) => {
           <img src={src} alt="logo" />
         </Link>
       </LogoContainer>
-      <LinkWrapper>
-        <NavLinks>
-          {
-            routes.map((link, index) => (
-              <li key={index}>
-                <NavLink to={link.route}>
-                  {link.title}
-                </NavLink>
-              </li>
-            ))
+      <Media query="(min-width: 768px)">
+          {matches =>
+            matches ? (
+              <LinkWrapper>
+                <NavLinks>
+                  {
+                    routes.map((link, index) => (
+                      <li key={index}>
+                        <NavLink to={link.route}>
+                          {link.title}
+                        </NavLink>
+                      </li>
+                    ))
+                  }
+                </NavLinks>
+              </LinkWrapper>
+            ) : (
+              <p>Mobile Nav</p>
+            )
           }
-        </NavLinks>
-      </LinkWrapper>
+        </Media>
     </Menu>
   )
 }
