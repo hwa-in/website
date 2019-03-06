@@ -16,6 +16,21 @@ const NavBar = styled.nav`
   :hover {
     background-color: ${variables.white};
   }
+
+  :after {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom: ${props => props.scrolled ? '1px solid #dee2e6' : undefined};
+    content: "";
+    position: fixed;
+    height: 71px;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
 `
 
 const Menu = styled.div`

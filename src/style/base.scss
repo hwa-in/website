@@ -1,15 +1,10 @@
 @import './variables.scss';
 
 @font-face {
-  font-family: 'Maax';
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 100;
-  src: url("https://dtxh53x5zi43j.cloudfront.net/fonts/maax/regular-205tf.woff2") format("woff2"), url("https://dtxh53x5zi43j.cloudfront.net/fonts/maax/regular-205tf.woff") format("woff");
-}
-@font-face {
-  font-family: 'GT-Pressura';
-  font-style: normal;
-  src: url("https://dtxh53x5zi43j.cloudfront.net/fonts/gt-pressura/regular.woff2") format("woff2"), url("https://dtxh53x5zi43j.cloudfront.net/fonts/gt-pressura/regular.woff") format("woff");
+  font-weight: 300;
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
 }
 
 * {
@@ -18,13 +13,13 @@
 
 html {
   font-size: 16px; // 1rem
-  font-weight: 100;
+  font-weight: 300;
 }
 
 body {
-  font-family: "Maax", Tahoma, Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 300;
 
   color: $darkGrey;
 

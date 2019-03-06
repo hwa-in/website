@@ -6,21 +6,25 @@ import Hero from 'components/Hero';
 import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
 import NewProducts from 'components/NewProducts';
-import Events from 'components/Events';
+import EventPreview from 'components/Events/EventPreview';
 
 class RootIndex extends React.Component {
   render() {
     const {
       hero: {
-        childImageSharp: {
+        id,
+        title,
+        superScript,
+        subtitle,
+        background: {
+          fluid: {
+            backgroundImg,
+          },
+        },
+        heroImage: {
           fluid: {
             heroImg,
           },
-        },
-      },
-      heroProduct: {
-        childImageSharp: {
-          fluid,
         },
       },
       allContentfulNewsStory: {
@@ -38,15 +42,19 @@ class RootIndex extends React.Component {
       <Fragment>
         <Helmet title={siteTitle} />
         <Hero 
-          background={heroImg}
-          heroProduct={fluid.src}
+          background={backgroundImg}
+          heroProduct={heroImg}
+          id={id}
+          title={title}
+          superScript={superScript}
+          subtitle={subtitle}
         >
           <h1>Site Title</h1>
           <h3>Site Description</h3>
         </Hero>
         <Section>
           <Container row>
-            <Events events={events} />
+            <EventPreview events={events} />
             <WhatsNew  newsStories={ newsStories } />
           </Container>
         </Section>
@@ -62,21 +70,23 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    hero: file(relativePath: { eq: "bg-hero3.png" }) {
-      childImageSharp {
-        fluid{
+    hero: contentfulHero(id: { eq: "edd30f5a-0c8a-52e9-8ce8-60fb8c510522"}){
+      id
+      title
+      superScript
+      subtitle
+      background {
+        fluid(quality: 100) {
+          backgroundImg: src
+        }
+      }
+      heroImage {
+        fluid(quality: 100) {
           heroImg: src
-        }
       }
     }
-    heroProduct: file(relativePath: { eq: "hero-product.png" }) {
-      childImageSharp {
-        fluid{
-          src
-        }
-      }
-    }
-    allContentfulNewsStory(limit: 2) {
+	}
+  allContentfulNewsStory(limit: 2) {
     newsStories: edges {
       newsArticle: node {
           slug

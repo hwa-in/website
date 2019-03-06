@@ -10,6 +10,11 @@ const routes = [
     route: 'about/',
   },
   {
+    title: 'Events',
+    titleTemp: '關於我們',
+    route: 'events/',
+  },
+  {
     title: 'News',
     titleTemp: '最新消息',
     route: 'news/',

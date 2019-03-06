@@ -11,23 +11,23 @@ import {
 } from './styles';
 import Waves from '../Waves';
 
-const Hero = ({ children, background, heroProduct }) => (
+const Hero = ({ id, background, heroProduct, title, superScript, subtitle }) => (
   <Container background={background}>
-    <WaveContainer>
-      <Waves />
-    </WaveContainer>
     <Spacer />
     <HeroContent>
       <HeroText>
-        <p className="lazer-systems">Lazer Systems</p>
-        <h1>HWA-IN Products</h1>
-        <p className="sub-title">The peak of performance.</p>
+        <p className="lazer-systems">{superScript}</p>
+        <h1>{title}</h1>
+        <p className="sub-title">{subtitle}</p>
         <LearnMore to="/products">Learn More</LearnMore>
       </HeroText>
       <ProductContainer>
         <img src={heroProduct}  alt="Lazer System"/>
       </ProductContainer>
     </HeroContent>
+    <WaveContainer>
+      <Waves />
+    </WaveContainer>
   </Container>
 );
 

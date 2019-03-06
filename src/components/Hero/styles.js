@@ -10,6 +10,7 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-position: 100% 50%;
   background-size: cover;
+  transform: translateZ(0);
 `;
 
 const Spacer = styled.div`
@@ -38,6 +39,10 @@ const HeroContent = styled.div`
   max-width: 960px;
   height: 600px;
   margin: 0 auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 100;
 `;
 
 const HeroText = styled.div`
