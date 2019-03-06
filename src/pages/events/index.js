@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Section } from 'styledComponents';
 import Events from 'components/Events';
 
 const EventPage = ({data}) => {

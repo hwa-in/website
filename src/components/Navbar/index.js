@@ -19,6 +19,7 @@ class Navbar extends React.Component {
     this.state = {
       scrolled: false,
       menuOpen: false,
+      notHome: false,
     };
     this.toggler = React.createRef();
     this.toggleNavScroll = throttle(this.toggleNavScroll.bind(this), 150);
@@ -26,11 +27,35 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.toggleNavScroll);
+
+    if (this.props.location.pathname !== '/') {
+      this.setState({
+        notHome: true,
+      })
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.toggleNavScroll);
   }
+
+  componentDidUpdate(prevProps) {
+    const { pathname } = this.props.location
+    const { notHome } = this.state
+      if (pathname !== '/') {
+        if (!notHome) {
+          this.setState({
+            notHome: true,
+          })
+        }
+      } else {
+        if (notHome) {
+          this.setState({
+            notHome: false,
+          })
+        }
+      }
+    }
 
   toggleNavScroll() {
     const scrollPosition = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
@@ -49,11 +74,13 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { scrolled } = this.state;
+    const { scrolled, notHome } = this.state;
+    console.log(this.props.location)
     return (
       <NavBar 
         role="navigation"
         scrolled={scrolled}
+        className={notHome && "not-home"}
       >
       <StaticQuery
         query={graphql`

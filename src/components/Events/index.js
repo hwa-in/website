@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { FaList, FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
 import { Section } from 'styledComponents';
 import { 
@@ -48,13 +47,13 @@ const Events = ({events}) => {
         <Description>Hodor... Hodor hodor. Hodor, hodor. Hodor. Hodor hodor HODOR! Hodor. Hodor, hodor, hodor hodor. Hodor? Hodor...</Description>
         <HeaderPhotos>
           <div className="header-photo__container">
-            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__720__teaser_image/veranstaltung-impression-doc-2018.jpeg" />
+            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__720__teaser_image/veranstaltung-impression-doc-2018.jpeg"  alt="first stock event"/>
           </div>
           <div className="header-photo__container">
-            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__719__teaser_image/veranstaltung-impression-escrs-2016.jpeg" />
+            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__719__teaser_image/veranstaltung-impression-escrs-2016.jpeg" alt="second stock event"/>
           </div>
           <div className="header-photo__container">
-            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__718__teaser_image/veranstaltung-impression-escrs-2017.jpeg" />
+            <img className="header-photo__image" src="https://www.eye-tech-solutions.com/infocenter/veranstaltungen/image-thumb__718__teaser_image/veranstaltung-impression-escrs-2017.jpeg" alt="third stock event"/>
           </div>
         </HeaderPhotos>
       </HeaderSection>

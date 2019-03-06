@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { LearnMore as Link } from 'styledComponents';
-import { variables } from 'style';
+import { variables, media } from 'style';
 
 const NewProductWrapper = styled.article`
   width: 100%;
@@ -50,7 +50,7 @@ const CarouselButton = styled.button`
   font-size: 1.5rem;
   padding: 0;
   transition: background-color .5s ease, color .5s ease;
-
+  z-index: 1;
   &.next{
     left: 0;
   }
@@ -70,14 +70,18 @@ const CarouselButton = styled.button`
 `
 
 const ProductContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 25px 20px;
-  width: 350px;
   height: 100%;
   position: relative;
+  ${media.tablet`
+    width: 350px;
+  `}
 `;
 
 

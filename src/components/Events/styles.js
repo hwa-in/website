@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { variables, media } from 'style';
-import { Section } from 'styledComponents';
 
 const HeaderSection = styled.div`
   display: block;

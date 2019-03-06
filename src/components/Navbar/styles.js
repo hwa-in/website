@@ -13,6 +13,10 @@ const NavBar = styled.nav`
   justify-content: center;
   transition: background-color .3s ease;
 
+  &.not-home {
+    background-color: ${variables.white};
+  }
+
   :hover {
     background-color: ${variables.white};
   }
