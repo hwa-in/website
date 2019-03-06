@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables, } from 'style';
+import { variables, media } from 'style';
 
 const Container = styled.div`
   height: 600px;
@@ -26,29 +26,52 @@ const Spacer = styled.div`
 const WaveContainer = styled.div`
   position: absolute;
   z-index: 20;
-  bottom: -20px;
   left: 0
   width: 100%;
-  height: 533px;
+  bottom: -100px;
+  height: 375px;
+
+  ${media.tablet`
+    bottom: -180px;
+    height: 533px;
+  `}
+
+  ${media.desktop`
+    bottom: -20px;
+  `}
 `;
 
 const HeroContent = styled.div`
+  padding: 0 15px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 960px;
   height: 600px;
   margin: 0 auto;
   position: absolute;
   right: 0;
   left: 0;
   z-index: 100;
+
+  ${media.tablet`
+    padding: 0;
+    max-width: 720px;
+  `}
+
+  ${media.desktop`
+    max-width: 960px;
+  `}
 `;
 
 const HeroText = styled.div`
-  flex: 0 0 41.66667%;
-  max-width: 41.66667%;
-  padding-top: 150px;
+  flex: 0 0 100%;
+  padding-top: 80px;
+  max-width: 100%;
+  ${media.tablet`
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+    padding-top: 150px;
+  `}
 
   h1 {
     font-size: 3rem;
@@ -77,8 +100,13 @@ const HeroText = styled.div`
 
 
 const ProductContainer = styled.div`
-  flex: 0 0 58.33333%;
-  max-width: 58.33333%;
+  flex: 0 0 100%;
+  max-width: 100%;
+
+  ${media.tablet`
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  `}
   position: relative;
 
   img {
