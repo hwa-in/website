@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Menu,
   NavLink,
@@ -8,6 +8,7 @@ import {
 } from './styles.js';
 import { Link } from 'gatsby';
 import Media from "react-media";
+import MobileNav from './MobileNav';
 import routes from '../../routes';
 
 const NavMenu = ({src}) => {
@@ -35,7 +36,9 @@ const NavMenu = ({src}) => {
                 </NavLinks>
               </LinkWrapper>
             ) : (
-              <p>Mobile Nav</p>
+              <Fragment>
+                <MobileNav />
+              </Fragment>
             )
           }
         </Media>

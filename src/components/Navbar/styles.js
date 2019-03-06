@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { variables } from 'style'
+import { variables, media } from 'style'
 
 const NavBar = styled.nav`
   background-color: ${props => props.scrolled ? variables.white : undefined};
@@ -40,13 +40,23 @@ const Menu = styled.div`
   display: flex;
   flex-basis: auto;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-`
+  position: relative;
+  justify-content: start;
+
+  ${media.tablet`
+    justify-content: space-around;
+  `}
+  `
 
 const LogoContainer = styled.div`
   margin-right: 1rem;
+  margin-left: 20px;
   padding: 5px;
+  
+  ${media.tablet`
+    margin-left: 0;
+  `}
 `
 
 const LinkWrapper = styled.div`
