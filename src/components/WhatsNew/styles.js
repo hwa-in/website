@@ -84,7 +84,7 @@ const NewsContent = styled.div`
     pointer: cursor;
     h4 {
       font-size: 1.125rem;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 1.5rem;
       margin-bottom: .5rem;
       color: ${variables.darkGreen};

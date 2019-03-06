@@ -44,6 +44,7 @@ const ViewAll = styled.div`
     background-color: ${variables.offWhite};
     border: 0; 
     transform: translateY(25%);
+    white-space: nowrap;
 
     svg { 
       font-size: 14px;
