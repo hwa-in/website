@@ -1,7 +1,7 @@
 import React from 'react';
 import FAQ from 'components/Faq';
 import { Section, Container } from 'styledComponents';
-import { FaqsContainer, FaqTitle } from './styles';
+import { FaqsContainer, FaqTitle } from 'styledComponents/pages/Faqs';
 import { graphql } from 'gatsby';
 
 const FAQsPage = ({data}) => {

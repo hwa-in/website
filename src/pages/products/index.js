@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { Section, Container } from 'styledComponents';
 import { graphql } from 'gatsby';
-import Category from './Category';
+import Category from 'components/Category';
 import {
   CategorySection,
-} from './styles';
+} from 'styledComponents/pages/Products';
 import ProductNav from 'components/ProductNav';
 
 const ProductsPage = ({data}) => {

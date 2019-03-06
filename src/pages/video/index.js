@@ -4,7 +4,7 @@ import { VideoPreview } from 'components/previews';
 import { Section }from 'styledComponents';
 import {
   Wrapper,
-} from './styles';
+} from 'styledComponents/pages/Video';
 
 const VideoPage = ({ data }) => {
   const { videos } = data.allContentfulVideo;

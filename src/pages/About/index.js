@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import { Section } from 'styledComponents';
-import { Wrapper } from './styles';
+import { Wrapper } from 'styledComponents/pages/About';
 
 const AboutPage = ({ data }) => {
   const { html } = data.contentfulAboutPage.description.childMarkdownRemark;
