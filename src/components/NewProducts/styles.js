@@ -100,7 +100,7 @@ const ProductInfo = styled.div`
   margin-bottom: 3rem !important;
 
   h3 {
-    font-weight: 900;
+    font-weight: 400;
     font-size: 1.25rem;
     line-height: 1.5rem;
     margin-bottom: .5rem;
@@ -113,7 +113,6 @@ const ProductInfo = styled.div`
     line-height: 1.375rem;
     color: ${variables.darkGrey};
     margin-bottom: 1.25rem;
-    font-weight: 500;
   }
 `;
 
