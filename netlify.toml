@@ -1,6 +1,9 @@
 [Settings]
   ID = "09699e3b-0489-4fed-ada5-a15533897bc8"
 
-[Build]
-  Publish = ""
-  Functions = ""
+[build]
+  command = "yarn run build"
+  publish = "public"
+
+[build.environment]
+  YARN_FLAGS = "--no-ignore-optional"
