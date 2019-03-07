@@ -6,7 +6,7 @@ import { StaticQuery, graphql } from "gatsby"
 import throttle from 'lodash/throttle';
 import NavMenu from './NavMenu';
 
-const SCROLLBREAK = 25;
+const SCROLLBREAK = 0;
 
 const CUSTOM_SCROLLBREAKS = {
   '/': 10,

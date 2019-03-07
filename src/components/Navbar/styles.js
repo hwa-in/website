@@ -15,6 +15,20 @@ const NavBar = styled.nav`
 
   &.not-home {
     background-color: ${variables.white};
+    :after {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      border-bottom: 1px solid #dee2e6;
+      content: "";
+      position: fixed;
+      height: 71px;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
   }
 
   :hover {

@@ -1,30 +1,33 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import { Section, Container } from 'styledComponents';
-import { ArticlePreview } from 'components/previews';
+import { Section } from 'styledComponents';
+import Article from 'components/Article';
+import {
+  NewsSection,
+  Articles,
+} from 'styledComponents/pages/News';
 
 const NewsPage = ({ data }) => {
   const { articles } = data.allContentfulNewsStory;
   console.log(articles)
   return (
-    <Fragment>
-      <Section>
-        News Page
-        <Container>
+    <Section>
+      <NewsSection>
+        <h1>News</h1>
+      </NewsSection>
+      <Section dark>
+        <Articles>
         {
-          articles.map(({article}, index) => {
-            console.log(article)
-            return (
-              <ArticlePreview
+          articles.map(({article}, index) => (
+            <Article
               key={index}
               {...article}
-              />
-            )
-          })
+            />
+          ))
         }
-        </Container>
+        </Articles>
       </Section>
-    </Fragment>
+    </Section>
   )
 };
 
@@ -35,9 +38,17 @@ export const articleQuery = graphql`
     allContentfulNewsStory {
       articles: edges {
         article: node {
-          slug,
-          title,
-          dateWritten,
+          slug
+          title
+          dateWritten(formatString: "MMMM DD, YYYY"),
+          description {
+            description
+          }
+          image {
+            fluid {
+              src
+            }
+          }
         }
       }
     }

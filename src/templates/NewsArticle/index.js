@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import { Section, Container } from 'styledComponents';
 
@@ -14,8 +14,8 @@ const NewsArticleTemplate = ({data}) => {
   } = data.contentfulNewsStory;
   console.log(data)
   return (
-    <Fragment>
-      <Section>
+    <Section>
+      <Section noPadBottom>
         <Container>
           <div>
             <h1>{title}</h1>
@@ -28,7 +28,7 @@ const NewsArticleTemplate = ({data}) => {
             />
         </Container>
       </Section>
-    </Fragment>
+    </Section>
   )
 };
 
