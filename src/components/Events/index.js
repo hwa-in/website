@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
-import { Section } from 'styledComponents';
 import { 
   EventSection,
   HeaderSection,
@@ -41,7 +40,7 @@ const Event = ({
 
 const Events = ({events}) => {
   return (
-    <Section noPadBottom>
+    <Fragment>
       <HeaderSection>
         <Title>HWA-IN Events</Title>
         <Description>Hodor... Hodor hodor. Hodor, hodor. Hodor. Hodor hodor HODOR! Hodor. Hodor, hodor, hodor hodor. Hodor? Hodor...</Description>
@@ -65,7 +64,7 @@ const Events = ({events}) => {
           } 
         </div>
       </EventSection>
-    </Section>
+    </Fragment>
   )
 };
 

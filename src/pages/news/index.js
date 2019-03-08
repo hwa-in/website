@@ -11,7 +11,7 @@ const NewsPage = ({ data }) => {
   const { articles } = data.allContentfulNewsStory;
   console.log(articles)
   return (
-    <Section>
+    <Section noPadTop>
       <NewsSection>
         <h1>News</h1>
       </NewsSection>
