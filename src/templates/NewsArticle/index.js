@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Section, Container } from 'styledComponents';
 import {
-  Header,
   Date,
+  Header,
   Body,
 } from './styles';
 
@@ -16,21 +16,29 @@ const NewsArticleTemplate = ({data}) => {
         html,
       },
     },
+    description: {
+      description,
+    }
   } = data.contentfulNewsStory;
   console.log(data)
   return (
-    
-        <Container>
-          <div>
-            <small>{dateWritten}</small>
-            <h1>{title}</h1>
-          </div>
-          <div
-              dangerouslySetInnerHTML={{
-                __html: html,
-              }}
-            />
-        </Container>
+    <Section>
+      <Container>
+        <Date>
+          <small>{dateWritten}</small>
+        </Date>
+        <Header>
+          <h1>{title}</h1>
+          <h2>Subtitle this is the subtitle subtitle</h2>
+          <p>{description}</p>
+        </Header>
+        <Body
+            dangerouslySetInnerHTML={{
+              __html: html,
+            }}
+          />
+      </Container>
+    </Section>
   )
 };
 
