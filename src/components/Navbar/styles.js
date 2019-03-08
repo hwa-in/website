@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { variables, media } from 'style'
 
 const NavBar = styled.nav`
-  background-color: ${props => props.scrolled ? variables.white : undefined};
+  background-color: ${props => props.scrolled ? variables.white : 'transparent'};
   position: fixed;
   width: 100%;
   z-index: 101;
@@ -13,43 +13,15 @@ const NavBar = styled.nav`
   justify-content: center;
   transition: background-color .3s ease;
 
-  &.not-home {
-    background-color: ${variables.white};
-    :after {
-      width: 100%;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-      border-bottom: 1px solid #dee2e6;
-      content: "";
-      position: fixed;
-      height: 71px;
-      left: 0;
-      right: 0;
-      pointer-events: none;
-    }
-  }
-
   :hover {
     background-color: ${variables.white};
   }
+`;
 
-  :after {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    border-bottom: ${props => props.scrolled ? '1px solid #dee2e6' : undefined};
-    content: "";
-    position: fixed;
-    height: 71px;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-  }
-`
+const Spacer = styled.div`
+  height: 70px;
+  background-color: transparent;
+`;
 
 const Menu = styled.div`
   width: 100%;
@@ -65,7 +37,40 @@ const Menu = styled.div`
   ${media.tablet`
     justify-content: space-around;
   `}
-  `
+
+  &.not-home {
+    background-color: ${variables.white};
+    :after {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      border-bottom: 1px solid #dee2e6;
+      content: "";
+      position: absolute;
+      height: 71px;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
+  }
+
+  :after {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom: ${props => props.scrolled ? '1px solid #dee2e6' : undefined};
+    content: "";
+    position: absolute;
+    height: 71px;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+`;
 
 const LogoContainer = styled.div`
   margin-right: 1rem;
@@ -120,6 +125,7 @@ const NavLink = styled(Link)`
 
 export {
   NavBar,
+  Spacer,
   Menu,
   LogoContainer,
   LinkWrapper,

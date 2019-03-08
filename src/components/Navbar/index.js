@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   NavBar,
 } from './styles.js';
 import { StaticQuery, graphql } from "gatsby"
 import throttle from 'lodash/throttle';
 import NavMenu from './NavMenu';
+import { 
+  Spacer 
+} from './styles';
 
 const SCROLLBREAK = 0;
 
 const CUSTOM_SCROLLBREAKS = {
-  '/': 10,
+  '/': 100,
 };
 
 class Navbar extends React.Component {
@@ -76,32 +79,36 @@ class Navbar extends React.Component {
   render() {
     const { scrolled, notHome } = this.state;
     console.log(this.props.location)
+    const { location } = this.props;
     return (
-      <NavBar 
-        role="navigation"
-        scrolled={scrolled}
-        className={notHome && "not-home"}
-      >
-      <StaticQuery
-        query={graphql`
-          query NavQuery {
-            image: file(relativePath: {eq: "logo.png"}){
-              childImageSharp {
-                fixed(width: 68, height: 59) {
-                  src
+      <Fragment>
+        <NavBar 
+          role="navigation"
+          scrolled={scrolled}
+          className={notHome && "not-home"}
+        >
+        <StaticQuery
+          query={graphql`
+            query NavQuery {
+              image: file(relativePath: {eq: "logo.png"}){
+                childImageSharp {
+                  fixed(width: 68, height: 59) {
+                    src
+                  }
                 }
               }
             }
-          }
-        `}
-        render={({image}) => {
-          const { src } = image.childImageSharp.fixed;
-          return (
-            <NavMenu src={src} />
-          )
-        }}
-      />
-      </NavBar>
+          `}
+          render={({image}) => {
+            const { src } = image.childImageSharp.fixed;
+            return (
+              <NavMenu src={src} className={notHome && "not-home"} />
+            )
+          }}
+        />
+        </NavBar>
+        { notHome && <Spacer scrolled={scrolled} /> }
+      </Fragment>
     )
   }
 }

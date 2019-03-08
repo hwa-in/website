@@ -11,9 +11,9 @@ import Media from "react-media";
 import MobileNav from './MobileNav';
 import routes from '../../routes';
 
-const NavMenu = ({src}) => {
+const NavMenu = ({src, className}) => {
   return (
-    <Menu className='nav-links'>
+    <Menu className={`nav-links ${className ? className : ''}`}>
       <LogoContainer>
         <Link to="/">
           <img src={src} alt="logo" />

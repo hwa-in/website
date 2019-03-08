@@ -1,6 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Section, Container } from 'styledComponents';
+import {
+  Header,
+  Date,
+  Body,
+} from './styles';
 
 const NewsArticleTemplate = ({data}) => {
   const {
@@ -14,12 +19,11 @@ const NewsArticleTemplate = ({data}) => {
   } = data.contentfulNewsStory;
   console.log(data)
   return (
-    <Section>
-      <Section noPadBottom>
+    
         <Container>
           <div>
-            <h1>{title}</h1>
             <small>{dateWritten}</small>
+            <h1>{title}</h1>
           </div>
           <div
               dangerouslySetInnerHTML={{
@@ -27,8 +31,6 @@ const NewsArticleTemplate = ({data}) => {
               }}
             />
         </Container>
-      </Section>
-    </Section>
   )
 };
 
@@ -38,7 +40,15 @@ export const articleQuery = graphql`
   query ArticleBySlug($slug: String!) {
     contentfulNewsStory(slug: {eq: $slug}) {
       title
-      dateWritten(formatString: "MMMM DD, YYYY")
+      dateWritten(formatString: "MMMM DD, YYYY"),
+      description {
+        description
+      }
+      image {
+        fluid {
+          src
+        }
+      }
       content {
         childMarkdownRemark {
           html
