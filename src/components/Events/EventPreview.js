@@ -45,7 +45,7 @@ const EventPreview = ({events}) => {
           <h2>Events</h2>
         </Title>
         <ViewAll>
-          <Link className="events-btn" to="/events"><FaList /> All</Link>
+          <Link className="events-btn" to="/infocenter/events"><FaList /> All</Link>
         </ViewAll>
       </HeaderSection>
         { events.map(({event}) => (

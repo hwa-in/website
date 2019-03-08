@@ -10,19 +10,9 @@ const routes = [
     route: 'about/',
   },
   {
-    title: 'Events',
-    titleTemp: '關於我們',
-    route: 'events/',
-  },
-  {
-    title: 'News',
-    titleTemp: '最新消息',
-    route: 'news/',
-  },
-  {
-    title: 'Videos',
-    titleTemp: '影片專區',
-    route: 'video/',
+    title: 'Infocenter',
+    titleTemp: '信息中心',
+    route: 'infocenter/',
   },
   {
     title: 'Jobs',

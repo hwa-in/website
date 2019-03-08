@@ -171,7 +171,7 @@ exports.createPages = ({ graphql, actions }) => {
         const { articles } = result.data.allContentfulNewsStory
         articles.forEach(({ article }, index) => {
           createPage({
-            path: `/news/${article.slug}/`,
+            path: `infocenter/news/${article.slug}/`,
             component: newsArticleTemplate,
             context: {
               slug: article.slug,

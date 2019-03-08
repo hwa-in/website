@@ -32,7 +32,7 @@ const NewsArticle = ({
         <NewsImage src={src} />
       </ImageContainer>
       <NewsContent>
-        <Link className="title-link" to={`/news/${slug}`}>
+        <Link className="title-link" to={`/infocenter/news/${slug}`}>
           <h4>{title}</h4>
         </Link>
         <p className="description">{description}</p>
@@ -46,7 +46,7 @@ const WhatsNew = ({ newsStories }) => (
     <HeaderSection>
       <Title><h2>Latest News</h2></Title>
       <ViewAll>
-          <Link className="events-btn" to="/news"><FaList /> News</Link>
+          <Link className="events-btn" to="/inforcenter/news"><FaList /> News</Link>
         </ViewAll>
     </HeaderSection>
     <NewsContainer>
