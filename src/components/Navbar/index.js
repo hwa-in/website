@@ -78,7 +78,6 @@ class Navbar extends React.Component {
 
   render() {
     const { scrolled, notHome } = this.state;
-    console.log(this.props.location)
     const { location } = this.props;
     return (
       <Fragment>

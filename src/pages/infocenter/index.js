@@ -15,41 +15,68 @@ import {
   Videos,
 } from 'components/Infocenter';
 
-const InfoCenter = ({ data }) => {
-  const { 
-    allContentfulNewsStory: {
-      newsStories,
-    },
+class InfoCenter extends Component {
+  state = {
     
-    allContentfulEvent: {
-      events,
-    },
-    
-    allContentfulVideo: {
-      videos,
-    },
-  } = data;
-  return (
-    <Section>
-      <Section dark>
-        <Container>
-          <FeaturedArticle>
-          {/* Featured article */}
-            
-          </FeaturedArticle>
-          <Body>
-            <LeftSection>
-              {/* Events preview */}
-              {/* Videos */}
-            </LeftSection>
-            <NewsSection>
+  };
 
-            </NewsSection>
-          </Body>
-        </Container>
-      </Section>
-    </Section>
-  )
+  componentDidMount() {
+    const { 
+      allContentfulNewsStory: {
+        newsStories,
+      },
+      allContentfulEvent: {
+        events,
+      },
+      
+      allContentfulVideo: {
+        videos,
+      },
+    } = this.props.data;
+    this.setState(() => ({
+      newsStories: newsStories,
+      events: events,
+      videos: videos,
+      loaded: true,
+    }))
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("PrevProps: \n", prevProps.data, "New Props: \n", this.props.data)
+  }
+
+  render() {
+    const { newsStories, events, video, loaded } = this.state;
+
+    if (loaded) {
+      return (
+        <Section>
+          <Section dark>
+            <Container>
+              {/* Featured article */}
+              <Body>
+                <LeftSection>
+                  {/* Events preview */}
+                  {/* <Events events={events} /> */}
+                  {/* Videos */}
+                  <Videos />
+                </LeftSection>
+                <NewsSection>
+                  <News />
+                </NewsSection>
+              </Body>
+            </Container>
+          </Section>
+        </Section>
+      )
+    }
+
+    return (
+      <div>
+        Loading
+      </div>
+    )
+  }
 };
 
 export default InfoCenter;

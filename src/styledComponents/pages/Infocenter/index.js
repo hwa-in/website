@@ -15,20 +15,19 @@ const Body = styled.div`
 const LeftSection = styled.div`
   width: 100%;
   display: block;
-  padding: 0 15px;
 
   ${media.desktop`
     width: 35%;
+    padding-right: 15px;
   `}
 `;
 
 const NewsSection = styled.div`
-  background-color: ${variables.white};
   width: 100%;
-  padding: 0 15px;
 
   ${media.desktop`
     width: 65%;
+    padding-right: 15px;
   `}
 `;
 
