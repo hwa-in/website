@@ -6,7 +6,6 @@ import {
   Wrapper,
   ImageContainer,
   DetailsContainer,
-  MoreInfo,
   ReadMore,
 } from './styles';
 
@@ -29,22 +28,20 @@ const FeaturedArticle = ({
       noPadTop
       padBottom="2rem"
     >
-      <Wrapper>
+      <Wrapper onClick={() => navigate(`infocenter/news/${slug}/`)}>
         <ImageContainer>
           <img src={src} alt={title} />
         </ImageContainer>
         <DetailsContainer>
+          <small>{dateWritten}</small>
           <Link to={`/infocenter/news/${slug}`}> 
             <h3>{title}</h3>
           </Link>
           <p>{description}</p>
-          <MoreInfo onClick={() => navigate(`infocenter/news/${slug}/`)}>
-            <small>{dateWritten}</small>
-            <ReadMore>
-              <FaAngleRight />
-            </ReadMore>
-          </MoreInfo>
         </DetailsContainer>
+        <ReadMore>
+          <FaAngleRight />
+        </ReadMore>
       </Wrapper>
     </Section>
   )
