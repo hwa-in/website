@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import { VideoPreview } from 'components/previews';
-import { Section }from 'styledComponents';
+import { Section, Container }from 'styledComponents';
+import InfoSectionNav from 'components/InfoSectionNav';
 import {
   Wrapper,
 } from 'styledComponents/pages/Video';
@@ -11,6 +12,13 @@ const VideoPage = ({ data }) => {
   return (
     <Fragment>
       <Section>
+        <Section noPadBottom>
+          <Container justifyCenter>
+            <InfoSectionNav 
+              sectionName="Videos"
+            />
+          </Container>
+        </Section>
         <Wrapper>
           {
             videos.map(({ video }, index) => (

@@ -20,14 +20,15 @@ const Article = ({
     fluid: {
       src
     }
-  }
+  },
+  width,
 }) => {
   return (
     <Wrapper>
       <ImageContainer>
         <img src={src} alt={title} />
       </ImageContainer>
-      <DetailsContainer>
+      <DetailsContainer width={width ? width : ""}>
         <Link to={`/infocenter/news/${slug}`}> 
           <h3>{title}</h3>
         </Link>

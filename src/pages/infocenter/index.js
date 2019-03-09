@@ -14,84 +14,48 @@ import {
   News,
   Videos,
 } from 'components/Infocenter';
+import InfoSectionNav from 'components/InfoSectionNav';
 
-class InfoCenter extends Component {
-  state = {
-    featured: null
-  };
-
-  componentDidMount() {
-    // const { 
-    //   allContentfulNewsStory: {
-    //     newsStories,
-    //   },
-    //   allContentfulEvent: {
-    //     events,
-    //   },
-      
-    //   allContentfulVideo: {
-    //     videos,
-    //   },
-    // } = this.props.data;
-    // this.setState(() => ({
-    //   newsStories: newsStories,
-    //   events: events,
-    //   videos: videos,
-    // }))
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { featured, newsStories } = this.state;
-  //   if (prevState.featured === featured && featured === null) {
-  //     const article = newsStories.shift();
-  //     this.setState({
-  //       featured: article,
-  //       loaded: true,
-  //     })
-  //   }
-  
-
-  render() {
-    const { 
-      newsQuery: {
-        newsStories,
-      },
-      featuredArticle: {
-        edges,
-      },
-      allContentfulEvent: {
-        events,
-      },
-      allContentfulVideo: {
-        videos,
-      },
-    } = this.props.data;
-      return (
-        <Fragment>
-          <Section noPadBottom>
-            <Container justifyCenter>
-              <p>Info Center</p>
-            </Container>
-          </Section>
-        <Section>
-          <Section dark>
-            <Container>
-              {edges && <FeaturedArticle {...edges[0].featured} /> }
-              <Body>
-                <LeftSection>
-                  {events && <Events events={events} /> }
-                  {videos && <Videos videos={videos} /> }
-                </LeftSection>
-                <NewsSection>
-                  {newsStories && <News newsStories={newsStories} /> }
-                </NewsSection>
-              </Body>
-            </Container>
-          </Section>
-        </Section>
-        </Fragment>
-      )
-  }
+const InfoCenter = ({ data }) => {
+  const { 
+    newsQuery: {
+      newsStories,
+    },
+    featuredArticle: {
+      edges,
+    },
+    allContentfulEvent: {
+      events,
+    },
+    allContentfulVideo: {
+      videos,
+    },
+  } = data;
+  return (
+    <Fragment>
+      <Section noPadBottom>
+        <Container justifyCenter>
+          <InfoSectionNav />
+        </Container>
+      </Section>
+    <Section>
+      <Section dark>
+        <Container>
+          {edges && <FeaturedArticle {...edges[0].featured} /> }
+          <Body>
+            <LeftSection>
+              {events && <Events events={events} /> }
+              {videos && <Videos videos={videos} /> }
+            </LeftSection>
+            <NewsSection>
+              {newsStories && <News newsStories={newsStories} /> }
+            </NewsSection>
+          </Body>
+        </Container>
+      </Section>
+    </Section>
+    </Fragment>
+  )
 };
 
 export default InfoCenter;

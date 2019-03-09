@@ -1,4 +1,4 @@
-import { variables, media } from 'style';
+import { variables } from 'style';
 import styled from 'styled-components';
 
 const H2 = styled.h2`
@@ -6,6 +6,11 @@ const H2 = styled.h2`
   color: ${variables.midGrey};
 `;
 
+const Header = styled.h2`
+
+`;
+
 export {
   H2,
 }
+export default Header;

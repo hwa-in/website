@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { FaList, FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
+import { ViewAll } from 'styledComponents/Button';
 import {
   EventSection,
   HeaderSection,
   Title,
-  ViewAll,
   EventCard,
 } from './styles.EventPreview';
 
@@ -44,9 +44,7 @@ const EventPreview = ({events}) => {
         <Title>
           <h2>Events</h2>
         </Title>
-        <ViewAll>
-          <Link className="events-btn" to="/infocenter/events"><FaList /> All</Link>
-        </ViewAll>
+        <ViewAll to="/infocenter/events" text="All" />
       </HeaderSection>
         { events.map(({event}) => (
             <Event {...event} key={event.id} />

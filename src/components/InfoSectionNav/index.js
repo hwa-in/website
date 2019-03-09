@@ -6,31 +6,23 @@ import {
   NavItem,
 } from './styles';
 
-const InfoSectionNav = ({ sectionName, sectionSlug }) => {
+const InfoSectionNav = ({ sectionSlug, sectionName, pageName, pageSlug }) => {
+  console.log(sectionName)
   return (
-    <Section noPadTop>
-      <Container>
-      <NavList>
-        <NavItem><Link to="/">Home</Link></NavItem>
-        <NavItem>></NavItem>
-        <NavItem><Link to="/info-center">Infocenter</Link></NavItem>
-        {
-          sectionSlug &&
-            <Fragment>
-              <NavItem>></NavItem>
-              <NavItem><Link to={`/products/${categorySlug}/`}>{categoryName}</Link></NavItem>
-              {
-                productSlug &&
-                <Fragment>
-                  <NavItem>></NavItem>
-                  <NavItem><Link to={`/products/${categorySlug}/${productSlug}`}>{productName}</Link></NavItem>
-                </Fragment>
-              }
-            </Fragment>
-        }
-      </NavList>
-      </Container>
-    </Section>
+    <NavList>
+      <NavItem><Link to="/">Home</Link></NavItem>
+      <NavItem>></NavItem>
+      {
+        sectionName ? 
+          <Fragment>
+            <NavItem><Link to="/infocenter">Infocenter</Link></NavItem>
+            <NavItem>></NavItem>
+            <NavItem className={pageSlug ? '' : 'active'}><Link to={`/infocenter/${sectionSlug}/`}>{sectionName}</Link></NavItem>
+          </Fragment>
+          : 
+          <NavItem className="active">Infocenter</NavItem>
+      }
+    </NavList>
   )
 };
 
