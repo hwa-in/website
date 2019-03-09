@@ -3,10 +3,12 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import { FaBars } from 'react-icons/fa';
+import routes from '../../routes';
 import {
   MobileNavWrapper,
   Mobile,
 } from './styles.MobileNav';
+import { navigate } from 'gatsby';
 
 class MobileNav extends React.Component {
   state = {
@@ -17,8 +19,9 @@ class MobileNav extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleClose = (route) => {
     this.setState({ anchorEl: null });
+    navigate(route)
   };
 
   render() {
@@ -39,9 +42,11 @@ class MobileNav extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+        {
+          routes.map(({route, title}, index) => (
+            <MenuItem key={index} onClick={() => this.handleClose(route)}>{title}</MenuItem>
+          ))
+        }
         </Mobile>
       </MobileNavWrapper>
     );
