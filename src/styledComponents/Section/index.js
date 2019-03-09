@@ -7,16 +7,25 @@ const Section = styled.div`
   max-width: ${props => props.inner ? '768px' : undefined};
   padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
   padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '60px'};
+  padding-top: ${props => props.padTop ? props.padTop : undefined};
+  padding-Bottom: ${props => props.padBottom ? props.padBottom : undefined};
+  padding: ${props => props.pad ? props.pad : undefined};
 
   ${media.tablet`
     padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
     padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '80px'};
+    padding-top: ${props => props.padTop ? props.padTop : undefined};
+    padding-Bottom: ${props => props.padBottom ? props.padBottom : undefined};
+    padding: ${props => props.pad ? props.pad : undefined};
   `}
 
   ${media.desktop`
     max-width: unset;
     padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
     padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '120px'};
+    padding-top: ${props => props.padTop ? props.padTop : undefined};
+    padding-Bottom: ${props => props.padBottom ? props.padBottom : undefined};
+    padding: ${props => props.pad ? props.pad : undefined};
   `}
 `;
 

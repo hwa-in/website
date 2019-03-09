@@ -17,65 +17,80 @@ import {
 
 class InfoCenter extends Component {
   state = {
-    
+    featured: null
   };
 
   componentDidMount() {
+    // const { 
+    //   allContentfulNewsStory: {
+    //     newsStories,
+    //   },
+    //   allContentfulEvent: {
+    //     events,
+    //   },
+      
+    //   allContentfulVideo: {
+    //     videos,
+    //   },
+    // } = this.props.data;
+    // this.setState(() => ({
+    //   newsStories: newsStories,
+    //   events: events,
+    //   videos: videos,
+    // }))
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { featured, newsStories } = this.state;
+  //   if (prevState.featured === featured && featured === null) {
+  //     const article = newsStories.shift();
+  //     this.setState({
+  //       featured: article,
+  //       loaded: true,
+  //     })
+  //   }
+  
+
+  render() {
     const { 
-      allContentfulNewsStory: {
+      newsQuery: {
         newsStories,
+      },
+      featuredArticle: {
+        edges,
       },
       allContentfulEvent: {
         events,
       },
-      
       allContentfulVideo: {
         videos,
       },
     } = this.props.data;
-    this.setState(() => ({
-      newsStories: newsStories,
-      events: events,
-      videos: videos,
-      loaded: true,
-    }))
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("PrevProps: \n", prevProps.data, "New Props: \n", this.props.data)
-  }
-
-  render() {
-    const { newsStories, events, video, loaded } = this.state;
-
-    if (loaded) {
       return (
+        <Fragment>
+          <Section noPadBottom>
+            <Container justifyCenter>
+              <p>Info Center</p>
+            </Container>
+          </Section>
         <Section>
           <Section dark>
             <Container>
-              {/* Featured article */}
+              {edges && <FeaturedArticle {...edges[0].featured} /> }
               <Body>
                 <LeftSection>
-                  {/* Events preview */}
-                  {/* <Events events={events} /> */}
-                  {/* Videos */}
-                  <Videos />
+                  {events && <Events events={events} /> }
+                  {videos && <Videos videos={videos} /> }
                 </LeftSection>
                 <NewsSection>
-                  <News />
+                  {newsStories && <News newsStories={newsStories} /> }
                 </NewsSection>
               </Body>
             </Container>
           </Section>
         </Section>
+        </Fragment>
       )
-    }
-
-    return (
-      <div>
-        Loading
-      </div>
-    )
   }
 };
 
@@ -83,9 +98,26 @@ export default InfoCenter;
 
 export const pageQuery = graphql`
   query InfoCenterQuery {
-  allContentfulNewsStory {
+  newsQuery: allContentfulNewsStory(skip: 1) {
     newsStories: edges {
-      newsArticle: node {
+      article: node {
+          slug
+          title
+          dateWritten,
+          description {
+            description
+          }
+          image {
+            fluid {
+              src
+            }
+          }
+        }
+      }
+    }
+    featuredArticle: allContentfulNewsStory(limit: 1) {
+      edges {
+        featured: node {
           slug
           title
           dateWritten,
@@ -119,6 +151,7 @@ export const pageQuery = graphql`
     allContentfulVideo {
       videos: edges {
         video: node {
+          id
           title
           videoLink
         }

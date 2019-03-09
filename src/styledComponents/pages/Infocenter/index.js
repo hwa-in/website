@@ -9,6 +9,7 @@ const Body = styled.div`
 
   ${media.desktop`
     flex-direction: row;
+    align-items: start;
   `}
 `;
 
@@ -17,7 +18,7 @@ const LeftSection = styled.div`
   display: block;
 
   ${media.desktop`
-    width: 35%;
+    width: 33%;
     padding-right: 15px;
   `}
 `;

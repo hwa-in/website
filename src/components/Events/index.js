@@ -69,3 +69,4 @@ const Events = ({events}) => {
 };
 
 export default Events;
+export { Event };

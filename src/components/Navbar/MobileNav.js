@@ -29,8 +29,7 @@ class MobileNav extends React.Component {
         <Button
           aria-owns={anchorEl ? 'simple-menu' : null}
           aria-haspopup="true"
-          onClick={this.handleClick}
-          TransitionComponent={Fade}
+          onClick={this.handleClick} 
         >
           <FaBars />
         </Button>

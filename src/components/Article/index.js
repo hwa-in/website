@@ -28,11 +28,11 @@ const Article = ({
         <img src={src} alt={title} />
       </ImageContainer>
       <DetailsContainer>
-        <Link to={`news/${slug}`}> 
+        <Link to={`/infocenter/news/${slug}`}> 
           <h3>{title}</h3>
         </Link>
         <p>{description}</p>
-        <MoreInfo onClick={() => navigate(`/news/${slug}/`)}>
+        <MoreInfo onClick={() => navigate(`/infocenter/news/${slug}/`)}>
           <small>{dateWritten}</small>
           <ReadMore>
             <FaAngleRight />

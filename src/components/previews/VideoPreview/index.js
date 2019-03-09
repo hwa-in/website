@@ -1,15 +1,18 @@
 import React from 'react';
 import {
   VideoContainer,
+  VideoWrapper,
 } from './styles';
 
 const VideoPreview = ({ title, videoLink }) => (
   <VideoContainer>
-    <h1>{title}</h1>
-    <iframe 
-      src={videoLink}
-      title={title}
-    />
+    <VideoWrapper>
+      <iframe 
+        src={videoLink}
+        title={title}
+      />
+    </VideoWrapper>
+    <p>{title}</p>
   </VideoContainer>
 );
 

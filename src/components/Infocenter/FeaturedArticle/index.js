@@ -1,15 +1,53 @@
 import React from 'react';
+import { Section } from 'styledComponents';
+import { Link, navigate } from 'gatsby';
+import { FaAngleRight } from 'react-icons/fa';
+import {
+  Wrapper,
+  ImageContainer,
+  DetailsContainer,
+  MoreInfo,
+  ReadMore,
+} from './styles';
 
-const FeaturedArticle = ({article}) => {
-  if (typeof article !== 'undefined') {
-    const {newsArticle: {slug, dateWritten, title, description: {description }}} = article;
-    return (
-      <div>
-        FeaturedArticl
-      </div>
-    )
+const FeaturedArticle = ({
+  slug,
+  title, 
+  dateWritten,
+  description: { 
+    description 
+  }, 
+  image: { 
+    fluid: {
+      src,
+    },
   }
-  return <div>Loadi</div>
-};
+}) => { 
+  return (
+    <Section
+      dark
+      noPadTop
+      padBottom="2rem"
+    >
+      <Wrapper>
+        <ImageContainer>
+          <img src={src} alt={title} />
+        </ImageContainer>
+        <DetailsContainer>
+          <Link to={`/infocenter/news/${slug}`}> 
+            <h3>{title}</h3>
+          </Link>
+          <p>{description}</p>
+          <MoreInfo onClick={() => navigate(`infocenter/news/${slug}/`)}>
+            <small>{dateWritten}</small>
+            <ReadMore>
+              <FaAngleRight />
+            </ReadMore>
+          </MoreInfo>
+        </DetailsContainer>
+      </Wrapper>
+    </Section>
+  )
+}
 
 export default FeaturedArticle;
