@@ -92,6 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
               context: {
                 id: product.id,
                 categorySlug: cat.slug,
+                categoryName: cat.name,
                 categoryTitle: cat.categoryTitle,
               },
             })
@@ -209,6 +210,7 @@ exports.createPages = ({ graphql, actions }) => {
             component: productCategory,
             context: {
               slug: category.slug,
+              name: category.name,
               title: category.categoryTitle,
               products: category.products,
             },

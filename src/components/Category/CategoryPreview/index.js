@@ -1,13 +1,14 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import { FaAngleRight } from 'react-icons/fa';
-import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
+import LearnMore from 'styledComponents/LearnMore';
 import {
   Wrapper,
   ImageContainer,
   DetailsContainer, 
   ReadMore,
 } from './styles';
+import PropTypes from 'prop-types';
 
 const CategoryPreview = ({
   slug,
@@ -36,3 +37,8 @@ const CategoryPreview = ({
 };
 
 export default CategoryPreview;
+
+CategoryPreview.propTypes = {
+  slug: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+}

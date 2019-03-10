@@ -5,12 +5,12 @@ import ProductNav from 'components/Products/ProductNav';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
   const { title, slug } = data.contentfulProducts;
-  const { categorySlug, categoryTitle } = pageContext;
+  const { categorySlug, categoryTitle, categoryName } = pageContext;
   return (
     <Section>
       <ProductNav
         categorySlug={categorySlug}
-        categoryName={categoryTitle}
+        categoryName={categoryName}
         productName={title}
         productSlug={slug}
       />
