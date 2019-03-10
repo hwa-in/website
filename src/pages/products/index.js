@@ -25,12 +25,13 @@ const ProductsPage = ({data}) => {
         </Container>
           <CategorySection>
             {
-              categories.map(({category}, index) => (
+              categories.map(({category}, index) => {
+                return (
                 <Category
                   key={index}
                   {...category} 
                 />
-              ))
+              )})
             }
           </CategorySection>
       </Section>
@@ -58,15 +59,18 @@ export const ProductQuery = graphql`
           }
           products {
             id
+            slug
             title
             price
+            description {
+              description
+            }
             subCategory
             imagePreview {
               fluid(maxWidth: 350, maxHeight: 200) {
                 src
               }
             }
-            slug
           }
         }
       }

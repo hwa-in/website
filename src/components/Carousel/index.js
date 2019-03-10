@@ -14,35 +14,7 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <CarouselWrapper>
-        <CarouselButton 
-          className="prev"
-          onClick={() => this.Carousel._slidePrev()}
-        >
-        &gt;
-        </CarouselButton>
-        <AliceCarousel
-          items={this.props.products}
-          duration={400}
-          autoPlay={false}
-          fadeOutAnimation={true}
-          mouseDragEnabled={true}
-          autoPlayInterval={3000}
-          autoPlayDirection="rtl"
-          responsive={this.responsive}
-          disableAutoPlayOnAction={true}
-          stopAutoPlayOnHover={true}
-          buttonsDisabled={true}
-          dotsDisabled={true}
-          ref={ el => this.Carousel = el }
-        />
-        <CarouselButton 
-          className="next"
-          onClick={() => this.Carousel._slideNext()}
-        >
-        &lt;
-        </CarouselButton>
-      </CarouselWrapper>
+      
     )
   }
 }

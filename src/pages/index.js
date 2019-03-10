@@ -128,8 +128,7 @@ export const pageQuery = graphql`
     }
     featuredProducts: allContentfulProducts {
       products: edges {
-        product: node {
-          id
+        node {
           slug
           title
           imagePreview {
@@ -140,8 +139,10 @@ export const pageQuery = graphql`
           description {
             description
           }
+          subCategory
           category {
             slug
+            name
           }
         }
       }

@@ -10,47 +10,48 @@ class Category extends React.Component {
 
   componentDidMount() {
     const { slug } = this.props
+    // console.log(`Mounted ${this.props.name}`, this.props.products)
     if (slug === 'lazer-systems') {
       this.setState(() => ({
         lazerSystem: true,
       }))
     }
   }
-  
+
+  componentDidUpdate(prevProps, prevState) {
+
+  }
+
   handleClick = () => {
     this.setState({
       showProducts: !this.state.showProducts,
     });
   }
   render() {
-    const { categoryTitle, description, name, categoryImage, slug, products, subCategory } = this.props;
+    const { categoryTitle, description, name, categoryImage, slug, products } = this.props;
     const { showProducts, lazerSystem } = this.state;
-    if (products.length) {
       return (
         <Fragment>
           <CategoryContainer>
-              <CategoryPreview 
-                slug={slug}
-                categoryTitle={categoryTitle}
-                name={name}
-                description={description.description}
-                image={categoryImage.fluid.src}
-                lazerSystem={lazerSystem}
-                showProducts={this.handleClick}
-              />
-          </CategoryContainer>
-            <Products
-              products={products}
-              categorySlug={slug}
-              showProducts={showProducts}
-              closeList={this.handleClick}
-              subCategory={subCategory}
+            <CategoryPreview 
+              slug={slug}
+              categoryTitle={categoryTitle}
+              name={name}
+              description={description.description}
+              image={categoryImage.fluid.src}
+              lazerSystem={lazerSystem}
+              showProducts={this.handleClick}
             />
+          </CategoryContainer>
+          <Products
+            products={products}
+            categorySlug={slug}
+            showProducts={showProducts}
+            closeList={this.handleClick}
+          />
         </Fragment>
       )
     }
-    return null
-  }
 }
 
 export default Category;
