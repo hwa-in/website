@@ -38,5 +38,17 @@ const LearnMore = styled(Link)`
   line-height: 1.5;
 `;
 
-export { LearnMoreLink };
+const LearnMoreDiv = styled.div`
+  ${props => defaultLearnMore()}
+  font-size: 14px;
+  line-height: 1.5;
+`;
+
+const LearnMoreButton = styled.div`
+  ${props => defaultLearnMore()}
+  font-size: 14px;
+  line-height: 1.5;
+`;
+
+export { LearnMoreLink, LearnMoreDiv, LearnMoreButton };
 export default LearnMore;
