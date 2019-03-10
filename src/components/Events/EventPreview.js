@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { FaList, FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaRegCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
 import { ViewAll } from 'styledComponents/Button';
 import {

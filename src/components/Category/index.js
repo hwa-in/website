@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Products from '../Products';
-import { CategoryContainer, CategoryTitle } from './styles';
+import { CategoryContainer } from './styles';
 import CategoryPreview from './CategoryPreview';
 
 class Category extends React.Component {
@@ -48,6 +48,7 @@ class Category extends React.Component {
             categorySlug={slug}
             showProducts={showProducts}
             closeList={this.handleClick}
+            productPage={true}
           />
         </Fragment>
       )

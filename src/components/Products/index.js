@@ -4,9 +4,8 @@ import {
   Close,
   Slider,
 } from './styles';
-import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
-import { Container, Section } from 'styledComponents';
+import { Section } from 'styledComponents';
 import ProductList from './ProductList';
 
 class Products extends React.Component {
@@ -22,7 +21,7 @@ class Products extends React.Component {
     }
   }
   render () {
-    const {products, categorySlug, showProducts, closeList, subCategory} = this.props
+    const {products, showProducts, closeList, productPage} = this.props
     return (
       <CSSTransition
         in={showProducts}
@@ -32,12 +31,10 @@ class Products extends React.Component {
         {(state) => (
           <Wrapper className="products">
             <Section dark noPad>
-            <Container>
               <Close onClick={() => closeList()}>x</Close>
               <Slider>
-                <ProductList products={products} />
+                <ProductList products={products} productPage={productPage} />
               </Slider>
-              </Container>
             </Section>
           </Wrapper> 
         )}

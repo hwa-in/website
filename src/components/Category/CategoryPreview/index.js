@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import { FaAngleRight } from 'react-icons/fa';
 import { LearnMoreLink as LearnMore } from 'styledComponents/LearnMore';
 import {
   Wrapper,
   ImageContainer,
-  DetailsContainer,
-  MoreInfo,
+  DetailsContainer, 
   ReadMore,
 } from './styles';
 

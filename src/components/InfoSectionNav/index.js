@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Section, Container } from 'styledComponents';
 import { Link } from 'gatsby';
 import {
   NavList,

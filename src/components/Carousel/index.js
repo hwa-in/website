@@ -13,6 +13,7 @@ class Carousel extends React.Component {
   };
 
   render() {
+    const items = this.props.products;
     return (
       <CarouselWrapper>
         <CarouselButton 
@@ -22,7 +23,7 @@ class Carousel extends React.Component {
         &gt;
         </CarouselButton>
         <AliceCarousel
-          items={this.props.products}
+          items={items}
           duration={400}
           autoPlay={false}
           fadeOutAnimation={true}

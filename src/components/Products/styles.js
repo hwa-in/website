@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from 'style';
 
 const Wrapper = styled.div`
   position: relative;
@@ -51,7 +52,7 @@ const Close = styled.span`
   right: .5rem;
   width: 2.75rem;
   height: 2.75rem;
-  color: #3094b4;
+  color: ${variables.darkGreen};
   font-size: 3rem;
   line-height: 2rem;
   text-align: center;

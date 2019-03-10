@@ -1,7 +1,5 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 import { Section, Container } from 'styledComponents';
-import WhatsNew from 'components/WhatsNew';
-import EventPreview from 'components/Events/EventPreview';
 import {
   Body,
   NewsSection,

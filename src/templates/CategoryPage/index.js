@@ -1,15 +1,15 @@
 import React from 'react';
 import { Section, Container } from 'styledComponents';
 import ProductNav from 'components/Products/ProductNav';
-import Category from 'components/Category';
+// import Category from 'components/Category';
 
 const CategoryPage = ({data, pageContext}) => {
 const { slug, title, products } = pageContext;
 console.log(products)
-let posterior = products.filter(product => product.subCategory === "Posterior")
-let anterior = products.filter(product => product.subCategory === "Anterior")
+// let posterior = products.filter(product => product.subCategory === "Posterior")
+// let anterior = products.filter(product => product.subCategory === "Anterior")
 
-console.log("Category Page, anterior", anterior)
+// console.log("Category Page, anterior", anterior)
 return (
   <Section>
     <ProductNav

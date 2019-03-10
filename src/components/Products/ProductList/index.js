@@ -11,10 +11,9 @@ import {
 } from './styles';
 
 const Product = (product) => {
-  const { category, slug, title, imagePreview: {fluid}, description} = product
-  console.log(category)
+  const { category, slug, title, imagePreview: {fluid}, description, productPage} = product
   return (
-    <ProductContainer>
+    <ProductContainer background={productPage && true}>
       <ImgWrapper>
         <ProductImg src={fluid.src} alt={title}/>
       </ImgWrapper>
@@ -23,6 +22,7 @@ const Product = (product) => {
           <h3>{title}</h3>
         </Link>
         <p>{description.description}</p>
+        <LearnMore to={`/products/${category.slug}/${slug}`}>Learn More</LearnMore>
     </ProductInfo>
   </ProductContainer>
   )
@@ -41,14 +41,14 @@ Product.propTypes = {
 
 class ProductList extends React.Component {
   showItems() {
-    const { products, categorySlug } = this.props
+    const { products, productPage } = this.props
     if (products[0].node) {
       return products.map(({node}, index ) => {
           return <Product key={index} {...node} />
       }) 
     } else {
       return products.map((product, index ) => {
-        return <Product key={index} {...product}/>
+        return <Product key={index} {...product} productPage={productPage}/>
     }) 
     }
   }

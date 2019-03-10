@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
 import { FaBars } from 'react-icons/fa';
 import routes from '../../routes';
 import {

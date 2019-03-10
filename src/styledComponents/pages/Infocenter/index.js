@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables, media } from 'style';
+import { media } from 'style';
 
 const Body = styled.div`
   display: flex;
