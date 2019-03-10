@@ -5,8 +5,28 @@ import Helmet from 'react-helmet'
 import Hero from 'components/Hero';
 import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
-import NewProducts from 'components/NewProducts';
+import ProductList from 'components/Products/ProductList';
 import EventPreview from 'components/Events/EventPreview';
+import styled from 'styled-components';
+import { variables } from 'style';
+
+const NewProductWrapper = styled.article`
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 0;
+  background-color: ${variables.white};
+
+  h1 {
+    text-align: center;
+    margin-bottom: 60px;
+    color: ${variables.darkGreen};
+  }
+
+  .hiddenLink {
+    height: 100%;
+    width: 100%;
+  }
+`;
 
 class RootIndex extends React.Component {
   render() {
@@ -59,7 +79,10 @@ class RootIndex extends React.Component {
           </Container>
         </Section>
         <Section dark>
-          <NewProducts products={products} />
+          <NewProductWrapper>
+            <h1>New Products</h1>
+            <ProductList products={products} />
+          </NewProductWrapper>
         </Section>
       </Fragment>
     )

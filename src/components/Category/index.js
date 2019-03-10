@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import ProductList from '../ProductList';
+import Products from '../Products';
 import { CategoryContainer, CategoryTitle } from './styles';
 import CategoryPreview from './CategoryPreview';
 
@@ -39,7 +39,7 @@ class Category extends React.Component {
                 showProducts={this.handleClick}
               />
           </CategoryContainer>
-            <ProductList
+            <Products
               products={products}
               categorySlug={slug}
               showProducts={showProducts}

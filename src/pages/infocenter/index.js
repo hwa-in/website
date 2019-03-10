@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
-import NewProducts from 'components/NewProducts';
+import NewProducts from 'components/Products/NewProducts';
 import EventPreview from 'components/Events/EventPreview';
 import {
   Body,

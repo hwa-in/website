@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Section, Container } from 'styledComponents';
-import ProductNav from 'components/ProductNav';
+import ProductNav from 'components/Products/ProductNav';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
   const { title, slug } = data.contentfulProducts;

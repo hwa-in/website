@@ -3,8 +3,8 @@ import { variables, media } from 'style';
 
 const Section = styled.div`
   margin: 0 auto;
+  width: 100%;
   background: ${props => (props.dark ? variables.offWhite : variables.white)};
-  max-width: ${props => props.inner ? '768px' : undefined};
   padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
   padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '60px'};
   padding-top: ${props => props.padTop ? props.padTop : undefined};
@@ -20,7 +20,6 @@ const Section = styled.div`
   `}
 
   ${media.desktop`
-    max-width: unset;
     padding-top: ${props => props.noPadTop || props.noPad ? '0' : '60px'};
     padding-bottom: ${props => props.noPadBottom || props.noPad ? '0' : '120px'};
     padding-top: ${props => props.padTop ? props.padTop : undefined};

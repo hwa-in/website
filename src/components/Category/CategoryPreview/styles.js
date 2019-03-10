@@ -51,10 +51,6 @@ const DetailsContainer = styled.div`
     font-size: 1rem;
   }
 
-  ${media.tablet`
-    width: 50%;
-  `}
-
   @media (min-width: 990px) {
     width: ${props => props.width ? props.width : '75%'};
   }

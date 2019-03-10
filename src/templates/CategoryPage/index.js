@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section, Container } from 'styledComponents';
-import ProductNav from 'components/ProductNav';
+import ProductNav from 'components/Products/ProductNav';
 import Category from 'components/Category';
 
 const CategoryPage = ({data, pageContext}) => {

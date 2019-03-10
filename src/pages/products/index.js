@@ -8,7 +8,7 @@ import {
   Title,
   Description,
 } from 'styledComponents/pages/Products';
-import ProductNav from 'components/ProductNav';
+import ProductNav from 'components/Products/ProductNav';
 
 const ProductsPage = ({data}) => {
   const { categories } = data.categoryQuery;
