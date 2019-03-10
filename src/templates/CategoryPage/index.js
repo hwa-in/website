@@ -18,7 +18,7 @@ return (
     />
     <Container>
       <h1>{title}</h1>
-      <Category
+      {/* <Category
         categoryTitle="Anterior"
         slug={slug}
         products={anterior}
@@ -29,7 +29,7 @@ return (
         slug={slug}
         products={posterior}
         subCategory={true}
-      />
+      /> */}
       {/* <div>
       {
         products.map(({id, title, slug}) => (

@@ -1,5 +1,58 @@
 import styled from 'styled-components';
 import { Container } from 'styledComponents';
+import { variables, media } from 'style';
+
+const HeaderSection = styled.div`
+  display: block;
+  width: 100%;
+  margin: 3rem auto 0;
+  ${media.tablet`
+    max-width: 720px;
+  `}
+
+  ${media.desktop`
+    max-width: 1180px;
+  `}
+`;
+
+const Title = styled.h1`
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 2.125rem;
+  margin-bottom: 1.5rem;
+  color: ${variables.darkGreen};
+  text-align: left;
+
+  ${media.tablet`
+    font-size: 3rem;
+    line-height: 3.375rem;
+    margin-bottom: 2rem;
+  `}
+
+  ${media.desktop`
+    font-size: 3rem;
+    line-height: 3.375rem;
+  `}
+`;
+
+const Description = styled.p`
+  text-align: left;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  width: 95%;
+  max-width: 540px;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  font-weight: 300;
+
+  ${media.tablet`
+    max-width: 960px;
+  `}
+
+  ${media.desktop`
+    max-width: 1180px;
+  `}
+`;
 
 const CategorySection = styled.section`
   display: flex;
@@ -59,6 +112,9 @@ const SkuWrapper = styled.div`
 `;
 
 export {
+  HeaderSection,
+  Title,
+  Description,
   CategorySection,
   CategoryContainer,
   CategoryTitle,

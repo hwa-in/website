@@ -8,7 +8,7 @@ import {
 
 const ProductNav = ({categorySlug, categoryName, productName, productSlug }) => {
   return (
-    <Section noPadTop>
+    <Section noPad>
       <Container>
       <NavList>
         <NavItem><Link to="/">Home</Link></NavItem>

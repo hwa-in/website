@@ -4,36 +4,26 @@ import { graphql } from 'gatsby';
 import Category from 'components/Category';
 import {
   CategorySection,
+  HeaderSection,
+  Title,
+  Description,
 } from 'styledComponents/pages/Products';
 import ProductNav from 'components/ProductNav';
 
 const ProductsPage = ({data}) => {
   const { categories } = data.categoryQuery;
-  let lazerSystems = {
-    slug: 'lazer-systems',
-    categoryTitle: 'Lazer Systems',
-    products: []
-  };
-
-  // Adds Lazer System products to the lazerSystems obj for use by category component
-  categories.forEach(({category}) => {
-    category.products.forEach((product) => {
-      if (product.lazerSystem) {
-        lazerSystems.products.push(product)
-      }
-    })
-  })
 
   return (
     <Fragment>
-      <Section>
+      <Section noPadBottom>
         <ProductNav />
         <Container>
-          Products
+          <HeaderSection>
+            <Title>Products</Title>
+            <Description>Here you’ll find detailed information on our eye lasers, treatment tools, diagnostic systems, service products and technologies.</Description>
+          </HeaderSection>
+        </Container>
           <CategorySection>
-            <Category
-              {...lazerSystems}
-            />
             {
               categories.map(({category}, index) => (
                 <Category
@@ -43,7 +33,6 @@ const ProductsPage = ({data}) => {
               ))
             }
           </CategorySection>
-        </Container>
       </Section>
     </Fragment>
   )
@@ -58,12 +47,25 @@ export const ProductQuery = graphql`
         category: node {
           slug
           categoryTitle
+          name
+          description {
+            description
+          }
+          categoryImage {
+            fluid {
+              src
+            }
+          }
           products {
             id
-            lazerSystem
             title
             price
             subCategory
+            imagePreview {
+              fluid(maxWidth: 350, maxHeight: 200) {
+                src
+              }
+            }
             slug
           }
         }

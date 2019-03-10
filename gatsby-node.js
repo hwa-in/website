@@ -67,7 +67,6 @@ exports.createPages = ({ graphql, actions }) => {
               product: node {
                 id
                 slug
-                lazerSystem
                 category {
                   slug
                   categoryTitle
@@ -94,18 +93,6 @@ exports.createPages = ({ graphql, actions }) => {
               categoryTitle: product.category.categoryTitle,
             },
           })
-
-          if (product.lazerSystem) {
-            createPage({
-              path: `/products/lazer-systems/${product.slug}/`,
-              component: productPage,
-              context: {
-                id: product.id,
-                categorySlug: 'lazer-systems',
-                categoryTitle: 'Lazer Systems',
-              },
-            })
-          }
         })
 
       })
@@ -198,7 +185,6 @@ exports.createPages = ({ graphql, actions }) => {
                     id
                     title
                     slug
-                    lazerSystem
                     subCategory
                   }
                 }
@@ -213,7 +199,6 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const { categories } = result.data.allContentfulCategory;
-        const lazerSystemProducts = []
         categories.forEach(({ category }) => {
           createPage({
             path: `/products/${category.slug}/`,
@@ -224,22 +209,6 @@ exports.createPages = ({ graphql, actions }) => {
               products: category.products,
             },
           })
-
-          category.products.forEach((product) => {
-            if (product.lazerSystem) {
-              lazerSystemProducts.push(product)
-            }
-          })
-        })
-
-        createPage({
-          path: `/products/lazer-systems/`,
-          component: productCategory,
-          context: {
-            slug: "lazer-systems",
-            title: "Lazer Systems",
-            products: lazerSystemProducts,
-          },
         })
       })
     )
