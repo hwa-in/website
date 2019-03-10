@@ -9,19 +9,8 @@ import { Section } from 'styledComponents';
 import ProductList from './ProductList';
 
 class Products extends React.Component {
-  componentDidMount() {
-    if (this.props) {
-      // console.log("Mounted PRODUCTS", this.props)
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props) {
-      // console.log("Updated PRODUCTS", this.props)
-    }
-  }
   render () {
-    const {products, showProducts, closeList, productPage} = this.props
+    const {products, showProducts, closeList, productPage, categorySlug} = this.props
     return (
       <CSSTransition
         in={showProducts}
@@ -33,7 +22,11 @@ class Products extends React.Component {
             <Section dark noPad>
               <Close onClick={() => closeList()}>x</Close>
               <Slider>
-                <ProductList products={products} productPage={productPage} />
+                <ProductList 
+                  products={products}
+                  productPage={productPage}
+                  categorySlug={categorySlug}
+                />
               </Slider>
             </Section>
           </Wrapper> 

@@ -68,6 +68,7 @@ export const ProductQuery = graphql`
             category {
               slug
               name
+              categoryTitle
             }
             subCategory
             imagePreview {

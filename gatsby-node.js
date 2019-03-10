@@ -70,6 +70,7 @@ exports.createPages = ({ graphql, actions }) => {
                 category {
                   slug
                   categoryTitle
+                  name
                 }
               }
             }
@@ -84,14 +85,16 @@ exports.createPages = ({ graphql, actions }) => {
 
         const { products } = result.data.allContentfulProducts;
         products.forEach(({ product }) => {
-          createPage({
-            path: `/products/${product.category.slug}/${product.slug}/`,
-            component: productPage,
-            context: {
-              id: product.id,
-              categorySlug: product.category.slug,
-              categoryTitle: product.category.categoryTitle,
-            },
+          product.category.forEach(cat => {
+            createPage({
+              path: `/products/${cat.slug}/${product.slug}/`,
+              component: productPage,
+              context: {
+                id: product.id,
+                categorySlug: cat.slug,
+                categoryTitle: cat.categoryTitle,
+              },
+            })
           })
         })
 
@@ -181,6 +184,7 @@ exports.createPages = ({ graphql, actions }) => {
                   slug
                   id
                   categoryTitle
+                  name
                   products {
                     id
                     title
