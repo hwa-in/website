@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby';
-import AliceCarousel from 'react-alice-carousel';
-import { StaticQuery, graphql } from 'gatsby'
+import Carousel from 'components/Carousel';
 import {
   ProductContainer,
   ImgWrapper,
   ProductImg,
   ProductInfo,
   LearnMore,
-  CarouselWrapper,
-  CarouselButton,
 } from './styles';
 
 const Product = (product) => {
-  const { category, slug, title, imagePreview: {fluid}} = product
+  const { category, slug, title, imagePreview: {fluid}, description} = product
+  console.log(category)
   return (
     <ProductContainer>
       <ImgWrapper>
         <ProductImg src={fluid.src} alt={title}/>
       </ImgWrapper>
       <ProductInfo>
-        <h3>{title}</h3>
-        
+        <Link to={`/products/${category.slug}/${slug}`}>
+          <h3>{title}</h3>
+        </Link>
+        <p>{description.description}</p>
     </ProductInfo>
   </ProductContainer>
   )
@@ -36,21 +36,15 @@ Product.propTypes = {
   title: PropTypes.string.isRequired,
   imagePreview: PropTypes.object.isRequired,
   description: PropTypes.object.isRequired,
+  slug: PropTypes.string.isRequired,
 }
 
 class ProductList extends React.Component {
-  responsive = {
-    0: { items: 1 },
-    600: { items: 2 },
-    1024: { items: 3 },
-  };
-
   showItems() {
-    const { products } = this.props
-    console.log(products[0].node)
+    const { products, categorySlug } = this.props
     if (products[0].node) {
       return products.map(({node}, index ) => {
-          return <Product key={index} {...node}/>
+          return <Product key={index} {...node} />
       }) 
     } else {
       return products.map((product, index ) => {
@@ -63,41 +57,12 @@ class ProductList extends React.Component {
     const { products } = this.props
     const items = this.showItems()
     return (
-      <div>
-        Products
+      <Fragment>
         {
           products &&
-          <CarouselWrapper>
-        <CarouselButton 
-          className="prev"
-          onClick={() => this.Carousel._slidePrev()}
-        >
-        &gt;
-        </CarouselButton>
-        <AliceCarousel
-          items={items}
-          duration={400}
-          autoPlay={false}
-          fadeOutAnimation={true}
-          mouseDragEnabled={true}
-          autoPlayInterval={3000}
-          autoPlayDirection="rtl"
-          responsive={this.responsive}
-          disableAutoPlayOnAction={true}
-          stopAutoPlayOnHover={true}
-          buttonsDisabled={true}
-          dotsDisabled={true}
-          ref={ el => this.Carousel = el }
-        />
-        <CarouselButton 
-          className="next"
-          onClick={() => this.Carousel._slideNext()}
-        >
-        &lt;
-        </CarouselButton>
-      </CarouselWrapper> 
+          <Carousel products={items} />
         }
-      </div>
+      </Fragment>
     )
   }
 }

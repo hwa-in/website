@@ -65,6 +65,10 @@ export const ProductQuery = graphql`
             description {
               description
             }
+            category {
+              slug
+              name
+            }
             subCategory
             imagePreview {
               fluid(maxWidth: 350, maxHeight: 200) {
