@@ -13,6 +13,10 @@ const Container = styled.div`
     max-width: 720px;
   `}
 
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
   ${media.desktop`
     max-width: 1180px;
   `}

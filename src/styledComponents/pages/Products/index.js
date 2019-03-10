@@ -6,13 +6,6 @@ const HeaderSection = styled.div`
   display: block;
   width: 100%;
   margin: 3rem auto 0;
-  ${media.tablet`
-    max-width: 720px;
-  `}
-
-  ${media.desktop`
-    max-width: 1180px;
-  `}
 `;
 
 const Title = styled.h1`

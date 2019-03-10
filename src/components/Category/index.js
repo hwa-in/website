@@ -24,30 +24,28 @@ class Category extends React.Component {
   }
   render() {
     const { categoryTitle, description, name, categoryImage, slug, products, subCategory } = this.props;
-    const { showProducts } = this.state;
+    const { showProducts, lazerSystem } = this.state;
     if (products.length) {
       return (
         <Fragment>
           <CategoryContainer>
-            <CategoryTitle onClick={() => this.handleClick() }>
               <CategoryPreview 
                 slug={slug}
                 categoryTitle={categoryTitle}
                 name={name}
                 description={description.description}
                 image={categoryImage.fluid.src}
+                lazerSystem={lazerSystem}
+                showProducts={this.handleClick}
               />
-            </CategoryTitle>
           </CategoryContainer>
-          <CategoryContainer>
-              <ProductList
+            <ProductList
               products={products}
               categorySlug={slug}
               showProducts={showProducts}
               closeList={this.handleClick}
               subCategory={subCategory}
-              />
-          </CategoryContainer>
+            />
         </Fragment>
       )
     }
