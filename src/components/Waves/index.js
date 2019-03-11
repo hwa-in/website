@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
-import SineWaves from 'sine-waves';
+var SineWaves
+if (typeof window !== 'undefined') {
+  SineWaves = require('sine-waves')
+}
 
 class Waves extends React.Component {
   constructor(props) {

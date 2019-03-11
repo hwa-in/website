@@ -1,22 +1,6 @@
 const Promise = require('bluebird')
 const path = require('path')
 
-// Customize Webpack config to prevent sine-wave module from throwing 'window is undefined' error during build
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === "build-html") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /sine-waves/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    })
-  }
-}
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
