@@ -11,7 +11,7 @@ import {
 } from './styles';
 import Waves from '../Waves';
 
-class Hero extends React.Component => {
+class Hero extends React.Component {
 
   componentDidMount() {
     if (typeof window !== 'undefined'){
