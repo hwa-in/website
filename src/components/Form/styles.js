@@ -6,6 +6,10 @@ const Form = styled.form`
   flex-wrap: wrap;
   justify-content: space-between;
 
+  .jss34.jss35 .jss41 {
+    border-color: ${variables.darkGreen};
+  }
+
   .default {
     width: 100%;
     padding-right: 15px;

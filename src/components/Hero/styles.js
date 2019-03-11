@@ -29,6 +29,8 @@ const WaveContainer = styled.div`
   left: 0
   width: 100%;
   bottom: -100px;
+  left: 0;
+  right: 0;
   height: 375px;
 
   ${media.tablet`
