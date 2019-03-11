@@ -177,6 +177,14 @@ const Feature = styled.div`
   }
 `;
 
+const MoreProducts = styled.h2`
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.625rem;
+    margin-bottom: .5rem;
+    color: ${variables.darkGreen};
+`;
+
 export {
   Wrapper,
   ImageContainer,
@@ -187,4 +195,5 @@ export {
   BenefitImage,
   FeaturesWrapper,
   Feature,
+  MoreProducts,
 }

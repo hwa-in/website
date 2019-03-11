@@ -47,7 +47,7 @@ const WhatsNew = ({ newsStories }) => (
       <Title><h2>Latest News</h2></Title>
       <ViewAll>
           <Link className="events-btn" to="/infocenter/news/"><FaList /> News</Link>
-        </ViewAll>
+      </ViewAll>
     </HeaderSection>
     <NewsContainer>
     {

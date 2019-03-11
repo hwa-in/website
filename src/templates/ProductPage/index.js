@@ -1,7 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Section, Container } from 'styledComponents';
+import { ViewAll } from 'styledComponents/Button';
 import ProductNav from 'components/Products/ProductNav';
+import ProductList from 'components/Products/ProductList';
 import { navigate } from 'gatsby';
 import LearnMore, { LearnMoreDiv as CatName, LearnMoreButton as ContactUs } from 'styledComponents/LearnMore';
 import {
@@ -14,11 +16,13 @@ import {
   BenefitImage,
   FeaturesWrapper,
   Feature,
+  MoreProducts,
 } from './styles';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
   const { title, slug, subTitle, imagePreview, benefitImage, features, description, benefits } = data.contentfulProducts;
   const { categorySlug, categoryTitle, categoryName } = pageContext;
+  const { products } = data.allContentfulProducts;
   return (
     <Section>
       <ProductNav
@@ -67,17 +71,30 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
         <Section>
           <Container>
             <FeaturesWrapper>
-              {features.map(({featureName, featureDescription}, i) => {
-                return (
+              {
+                features.map(({featureName, featureDescription}, i) => (
                   <Feature key={i}>
                     {featureName && <h2>{featureName}</h2> }
                     {featureDescription && <p>{featureDescription.featureDescription}</p> }
                     <p>&nbsp;</p>
                   </Feature>
-                )
-              })}
+                ))
+              }
             </FeaturesWrapper>
           </Container>
+        </Section>
+      }
+      {products && 
+        <Section dark>
+          <Container row>
+            <MoreProducts>More Products</MoreProducts>
+            <ViewAll
+                to="/products"
+                light
+                text="All products"
+              />
+          </Container>
+          <ProductList products={products}/>
         </Section>
       }
     </Section>
@@ -117,6 +134,27 @@ export const pageQuery = graphql`
           html
         }
       }
-    } 
+    }
+    allContentfulProducts(limit: 3) {
+      products: edges {
+        node {
+          slug
+          title
+          imagePreview {
+            fluid(maxWidth: 350, maxHeight: 200) {
+              src
+            }
+          }
+          description {
+            description
+          }
+          subCategory
+          category {
+            slug
+            name
+          }
+        }
+      }
+    }
   }
 `;

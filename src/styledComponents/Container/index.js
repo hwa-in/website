@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction:  ${props => props.row ? 'row' : 'column'};
-  justify-content: ${props => props.justifyCenter ? 'center' : 'space-around'}
+  justify-content: ${props => props.justifyCenter ? 'center' : 'space-between'}
 
   ${media.tablet`
     max-width: 720px;
