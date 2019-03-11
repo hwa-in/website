@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { Section, Container, LearnMore } from 'styledComponents';
-import Input from '@material-ui/core/Input';
 import { Link } from 'gatsby';
 import {
   ContactHeader,
   ContactWrapper,
   DiscoverMore,
 } from 'styledComponents/pages/Contact';
+import ContactForm from 'components/Form';
+
 
 const ContactPage = (data) => {
   console.log(data)
@@ -25,7 +26,7 @@ const ContactPage = (data) => {
             <ContactWrapper>
               {/* Form  */}
               <div className="form">
-                Contact Form
+                <ContactForm />
               </div>
               {/* Contact info */}
               <div className="contact">

@@ -99,12 +99,12 @@ export const pageQuery = graphql`
       superScript
       subtitle
       background {
-        fluid(quality: 100) {
+        fluid {
           backgroundImg: src
         }
       }
       heroImage {
-        fluid(quality: 100) {
+        fluid {
           heroImg: src
       }
     }
