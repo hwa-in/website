@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from 'style';
+import { variables, media } from 'style';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -143,6 +143,40 @@ const BenefitImage = styled(ImageContainer)`
   }
 `;
 
+const FeaturesWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  >:last-child {
+
+    ${media.tablet`
+      width: 50%;
+      flex: none;
+    `}
+  }
+`;
+
+const Feature = styled.div`
+  flex: 1 1 50%;
+  padding: 0 15px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.625rem;
+    margin-bottom: .75rem;
+    hyphens: auto;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+`;
+
 export {
   Wrapper,
   ImageContainer,
@@ -151,4 +185,6 @@ export {
   BenefitsWrapper,
   Benefits,
   BenefitImage,
+  FeaturesWrapper,
+  Feature,
 }

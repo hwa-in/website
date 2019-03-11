@@ -12,6 +12,8 @@ import {
   BenefitsWrapper,
   Benefits,
   BenefitImage,
+  FeaturesWrapper,
+  Feature,
 } from './styles';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
@@ -59,6 +61,24 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
             </BenefitsWrapper>
           </Container>
         </Section> 
+      }
+
+      {features && 
+        <Section>
+          <Container>
+            <FeaturesWrapper>
+              {features.map(({featureName, featureDescription}, i) => {
+                return (
+                  <Feature key={i}>
+                    {featureName && <h2>{featureName}</h2> }
+                    {featureDescription && <p>{featureDescription.featureDescription}</p> }
+                    <p>&nbsp;</p>
+                  </Feature>
+                )
+              })}
+            </FeaturesWrapper>
+          </Container>
+        </Section>
       }
     </Section>
   )
