@@ -10,6 +10,10 @@ const Form = styled.form`
     border-color: ${variables.darkGreen};
   }
 
+  .jss20.jss21 {
+    color: ${variables.darkGreen};
+  }
+
   .default {
     width: 100%;
     padding-right: 15px;
