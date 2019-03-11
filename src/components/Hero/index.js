@@ -11,25 +11,36 @@ import {
 } from './styles';
 import Waves from '../Waves';
 
-const Hero = ({ id, background, heroProduct, title, superScript, subtitle }) => (
-  <Container background={background}>
-    <Spacer />
-    <HeroContent>
-      <HeroText>
-        <p className="lazer-systems">{superScript}</p>
-        <h1>{title}</h1>
-        <p className="sub-title">{subtitle}</p>
-        <LearnMore to="/products">Learn More</LearnMore>
-      </HeroText>
-      <ProductContainer>
-        <img src={heroProduct}  alt="Lazer System"/>
-      </ProductContainer>
-    </HeroContent>
-    <WaveContainer>
-      <Waves />
-    </WaveContainer>
-  </Container>
-);
+class Hero extends React.Component => {
+
+  componentDidMount() {
+    if (typeof window !== 'undefined'){
+      this.forceUpdate();
+    }
+  }
+  render () {
+    const { id, background, heroProduct, title, superScript, subtitle } = this.props;
+    return (
+      <Container background={background}>
+        <Spacer />
+        <HeroContent>
+          <HeroText>
+            <p className="lazer-systems">{superScript}</p>
+            <h1>{title}</h1>
+            <p className="sub-title">{subtitle}</p>
+            <LearnMore to="/products">Learn More</LearnMore>
+          </HeroText>
+          <ProductContainer>
+            <img src={heroProduct}  alt="Lazer System"/>
+          </ProductContainer>
+        </HeroContent>
+        <WaveContainer>
+          <Waves />
+        </WaveContainer>
+      </Container>
+    )
+  }
+}
 
 Hero.propTypes = {
   children: PropTypes.array,
