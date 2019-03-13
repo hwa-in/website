@@ -17,15 +17,17 @@ const ContactHeader = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  width: 100%
+  width: 100%;
 
   ${media.tablet`
     display: flex;
+    flex-direction: row;
   `}
   
   .form {
     width: 100%;
     padding: 0 15px;
+    margin: 0;
 
     ${media.tablet`
       width: 58%;

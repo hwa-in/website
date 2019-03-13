@@ -19,7 +19,7 @@ class Hero extends React.Component {
     }
   }
   render () {
-    const { id, background, heroProduct, title, superScript, subtitle } = this.props;
+    const { background, heroProduct, title, superScript, subtitle } = this.props;
     return (
       <Container background={background}>
         <Spacer />

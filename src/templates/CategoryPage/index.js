@@ -4,9 +4,7 @@ import ProductNav from 'components/Products/ProductNav';
 import Category from 'components/Category';
 
 const CategoryPage = ({data, pageContext}) => {
-const { slug, title, products, name } = pageContext;
-console.log(data.categoryQuery)
-const { description, categoryImage } = data.categoryQuery;
+const { slug, title, name } = pageContext;
 // let posterior = products.filter(product => product.subCategory === "Posterior")
 // let anterior = products.filter(product => product.subCategory === "Anterior")
 

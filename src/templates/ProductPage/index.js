@@ -4,8 +4,7 @@ import { Section, Container } from 'styledComponents';
 import { ViewAll } from 'styledComponents/Button';
 import ProductNav from 'components/Products/ProductNav';
 import ProductList from 'components/Products/ProductList';
-import { navigate } from 'gatsby';
-import LearnMore, { LearnMoreDiv as CatName, LearnMoreButton as ContactUs } from 'styledComponents/LearnMore';
+import LearnMore, { LearnMoreDiv as CatName } from 'styledComponents/LearnMore';
 import {
   Wrapper,
   ImageContainer,
@@ -21,7 +20,7 @@ import {
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
   const { title, slug, subTitle, imagePreview, benefitImage, features, description, benefits } = data.contentfulProducts;
-  const { categorySlug, categoryTitle, categoryName } = pageContext;
+  const { categorySlug, categoryName } = pageContext;
   const { products } = data.allContentfulProducts;
   return (
     <Section>

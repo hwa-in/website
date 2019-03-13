@@ -4,6 +4,7 @@ import { variables, media } from 'style';
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 
   .jss34.jss35 .jss41 {
@@ -13,57 +14,67 @@ const Form = styled.form`
   .jss20.jss21 {
     color: ${variables.darkGreen};
   }
-
-  .default {
+  
+  .contact-hint {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
-    padding-right: 15px;
-    padding-bottom: .25rem;
+    padding: 5px;
+    height: 38px;
+    padding: 1rem;
+    background-color: #f5f7f9;
+
+    .hint-text {
+      font-size: .65rem;
+      line-height: 1.2;
+    }
 
     ${media.tablet`
-      width: 50%;
+      margin-top: 0;
+      margin-bottom: 0;
+      width: 46%;
+    `}
+  }
+
+  .terms-and-conditions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    ${media.tablet`
+      flex-direction: row;
+      align-items: start;
     `}
 
-    .select {
-      width: 100%;
-      height: 100%;
-      margin-top: 16px;
-      margin-bottom: 8px;
+    .text {
+      font-size: .75rem;
+      line-height: 1rem;
+      font-weight: 400;
+      margin-left: 1rem;
     }
+  }
 
-    .input {
-      width: 100%;
-    }
+  .success {
+    font-size: .875rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+  }
 
-    .form-group {
-      margin-bottom: 1rem;
+  .submit {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      label {
-        display: inline-block;
-        margin-bottom: .5rem;
-        font-size: .75rem;
-      }
-
-      .contact-hint {
-        position: relative;
-        box-sizing: border-box;
-        height: 38px;
-        margin-top: 30px;
-        padding: 5px;
-        padding-right: 20px;
-        background-color: #f5f7f9;
-
-        .hint-text {
-          position: absolute;
-          top: 50%;
-          left: 32px;
-          -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-          box-sizing: border-box;
-          display: inline-block;
-          font-size: .65rem;
-          line-height: 1.2;
-        }
-      }
+    .submit-btn {
+      background-color: ${variables.darkGreen};
     }
   }
 `;
