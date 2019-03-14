@@ -74,14 +74,15 @@ class ContactForm extends React.Component {
     
     const form = e.target;
     const { labelWidth, ...formBody } = this.state;
-
+    const encodedForm = encode({
+      "form-name": form.getAttribute('name'),
+      ...formBody,
+    })
+    console.log(encodedForm)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute('name'),
-        ...formBody,
-      })
+      body: encodedForm,
     })
     .then(() => {
       form.reset();
