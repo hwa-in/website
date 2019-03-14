@@ -141,12 +141,10 @@ class ContactForm extends React.Component {
         </p>
           <FormControl
             variant="outlined"
-            name='topic' 
             className={classes.formControl}
           >
             <InputLabel 
               htmlFor="topic-simple"
-              name='topic'
               ref={ref => {
                 this.InputLabelRef = ref;
               }}
@@ -156,7 +154,6 @@ class ContactForm extends React.Component {
             <Select
               value={topic}
               onChange={this.handleSelect}
-              name='topic'
               input={
                 <OutlinedInput
                   labelWidth={this.state.labelWidth}
@@ -194,7 +191,7 @@ class ContactForm extends React.Component {
               input={
                 <OutlinedInput
                   labelWidth={this.state.labelWidth}
-                  name= 'salutation'
+                  name='salutation'
                   id= 'salutation-simple'
                 />
               }
