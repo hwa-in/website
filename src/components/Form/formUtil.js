@@ -2,19 +2,15 @@ const formUtil = {
   topics: [
     {
       value: "product",
-      name: "Product request",
+      name: "Request a demo",
     },          
     {
-      value: "showroom",
-      name: "Showroom",
-    },
-    {
       value: "technical",
-      name: "Technical",
+      name: "Technical Question",
     },
     {
-      value: "applicatory",
-      name: "Applicatory",
+      value: "inquiry",
+      name: "General Inquery",
     },
     {
       value: "other",

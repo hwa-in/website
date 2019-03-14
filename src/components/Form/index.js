@@ -46,15 +46,15 @@ function encode(data) {
 class ContactForm extends React.Component {
   defaultValues = {
     topic: '',
-    salutation: 'mr',
-    title: 'coo',
-    firstName: 'andrew',
-    lastName: 'locke',
-    company: 'mine',
-    phone: '123-456-7891',
-    email: 'test@test.com',
-    country: 'US',
-    message: 'This is my sample message',
+    salutation: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    company: '',
+    phone: '',
+    email: '',
+    country: '',
+    message: '',
     termsAndConditions: false,
   }
 
@@ -78,7 +78,6 @@ class ContactForm extends React.Component {
       "form-name": form.getAttribute('name'),
       ...formBody,
     })
-    console.log(encodedForm)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
