@@ -140,11 +140,13 @@ class ContactForm extends React.Component {
           </label>
         </p>
           <FormControl
-            variant="outlined" 
+            variant="outlined"
+            name='topic' 
             className={classes.formControl}
           >
             <InputLabel 
               htmlFor="topic-simple"
+              name='topic'
               ref={ref => {
                 this.InputLabelRef = ref;
               }}
@@ -154,6 +156,7 @@ class ContactForm extends React.Component {
             <Select
               value={topic}
               onChange={this.handleSelect}
+              name='topic'
               input={
                 <OutlinedInput
                   labelWidth={this.state.labelWidth}
@@ -209,6 +212,7 @@ class ContactForm extends React.Component {
             label="Title"
             className={classes.formControl}
             value={title}
+            name='title'
             onChange={this.handleChange('title')}
             margin="normal"
           />
@@ -220,6 +224,7 @@ class ContactForm extends React.Component {
             value={firstName}
             onChange={this.handleChange('firstName')}
             margin="normal"
+            name="firstName"
           />
           <TextField
             variant="outlined"
@@ -229,6 +234,7 @@ class ContactForm extends React.Component {
             value={lastName}
             onChange={this.handleChange('lastName')}
             margin="normal"
+            name="lastName"
           />
           <TextField
             variant="outlined"
@@ -238,6 +244,7 @@ class ContactForm extends React.Component {
             value={company}
             onChange={this.handleChange('company')}
             margin="normal"
+            name="company"
           />
           <TextField
             variant="outlined"
@@ -247,6 +254,7 @@ class ContactForm extends React.Component {
             value={phone}
             onChange={this.handleChange('phone')}
             margin="normal"
+            name="phone"
           />
           <TextField
             variant="outlined"
@@ -256,6 +264,7 @@ class ContactForm extends React.Component {
             value={email}
             onChange={this.handleChange('email')}
             margin="normal"
+            name="email"
           />
         <FormControl
           variant="outlined"
@@ -548,6 +557,7 @@ class ContactForm extends React.Component {
           onChange={this.handleChange('message')}
           margin="normal"
           rows="4"
+          name="message"
         />
         <div className="terms-and-conditions">
           <Switch
@@ -555,6 +565,7 @@ class ContactForm extends React.Component {
             onChange={this.handleCheck('termsAndConditions')}
             value={termsAndConditions}
             color="primary"
+            name="termsAndConditions"
           />
           <p className="text">I agree that the data provided by me in the contact form may be used and stored by HWA-IN to answer my questions and for further communication, in particular also for sending information material and for advertising purposes for medical laser products by e-mail or telephone. I know that my consent can be withdrawn at any time in the future.</p>
         </div>
