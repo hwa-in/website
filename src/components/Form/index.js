@@ -13,6 +13,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 import formUtil from './formUtil';
 import { FaExclamationCircle } from 'react-icons/fa';
+import { TextValidator, SelectValidator } from 'react-material-ui-form-validator';
 import {
   Form,
 } from './styles';
@@ -56,6 +57,7 @@ class ContactForm extends React.Component {
     country: '',
     message: '',
     termsAndConditions: false,
+    errors: false,
   }
 
   state = {
@@ -71,13 +73,21 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    
-    const form = e.target;
     const { labelWidth, ...formBody } = this.state;
-    const encodedForm = encode({
-      "form-name": form.getAttribute('name'),
-      ...formBody,
-    })
+    if (!formBody.termsAndConditions) {
+      const submitMsg = "You must accept the terms and conditions before you can submit the form"
+      this.setState({ submitMsg });
+    } else {
+      const form = e.target;
+      const encodedForm = encode({
+        "form-name": form.getAttribute('name'),
+        ...formBody,
+      })
+      this.submitForm(encodedForm, form)
+    }
+  };
+
+  submitForm = (encodedForm, form) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -92,7 +102,14 @@ class ContactForm extends React.Component {
       const submitMsg = 'There was a problem. Try again.';
       this.setState({ submitMsg });
     });
-  };
+  }
+
+  throwErrors = (errors) => {
+    if (errors.length) {
+      const submitMsg = "You must accept the terms and conditions before you can submit the form"
+      this.setState({errors: true, submitMsg})
+    }
+  }
 
   handleSelect = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -120,7 +137,6 @@ class ContactForm extends React.Component {
     } = this.state;
 
     const { classes } = this.props;
-
     return (
       <Form 
         name="contact-form"
@@ -128,6 +144,7 @@ class ContactForm extends React.Component {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={this.handleSubmit}
+        onError={errors => this.throwErrors(errors)}
       >
         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
         <input type="hidden" name="bot-field" />
@@ -138,39 +155,23 @@ class ContactForm extends React.Component {
             <input name="bot-field" onChange={this.handleChange} />
           </label>
         </p>
-          <FormControl
-            variant="outlined"
-            className={classes.formControl}
-          >
-            <InputLabel 
-              htmlFor="topic-simple"
-              ref={ref => {
-                this.InputLabelRef = ref;
-              }}
-            >
-              Topic
-            </InputLabel>
-            <Select
-              value={topic}
-              onChange={this.handleSelect}
-              input={
-                <OutlinedInput
-                  labelWidth={this.state.labelWidth}
-                  name='topic'
-                  id='topic-simple'
-                />
-              }
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {
-                formUtil.topics.map(({name, value}, i) => (
-                  <MenuItem key={i} value={value}>{name}</MenuItem>
-                ))
-              }
-            </Select>
-          </FormControl>
+        <SelectValidator
+          variant="outlined"
+          value={topic}
+          name="topic"
+          label="Topic *"
+          onChange={this.handleSelect}
+          validators={['required']}
+          errorMessages={['This field is required']}
+          className={classes.formControl}
+        >
+          <MenuItem value=""><em>None</em></MenuItem>
+          {
+            formUtil.topics.map(({name, value}, i) => (
+              <MenuItem key={i} value={value}>{name}</MenuItem>
+            ))
+          }
+        </SelectValidator>
         <div className="contact-hint">
           <FaExclamationCircle />
           <div className="hint-text">No medical advice for patients. Please contact a specialist.</div>
@@ -182,7 +183,7 @@ class ContactForm extends React.Component {
               }}
               htmlFor="salutation-simple"
             >
-              Salutation
+              Salutation <span className="required">*</span>
             </InputLabel>
             <Select
               value={salutation}
@@ -222,15 +223,17 @@ class ContactForm extends React.Component {
             margin="normal"
             name="firstName"
           />
-          <TextField
+          <TextValidator
             variant="outlined"
-            id="standard-lastName"
-            label="Last Name"
+            id="standard-multiline-flexible"
+            label="Last Name *"
             className={classes.formControl}
             value={lastName}
             onChange={this.handleChange('lastName')}
             margin="normal"
             name="lastName"
+            validators={['required']}
+            errorMessages={['This field is required']}
           />
           <TextField
             variant="outlined"
@@ -252,15 +255,16 @@ class ContactForm extends React.Component {
             margin="normal"
             name="phone"
           />
-          <TextField
+          <TextValidator
+            label="Email *"
+            onChange={this.handleChange('email')}
+            name="email"
             variant="outlined"
-            id="standard-email"
-            label="Email"
             className={classes.formControl}
             value={email}
-            onChange={this.handleChange('email')}
             margin="normal"
-            name="email"
+            validators={['required', 'isEmail']}
+            errorMessages={['This field is required', 'Email is not valid']}
           />
         <FormControl
           variant="outlined"
@@ -542,10 +546,10 @@ class ContactForm extends React.Component {
             <MenuItem value="ZW">Zimbabwe</MenuItem>
           </Select>
         </FormControl>
-        <TextField
+        <TextValidator
           variant="outlined"
           id="standard-multiline-flexible"
-          label="Message"
+          label="Message *"
           className={classes.textField}
           multiline
           fullWidth
@@ -554,6 +558,8 @@ class ContactForm extends React.Component {
           margin="normal"
           rows="4"
           name="message"
+          validators={['required']}
+            errorMessages={['This field is required']}
         />
         <div className="terms-and-conditions">
           <Switch

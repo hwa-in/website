@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { variables, media } from 'style';
+import { ValidatorForm } from 'react-material-ui-form-validator';
 
-const Form = styled.form`
+const Form = styled(ValidatorForm)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
