@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables, media } from 'style';
+import { variables } from 'style';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 
 const Form = styled(ValidatorForm)`
@@ -42,11 +42,11 @@ const Form = styled(ValidatorForm)`
       line-height: 1.2;
     }
 
-    ${media.tablet`
+    @media (min-width: 960px) {
       margin-top: 0;
       margin-bottom: 0;
       width: 46%;
-    `}
+    }
   }
 
   .terms-and-conditions {
@@ -61,7 +61,7 @@ const Form = styled(ValidatorForm)`
       flex-direction: row;
       justify-content: start;
 
-      @media (min-width: 990px) {
+      @media (min-width: 960px) {
         flex-direction: column;
       }
 
@@ -71,10 +71,10 @@ const Form = styled(ValidatorForm)`
       }
     }
 
-    ${media.tablet`
+    @media (min-width: 960px) {
       flex-direction: row;
       align-items: start;
-    `}
+    }
 
     .text {
       font-size: .75rem;

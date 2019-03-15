@@ -27,8 +27,13 @@ const styles = theme => ({
   },
   formControl: {
     minWidth: 120,
-    width: "45%",
     margin: theme.spacing.unit,
+    [theme.breakpoints.down('sm')]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up('md')]: {
+      width: "45%",
+    },
   },
   textField: {
     minWidth: 240,

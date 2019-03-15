@@ -20,22 +20,19 @@ const ContactHeader = styled.div`
 const ContactWrapper = styled.div`
   width: 100%;
 
-  ${media.tablet`
+  @media (min-width: 960px) {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-  `}
+  }
+  
   
   .form {
     width: 100%;
     padding: 0 15px;
     margin: 0;
 
-    ${media.tablet`
-      width: 58%;
-    `}
-
-    @media (min-width: 990px) {
+    @media (min-width: 960px) {
       width: 66%;
     }
   }
@@ -44,11 +41,7 @@ const ContactWrapper = styled.div`
     width: 100%;
     padding: 0 15px;
 
-    ${media.tablet`
-      width: 41%;
-    `}
-
-    @media (min-width: 990px) {
+    @media (min-width: 960px) {
       width: 33%;
     }
 
