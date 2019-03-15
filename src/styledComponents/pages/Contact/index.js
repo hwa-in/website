@@ -22,6 +22,7 @@ const ContactWrapper = styled.div`
   ${media.tablet`
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
   `}
   
   .form {
@@ -49,6 +50,10 @@ const ContactWrapper = styled.div`
     @media (min-width: 990px) {
       width: 33%;
     }
+
+    ${media.desktop`
+      width: 25%;
+    `}
   }
 `;
 

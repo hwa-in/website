@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import { Section, Container, LearnMore } from 'styledComponents';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import {
   ContactHeader,
   ContactWrapper,
   DiscoverMore,
 } from 'styledComponents/pages/Contact';
 import ContactForm from 'components/Form';
+import ContactInfo from 'components/ContactInfo';
 
 
-const ContactPage = (data) => {
-  console.log(data)
+const ContactPage = ({data}) => {
+  const { contactInfo } = data.contactQuery;
   return (
     <Fragment>
       <Section padBottom="80px">
@@ -30,7 +31,9 @@ const ContactPage = (data) => {
               </div>
               {/* Contact info */}
               <div className="contact">
-                Contact info
+                <ContactInfo
+                  contactInfo={contactInfo}
+                />
               </div>
             </ContactWrapper>
           </Section>
@@ -59,3 +62,22 @@ const ContactPage = (data) => {
 };
 
 export default ContactPage;
+
+export const contactPageQuery = graphql`
+  query ContactInfo {
+    contactQuery: allContentfulContactInfo {
+      contactInfo: edges {
+        contact: node {
+          contentful_id
+          title
+          phoneNumber
+          emailAddress
+          faxNumber
+          address {
+            address
+          }
+        }
+      }
+    }
+  }
+`

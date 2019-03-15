@@ -14,6 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import formUtil from './formUtil';
 import { FaExclamationCircle } from 'react-icons/fa';
 import { TextValidator, SelectValidator } from 'react-material-ui-form-validator';
+import SwitchValidator from './SwitchValidator';
 import {
   Form,
 } from './styles';
@@ -66,24 +67,23 @@ class ContactForm extends React.Component {
   }
 
   componentDidMount() {
+    Form.addValidationRule('isTruthy', value => value);
     this.setState({
       labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     });
   }
 
   handleSubmit = e => {
-    e.preventDefault();
     const { labelWidth, ...formBody } = this.state;
     if (!formBody.termsAndConditions) {
       const submitMsg = "You must accept the terms and conditions before you can submit the form"
       this.setState({ submitMsg });
     } else {
-      const form = e.target;
       const encodedForm = encode({
-        "form-name": form.getAttribute('name'),
+        "form-name": "contact-form",
         ...formBody,
       })
-      this.submitForm(encodedForm, form)
+      this.submitForm(encodedForm)
     }
   };
 
@@ -94,9 +94,8 @@ class ContactForm extends React.Component {
       body: encodedForm,
     })
     .then(() => {
-      form.reset();
       const submitMsg = 'Thanks! We\'ll keep you updated.';
-      this.setState({ submitMsg });
+      this.setState({ submitMsg, ...this.defaultValues });
     })
     .catch(() => {
       const submitMsg = 'There was a problem. Try again.';
@@ -176,33 +175,22 @@ class ContactForm extends React.Component {
           <FaExclamationCircle />
           <div className="hint-text">No medical advice for patients. Please contact a specialist.</div>
         </div>
-        <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel 
-              ref={ref => {
-                this.InputLabelRef = ref;
-              }}
-              htmlFor="salutation-simple"
-            >
-              Salutation <span className="required">*</span>
-            </InputLabel>
-            <Select
-              value={salutation}
-              onChange={this.handleSelect}
-              input={
-                <OutlinedInput
-                  labelWidth={this.state.labelWidth}
-                  name='salutation'
-                  id= 'salutation-simple'
-                />
-              }
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="mr">Mr</MenuItem>
-              <MenuItem value="ms">Ms</MenuItem>
-            </Select>
-          </FormControl>
+        <SelectValidator
+          variant="outlined"
+          value={salutation}
+          name="salutation"
+          label="Salutation *"
+          onChange={this.handleSelect}
+          validators={['required']}
+          errorMessages={['This field is required']}
+          className={classes.formControl}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="mr">Mr</MenuItem>
+          <MenuItem value="ms">Ms</MenuItem>
+        </SelectValidator>
           <TextField
             variant="outlined"
             id="standard-title"
@@ -568,6 +556,15 @@ class ContactForm extends React.Component {
             value={termsAndConditions}
             color="primary"
             name="termsAndConditions"
+          />
+          <SwitchValidator
+            validators={['isTruthy']}
+            errorMessages={['this field is required']}
+            onChange={this.handleCheck('termsAndConditions')}
+            color="primary"
+            name="termsAndConditions"
+            checked={termsAndConditions}
+            value={termsAndConditions} // <---- you must provide this prop, it will be used only for validation
           />
           <p className="text">I agree that the data provided by me in the contact form may be used and stored by HWA-IN to answer my questions and for further communication, in particular also for sending information material and for advertising purposes for medical laser products by e-mail or telephone. I know that my consent can be withdrawn at any time in the future.</p>
         </div>
