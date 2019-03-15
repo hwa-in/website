@@ -13,7 +13,6 @@ import ContactInfo from 'components/ContactInfo';
 const ContactPage = ({ data, location }) => {
   const { contactInfo } = data.contactQuery;
   const { state } = location;
-  console.log(state)
   return (
     <Fragment>
       <Section padBottom="80px">

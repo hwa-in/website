@@ -5,14 +5,15 @@ const ContactHeader = styled.div`
 
   h1 {
     color: ${variables.darkGreen};
+    margin-bottom: 1.5rem;
   }
 
   h3 {
-
+    margin-bottom: 1.25rem;
   }
 
   p {
-
+    font-size: 0.875rem;
   }
 `;
 

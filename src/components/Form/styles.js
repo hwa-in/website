@@ -12,6 +12,10 @@ const Form = styled(ValidatorForm)`
     border-color: ${variables.darkGreen};
   }
 
+  #standard-title {
+    border-color: ${variables.darkGreen} !important;
+  }
+
   .jss20.jss21 {
     color: ${variables.darkGreen};
   }
