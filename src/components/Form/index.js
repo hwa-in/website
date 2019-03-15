@@ -14,9 +14,10 @@ import { withStyles } from '@material-ui/core/styles';
 import formUtil from './formUtil';
 import { FaExclamationCircle } from 'react-icons/fa';
 import { TextValidator, SelectValidator } from 'react-material-ui-form-validator';
-import SwitchValidator from './SwitchValidator';
 import {
   Form,
+  SubmitMessage,
+  ErrorMessage,
 } from './styles';
 
 const styles = theme => ({
@@ -58,18 +59,17 @@ class ContactForm extends React.Component {
     country: '',
     message: '',
     termsAndConditions: false,
-    errors: false,
   }
 
   state = {
     labelWidth: 0,
+    errors: false,
     ...this.defaultValues,
   }
 
   componentDidMount() {
     Form.addValidationRule('isTruthy', value => value);
     const { product } = this.props;
-    console.log(this.props)
     if (product) {
       this.setState({
         topic: "product",
@@ -82,17 +82,20 @@ class ContactForm extends React.Component {
   }
 
   handleSubmit = e => {
-    const { labelWidth, ...formBody } = this.state;
-    if (!formBody.termsAndConditions) {
-      const submitMsg = "You must accept the terms and conditions before you can submit the form"
-      this.setState({ submitMsg });
-    } else {
-      const encodedForm = encode({
-        "form-name": "contact-form",
-        ...formBody,
-      })
-      this.submitForm(encodedForm)
-    }
+    const {
+      labelWidth,
+      errors,
+      termsAndConditions,
+      errorMessage,
+      submitMsg,
+      checkedError,
+      ...formBody
+    } = this.state;
+    const encodedForm = encode({
+      "form-name": "contact-form",
+      ...formBody,
+    })
+    this.submitForm(encodedForm)
   };
 
   submitForm = (encodedForm, form) => {
@@ -103,7 +106,8 @@ class ContactForm extends React.Component {
     })
     .then(() => {
       const submitMsg = 'Thanks! We\'ll keep you updated.';
-      this.setState({ submitMsg, ...this.defaultValues });
+      const submitType = 'success';
+      this.setState({ submitMsg, submitType, ...this.defaultValues });
     })
     .catch(() => {
       const submitMsg = 'There was a problem. Try again.';
@@ -113,8 +117,8 @@ class ContactForm extends React.Component {
 
   throwErrors = (errors) => {
     if (errors.length) {
-      const submitMsg = "You must accept the terms and conditions before you can submit the form"
-      this.setState({errors: true, submitMsg})
+      const errorMessage = "You must accept the terms and conditions before you can submit the form"
+      this.setState({error: true, errorMessage, checkedError: true})
     }
   }
 
@@ -125,7 +129,10 @@ class ContactForm extends React.Component {
   };
 
   handleCheck = name => event => {
-    this.setState({ [name]: event.target.checked });
+    this.setState((state) => (
+      { termsAndConditions: !state.termsAndConditions,
+        checkedError: !state.checkedError }
+    ));
   };
 
   render() {
@@ -141,6 +148,9 @@ class ContactForm extends React.Component {
       country,
       message,
       termsAndConditions,
+      submitMsg,
+      errorMessage,
+      checkedError,
     } = this.state;
 
     const { classes } = this.props;
@@ -566,18 +576,10 @@ class ContactForm extends React.Component {
             color="primary"
             name="termsAndConditions"
           />
-          <SwitchValidator
-            validators={['isTruthy']}
-            errorMessages={['this field is required']}
-            onChange={this.handleCheck('termsAndConditions')}
-            color="primary"
-            name="termsAndConditions"
-            checked={termsAndConditions}
-            value={termsAndConditions} // <---- you must provide this prop, it will be used only for validation
-          />
           <p className="text">I agree that the data provided by me in the contact form may be used and stored by HWA-IN to answer my questions and for further communication, in particular also for sending information material and for advertising purposes for medical laser products by e-mail or telephone. I know that my consent can be withdrawn at any time in the future.</p>
         </div>
-        <div className="success">{this.state.submitMsg}</div>
+        { checkedError && <ErrorMessage className="message">{errorMessage}</ErrorMessage> }
+        <SubmitMessage className="message">{submitMsg}</SubmitMessage>
         <div className="submit">
           <Button variant="contained" type="submit" color="primary" className="submit-btn">
             Submit

@@ -51,6 +51,22 @@ const Form = styled(ValidatorForm)`
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 
+    // Access the div around SwitchValidator
+    &> :first-child {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+
+      @media (min-width: 990px) {
+        flex-direction: column;
+      }
+
+      &> div {
+        position: relative !important;
+        margin-top: 0 !important;
+      }
+    }
+
     ${media.tablet`
       flex-direction: row;
       align-items: start;
@@ -64,7 +80,7 @@ const Form = styled(ValidatorForm)`
     }
   }
 
-  .success {
+  .message {
     font-size: .875rem;
     height: 3rem;
     display: flex;
@@ -84,6 +100,16 @@ const Form = styled(ValidatorForm)`
   }
 `;
 
+const SubmitMessage = styled.p`
+  color: ${variables.darkGreen};
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+`
+
 export {
   Form,
+  SubmitMessage,
+  ErrorMessage,
 };
