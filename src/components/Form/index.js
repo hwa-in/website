@@ -68,6 +68,14 @@ class ContactForm extends React.Component {
 
   componentDidMount() {
     Form.addValidationRule('isTruthy', value => value);
+    const { product } = this.props;
+    console.log(this.props)
+    if (product) {
+      this.setState({
+        topic: "product",
+        message: `I would like to request a demo for the following product:\n${product.productTitle}`,
+      })
+    }
     this.setState({
       labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     });
@@ -155,6 +163,7 @@ class ContactForm extends React.Component {
           </label>
         </p>
         <SelectValidator
+          id="child"
           variant="outlined"
           value={topic}
           name="topic"

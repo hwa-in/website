@@ -41,8 +41,7 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
             {subTitle && <h3>{subTitle}</h3>}
             {description && <p>{description.description}</p>}
             <MoreInfo>
-              {/* <ContactUs>Request a Demo</ContactUs> */}
-              <LearnMore to="/contact">Request a Demo</LearnMore>
+              <LearnMore to={`/contact`} state={{product: slug, productTitle: title}}>Request a Demo</LearnMore>
             </MoreInfo>
           </DetailsContainer>
         </Wrapper>

@@ -15,6 +15,10 @@ const Form = styled(ValidatorForm)`
   .jss20.jss21 {
     color: ${variables.darkGreen};
   }
+
+  #child {
+    width: 100%;
+  }
   
   .contact-hint {
     display: flex;
