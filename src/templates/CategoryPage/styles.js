@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   @media (min-width: 990px) {
     display: flex;
     flex-direction: row;
-    min-height: 500px;
+    min-height: 400px;
   }
 `;
 
@@ -37,14 +37,14 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   align-items: start;
   text-align: left;
-  justify-content: space-around;
+  justify-content: center;
 
   h1 {
     color: ${variables.darkGreen};
     font-size: 3rem;
     font-weight: 400;
     line-height: 3.375rem;
-    margin-bottom: .5rem 0 1.5rem;
+    margin: .5rem 0 1.5rem;
   }
 
   h3 {

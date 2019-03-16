@@ -9,22 +9,31 @@ import {
   Typography,
 } from '@material-ui/core';
 import LearnMore from 'styledComponents/LearnMore';
+import { Link } from 'gatsby';
 
 
 const styles = (theme) => ({
   card: {
     maxWidth: 345,
+    height: 450,
     [theme.breakpoints.down('sm')]: {
       marginBottom: '2rem',
     },
+    position: 'relative',
   },
   media: {
     // ⚠️ object-fit is not supported by IE 11.
-    objectFit: 'cover',
+    objectFit: 'contain',
+    padding: '1rem',
+  },
+  learnMore: {
+    position: 'absolute',
+    bottom: 16,
+    left: 6,
   },
 });
 
-const ProductCard = ({ classes, id, slug, title, description, imagePreview }) => {
+const ProductCard = ({ classes, id, slug, title, description, imagePreview, category }) => {
   return (
     <Card className={classes.card}>
         {imagePreview && 
@@ -38,15 +47,17 @@ const ProductCard = ({ classes, id, slug, title, description, imagePreview }) =>
           />
         }
       <CardContent>
+          <Link to={`/products/${category}/${slug}`}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
         </Typography>
+          </Link>
         <Typography component="p">
-          {description.description}
+          {description.childMarkdownRemark.excerpt}
         </Typography>
       </CardContent>
-      <CardActions>
-        <LearnMore to={'/products'}>Learn More</LearnMore>
+      <CardActions className={classes.learnMore}>
+        <LearnMore to={`/products/${category}/${slug}`}>Learn More</LearnMore>
       </CardActions>
     </Card>
   );

@@ -20,7 +20,7 @@ const styles = (props) => ({
   },
 })
 
-const ProductContainer = ({products}) => {
+const ProductContainer = ({products, category}) => {
   return (
     <ProductsWrapper>
       {
@@ -29,6 +29,7 @@ const ProductContainer = ({products}) => {
             <ProductCard 
               key={index}
               {...product}
+              category={category}
             />
           )
         })
@@ -65,6 +66,7 @@ class CategoryPage extends React.Component {
     const allProducts = products;
     let posterior = products.filter(product => product.subCategory === "Posterior")
     let anterior = products.filter(product => product.subCategory === "Anterior")
+    console.log(slug)
     return (
       <Section>
         <ProductNav
@@ -83,7 +85,7 @@ class CategoryPage extends React.Component {
             </DetailsContainer>
           </Wrapper>
         </Container>
-        <Section noPadBottom>
+        <Section noPad>
           <Container>
             <Tabs
               value={value}
@@ -98,9 +100,9 @@ class CategoryPage extends React.Component {
           </Container>
           <Section dark>
             <Container>
-              {value === 0 && <ProductContainer products={allProducts}/>}
-              {value === 1 && <ProductContainer products={anterior}/>}
-              {value === 2 && <ProductContainer products={posterior}/>}
+              {value === 0 && <ProductContainer products={allProducts} category={slug} />}
+              {value === 1 && <ProductContainer products={anterior} category={slug} /> }
+              {value === 2 && <ProductContainer products={posterior} category={slug} />}
             </Container>
           </Section>
         </Section>
@@ -128,7 +130,9 @@ export const ProductQuery = graphql`
         title
         price
         description {
-          description
+          childMarkdownRemark {
+            excerpt(pruneLength: 200)
+          }
         }
         subCategory
         imagePreview {
