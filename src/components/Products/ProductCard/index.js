@@ -15,7 +15,7 @@ import { Link } from 'gatsby';
 const styles = (theme) => ({
   card: {
     maxWidth: 345,
-    height: 450,
+    height: 445,
     [theme.breakpoints.down('sm')]: {
       marginBottom: '2rem',
     },

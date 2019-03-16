@@ -15,7 +15,7 @@ const CarouselWrapper = styled.div`
   }
 
   .alice-carousel__wrapper {
-    height: 400px;
+    height: 450px;
   }
 `;
 

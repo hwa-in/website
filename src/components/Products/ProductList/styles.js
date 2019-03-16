@@ -49,7 +49,6 @@ const ProductInfo = styled.div`
     font-size: 1rem;
     line-height: 1.375rem;
     color: ${variables.darkGrey};
-    margin-bottom: 1.25rem;
   }
 `;
 

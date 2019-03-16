@@ -1,11 +1,17 @@
 import styled from 'styled-components';
-import { variables } from 'style';
+import { variables, media } from 'style';
 
 const NewsSection = styled.article`
-  flex: 0 0 66.66667%;
-  max-width: 66.66667%;
+  flex: 0 0 100%;
   position: relative;
   min-height: 1px;
+  margin-top: 2.5rem;
+
+  @media (min-width: 992px) {
+    margin-top: 0;
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
 `;
 
 const HeaderSection = styled.div`
@@ -57,15 +63,23 @@ const NewsContainer = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+
+  ${media.tablet`
+    flex-direction: row;
+    justify-content: space-around;
+  `}
 `;
 
 const NewsCard = styled.div`
-  flex; 0 0 50%;
-  max-width: 50%;
   padding: 0 15px;
   display: block;
+  width: 100%;
+  
+  ${media.tablet`
+    flex; 0 0 50%;
+    max-width: 50%;
+  `}
 `;
 
 const ImageContainer = styled.div`

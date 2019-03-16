@@ -7,24 +7,23 @@ import { Section, Container } from 'styledComponents';
 import WhatsNew from 'components/WhatsNew';
 import ProductList from 'components/Products/ProductList';
 import EventPreview from 'components/Events/EventPreview';
+import { media } from 'style';
 import styled from 'styled-components';
-import { variables } from 'style';
 
-const NewProductWrapper = styled.article`
+const UpperSection = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  max-width: 335px;
   margin: 0 auto;
-  padding: 120px 0;
-  background-color: ${variables.white};
 
-  h1 {
-    text-align: center;
-    margin-bottom: 60px;
-    color: ${variables.darkGreen};
-  }
+  ${media.tablet`
+    max-width: 760px
+  `}
 
-  .hiddenLink {
-    height: 100%;
-    width: 100%;
+  @media (min-width: 990px) {
+    flex-direction: row;
+    max-width: 960px;
   }
 `;
 
@@ -73,17 +72,19 @@ class RootIndex extends React.Component {
           <h3>Site Description</h3>
         </Hero>
         <Section>
-          <Container row>
+          <UpperSection>
             <EventPreview events={events} />
             <WhatsNew  newsStories={ newsStories } />
-          </Container>
+          </UpperSection>
         </Section>
-        <Section dark>
-          <NewProductWrapper>
-            <h1>New Products</h1>
+          <Section dark noPadBottom>
+            <Container>
+              <h1>New Products</h1>
+            </Container>
+          </Section>
+          <Section dark>
             <ProductList products={products} />
-          </NewProductWrapper>
-        </Section>
+          </Section>
       </Fragment>
     )
   }
@@ -137,7 +138,9 @@ export const pageQuery = graphql`
             }
           }
           description {
-            description
+            childMarkdownRemark {
+              excerpt(pruneLength: 200)
+            }
           }
           subCategory
           category {

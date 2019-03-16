@@ -23,7 +23,7 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
   const { categorySlug, categoryName } = pageContext;
   const { products } = data.allContentfulProducts;
   return (
-    <Section>
+    <Section noPadBottom>
       <ProductNav
         categorySlug={categorySlug}
         categoryName={categoryName}
@@ -92,7 +92,9 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
                 text="All products"
               />
           </Container>
-          <ProductList products={products}/>
+          <Section dark noPadBottom>
+            <ProductList products={products}/>
+          </Section>
         </Section>
       }
     </Section>
@@ -144,7 +146,9 @@ export const pageQuery = graphql`
             }
           }
           description {
-            description
+            childMarkdownRemark {
+              excerpt(pruneLength: 200)
+            }
           }
           subCategory
           category {

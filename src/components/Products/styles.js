@@ -40,10 +40,6 @@ const Wrapper = styled.div`
     max-height: 0;
     transition: all 300ms ease-in-out;
   }
-
-  h2 {
-    padding: 5px 30px 25px;
-  }
 `;
 
 const Close = styled.span`

@@ -29,7 +29,7 @@ const ProductContainer = ({products, category}) => {
             <ProductCard 
               key={index}
               {...product}
-              category={category}
+              categorySlug={category}
             />
           )
         })
@@ -68,7 +68,7 @@ class CategoryPage extends React.Component {
     let anterior = products.filter(product => product.subCategory === "Anterior")
     console.log(slug)
     return (
-      <Section>
+      <Section noPadBottom>
         <ProductNav
           categorySlug={slug}
           categoryName={name}

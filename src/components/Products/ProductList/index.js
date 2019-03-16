@@ -9,6 +9,7 @@ import {
   ProductInfo,
   LearnMore,
 } from './styles';
+import ProductCard from '../ProductCard';
 
 const Product = (product) => {
   const { category, slug, title, imagePreview: {fluid}, description, productPage, categorySlug} = product
@@ -48,11 +49,11 @@ class ProductList extends React.Component {
     const { products, productPage } = this.props
     if (products[0].node) {
       return products.map(({node}, index ) => {
-          return <Product key={index} {...node} />
+          return <ProductCard key={index} {...node} />
       }) 
     } else {
       return products.map((product, index ) => {
-        return <Product 
+        return <ProductCard 
           key={index} 
           {...product} 
           productPage={productPage}

@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import { variables } from 'style';
 
 const EventSection = styled.article`
-  flex: 0 0 33.33333%;
-  max-width: 33.33333%;
+  flex: 0 0 100%;
   position: relative;
   min-height: 1px;
   padding: 0 15px;
+
+  @media (min-width: 992px) {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
 `;
 
 const HeaderSection = styled.div`

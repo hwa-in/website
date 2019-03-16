@@ -63,7 +63,9 @@ export const ProductQuery = graphql`
             title
             price
             description {
-              description
+              childMarkdownRemark {
+                excerpt(pruneLength: 200)
+              }
             }
             category {
               slug
