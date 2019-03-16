@@ -1,51 +1,115 @@
 import React from 'react';
 import { Section, Container } from 'styledComponents';
 import ProductNav from 'components/Products/ProductNav';
-import Category from 'components/Category';
+import { Tabs, Tab } from '@material-ui/core';
+import { LearnMoreDiv as CatName } from 'styledComponents/LearnMore';
+import { graphql } from 'gatsby';
+import ProductCard from './ProductCard';
+import { variables } from 'style';
+import { withStyles } from '@material-ui/core/styles';
+import {
+  Wrapper,
+  ImageContainer,
+  DetailsContainer,
+  ProductsWrapper
+} from './styles';
 
-const CategoryPage = ({data, pageContext}) => {
-const { slug, title, name } = pageContext;
-// let posterior = products.filter(product => product.subCategory === "Posterior")
-// let anterior = products.filter(product => product.subCategory === "Anterior")
+const styles = (props) => ({
+  tabsIndicator: {
+    backgroundColor: `${variables.darkGreen}`,
+  },
+})
 
-// console.log("Category Page, anterior", anterior)
-return (
-  <Section>
-    <ProductNav
-      categorySlug={slug}
-      categoryName={name}
-    />
-    <Container>
-      <h1>{title}</h1>
-      <Category
-        {...data.categoryQuery}
-      />
-      {/* <Category
-        categoryTitle="Anterior"
-        slug={slug}
-        products={anterior}
-        subCategory={true}
-      />
-      <Category
-        categoryTitle="Posterior"
-        slug={slug}
-        products={posterior}
-        subCategory={true}
-      /> */}
-      {/* <div>
+const ProductContainer = ({products}) => {
+  return (
+    <ProductsWrapper>
       {
-        products.map(({id, title, slug}) => (
-          <Link to={`products/${pageContext.slug}/${slug}`} key={id}>
-            <h2>{title}</h2>
-          </Link>
-        ))
+        products.map((product, index) => {
+          return (
+            <ProductCard 
+              key={index}
+              {...product}
+            />
+          )
+        })
       }
-      </div> */}
-    </Container>
-  </Section>  
-)}
+    </ProductsWrapper>
+  )
+}
 
-export default CategoryPage;
+class CategoryPage extends React.Component {
+
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render(){
+    const { 
+      pageContext: {
+        slug, title, name,
+      }, 
+      data: {
+        categoryQuery: {
+          products,
+          description,
+          categoryImage,
+        },
+      },
+      classes,
+    } = this.props;
+    const { value } = this.state;
+    const allProducts = products;
+    let posterior = products.filter(product => product.subCategory === "Posterior")
+    let anterior = products.filter(product => product.subCategory === "Anterior")
+    return (
+      <Section>
+        <ProductNav
+          categorySlug={slug}
+          categoryName={name}
+        />
+        <Container>
+          <Wrapper>
+            <ImageContainer>
+              {categoryImage && <img src={categoryImage.fluid.src} alt={title} />}
+            </ImageContainer>
+            <DetailsContainer>
+              <CatName>{name}</CatName>
+              {title && <h1>{title}</h1>}
+              {description && <p>{description.description}</p>}
+            </DetailsContainer>
+          </Wrapper>
+        </Container>
+        <Section noPadBottom>
+          <Container>
+            <Tabs
+              value={value}
+              onChange={this.handleChange}
+              classes={{ indicator: classes.tabsIndicator }}
+              centered
+            >
+              <Tab label="All Products" />
+              <Tab label="Anterior" />
+              <Tab label="Posterior" />
+            </Tabs>
+          </Container>
+          <Section dark>
+            <Container>
+              {value === 0 && <ProductContainer products={allProducts}/>}
+              {value === 1 && <ProductContainer products={anterior}/>}
+              {value === 2 && <ProductContainer products={posterior}/>}
+            </Container>
+          </Section>
+        </Section>
+      </Section>  
+    )
+  }
+}
+
+export default withStyles(styles)(CategoryPage);
 
 export const ProductQuery = graphql`
   query CategoryBySlug($slug: String!) {
@@ -65,11 +129,6 @@ export const ProductQuery = graphql`
         price
         description {
           description
-        }
-        category {
-          slug
-          name
-          categoryTitle
         }
         subCategory
         imagePreview {

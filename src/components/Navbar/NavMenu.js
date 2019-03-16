@@ -13,7 +13,6 @@ import routes from '../../routes';
 
 const NavMenu = (props) => {
   const { src, className} = props;
-  console.log(props)
   return (
     <Menu className={`nav-links ${className ? className : ''}`}>
       <LogoContainer>
