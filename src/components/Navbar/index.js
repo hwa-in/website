@@ -30,7 +30,6 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.toggleNavScroll);
-
     if (this.props.location.pathname !== '/') {
       this.setState({
         notHome: true,
@@ -78,6 +77,7 @@ class Navbar extends React.Component {
 
   render() {
     const { scrolled, notHome } = this.state; 
+    const { pathname } = this.props.location;
     return (
       <Fragment>
         <NavBar 
@@ -100,7 +100,11 @@ class Navbar extends React.Component {
           render={({image}) => {
             const { src } = image.childImageSharp.fixed;
             return (
-              <NavMenu src={src} className={notHome && "not-home"} />
+              <NavMenu
+                src={src}
+                className={notHome && "not-home"}
+                location={pathname}
+              />
             )
           }}
         />

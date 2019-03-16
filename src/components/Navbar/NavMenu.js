@@ -11,7 +11,9 @@ import Media from "react-media";
 import MobileNav from './MobileNav';
 import routes from '../../routes';
 
-const NavMenu = ({src, className}) => {
+const NavMenu = (props) => {
+  const { src, className} = props;
+  console.log(props)
   return (
     <Menu className={`nav-links ${className ? className : ''}`}>
       <LogoContainer>
