@@ -125,7 +125,17 @@ const NavLink = styled(Link)`
   padding: 1rem!important;
   margin: 0 .1rem!important;
   border: 0;
-`
+`;
+
+const ProductButton = styled.div`
+  padding: 1rem!important;
+  margin: 0 .1rem!important;
+  border: 0;
+  font-weight: 100;
+  transition: all .3s ease;
+  display: inline;
+`;
+
 
 export {
   NavBar,
@@ -135,4 +145,5 @@ export {
   LinkWrapper,
   NavLinks,
   NavLink,
+  ProductButton,
 };
