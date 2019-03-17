@@ -16,6 +16,10 @@ const NavBar = styled.nav`
   :hover {
     background-color: ${variables.white};
   }
+
+  &.not-home {
+    background-color: ${variables.white};
+  }
 `;
 
 const Spacer = styled.div`
@@ -32,7 +36,7 @@ const Menu = styled.div`
   flex-direction: row;
   align-items: center;
   position: relative;
-  justify-content: start;
+  justify-content: space-between;
 
   ${media.tablet`
     justify-content: space-around;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FaBars } from 'react-icons/fa';
 import {
   MenuItem,
@@ -11,9 +11,6 @@ import {
 } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import routes from '../../routes';
-import {
-  MobileNavWrapper,
-} from './styles.MobileNav';
 import { navigate } from 'gatsby';
 
 const styles = theme => ({
@@ -53,7 +50,7 @@ class MobileNav extends React.Component {
     const { open } = this.state;
     const { classes } = this.props;
     return (
-      <MobileNavWrapper>
+      <Fragment>
         <Button
             buttonRef={node => {
               this.anchorEl = node;
@@ -87,7 +84,7 @@ class MobileNav extends React.Component {
               </Grow>
             )}
           </Popper>
-      </MobileNavWrapper>
+      </Fragment>
     );
   }
 }
