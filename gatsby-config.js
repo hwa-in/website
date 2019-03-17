@@ -33,6 +33,7 @@ module.exports = {
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-material-ui',
     'gatsby-plugin-layout',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
