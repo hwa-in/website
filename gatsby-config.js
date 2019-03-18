@@ -39,6 +39,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-jss',
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {

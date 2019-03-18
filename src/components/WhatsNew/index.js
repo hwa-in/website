@@ -21,15 +21,13 @@ const NewsArticle = ({
     description,
   },
   image: {
-    fluid: {
-      src,
-    },
+    fluid,
   },
 }) => {
   return (
     <NewsCard>
       <ImageContainer>
-        <NewsImage src={src} />
+        <NewsImage fluid={fluid} />
       </ImageContainer>
       <NewsContent>
         <Link className="title-link" to={`/infocenter/news/${slug}`}>

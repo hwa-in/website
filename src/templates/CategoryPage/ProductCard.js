@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Img from 'gatsby-image';
 import {
   Card,
   CardActions,
-  CardMedia,
   CardContent,
   Typography,
 } from '@material-ui/core';
@@ -45,13 +45,11 @@ const ProductCard = (props) => {
   return (
     <Card className={classes.card}>
         {imagePreview && 
-          <CardMedia
-            component="img"
+          <Img
             alt={title}
             className={classes.media}
             height="50%"
-            image={imagePreview.fluid.src}
-            title="Contemplative Reptile"
+            fluid={imagePreview.fluid}
           />
         }
       <CardContent>

@@ -102,7 +102,7 @@ export const pageQuery = graphql`
       }
       heroImage {
         hero: fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_tracedSVG
       }
     }
 	}
@@ -117,7 +117,7 @@ export const pageQuery = graphql`
           }
           image {
             fluid {
-              src
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
@@ -130,7 +130,7 @@ export const pageQuery = graphql`
           title
           imagePreview {
             fluid(maxWidth: 350, maxHeight: 200) {
-              src
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           description {

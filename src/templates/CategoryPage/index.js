@@ -11,7 +11,8 @@ import {
   Wrapper,
   ImageContainer,
   DetailsContainer,
-  ProductsWrapper
+  ProductsWrapper,
+  CategoryImage
 } from './styles';
 
 const styles = (props) => ({
@@ -75,7 +76,7 @@ class CategoryPage extends React.Component {
         <Container>
           <Wrapper>
             <ImageContainer>
-              {categoryImage && <img src={categoryImage.fluid.src} alt={title} />}
+              {categoryImage && <CategoryImage fluid={categoryImage.fluid} alt={title} />}
             </ImageContainer>
             <DetailsContainer>
               <CatName>{name}</CatName>
@@ -120,7 +121,7 @@ export const ProductQuery = graphql`
       }
       categoryImage {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       products {
@@ -136,7 +137,7 @@ export const ProductQuery = graphql`
         subCategory
         imagePreview {
           fluid(maxWidth: 350, maxHeight: 200) {
-            src
+            ...GatsbyContentfulFluid
           }
         }
       }

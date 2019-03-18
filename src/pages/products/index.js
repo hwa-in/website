@@ -75,7 +75,7 @@ export const ProductQuery = graphql`
             subCategory
             imagePreview {
               fluid(maxWidth: 350, maxHeight: 200) {
-                src
+                ...GatsbyContentfulFluid
               }
             }
           }

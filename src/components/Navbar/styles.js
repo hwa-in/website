@@ -80,9 +80,14 @@ const LogoContainer = styled.div`
   margin-right: 1rem;
   margin-left: 20px;
   padding: 5px;
+
+  a {
+    text-decoration: none;
+    border: 0;
+  }
   
   ${media.tablet`
-    margin-left: 0;
+    margin-left: 1rem;
   `}
 `;
 

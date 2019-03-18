@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import { variables } from 'style';
 
 const Wrapper = styled.div`
@@ -21,12 +22,13 @@ const ImageContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
   }
+`;
+
+const CategoryImage = styled(Img)`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 const DetailsContainer = styled.div`
@@ -73,6 +75,7 @@ const ProductsWrapper = styled.div`
 export {
   Wrapper,
   ImageContainer,
+  CategoryImage,
   DetailsContainer,
   ProductsWrapper,
 };

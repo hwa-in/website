@@ -5156,6 +5156,13 @@ gatsby-plugin-google-fonts@^0.0.4:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-0.0.4.tgz#dc1402a71f27c3ae6caee10777d10adadf74bd7c"
   integrity sha512-B9Q+dznk6UX2Fe7QyCTptiuLT+ZLtdFBs1lg5kvaVDyIlesEA2rSQqtB7IkEQflH91JPE4eAEM699JCPy7CFGg==
 
+gatsby-plugin-jss@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-jss/-/gatsby-plugin-jss-2.0.9.tgz#92fea95c13c20151e886cd5b29b20d315987cae7"
+  integrity sha512-m3eeor3xvjwCtWXF6x+AK8z8t4Xf93xzpl7/WH0sGv3NQ+AlnvItKOCzRMZFBfRko3vWTosrpXcKP5qSoN2xzg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-layout@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.0.12.tgz#dc57e58b6d0f57a24fc86eafa07fa15a04c0516e"

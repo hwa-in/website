@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import { variables, media } from 'style';
 
 const NewsSection = styled.article`
@@ -86,7 +87,7 @@ const ImageContainer = styled.div`
   height: 195px;
 ` 
 
-const NewsImage = styled.img`
+const NewsImage = styled(Img)`
   width: 100%;
   object-fit: contain;
 `;

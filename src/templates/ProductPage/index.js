@@ -111,7 +111,7 @@ export const pageQuery = graphql`
       slug
       imagePreview {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       benefitImage {
@@ -142,7 +142,7 @@ export const pageQuery = graphql`
           title
           imagePreview {
             fluid(maxWidth: 350, maxHeight: 200) {
-              src
+              ...GatsbyContentfulFluid
             }
           }
           description {
