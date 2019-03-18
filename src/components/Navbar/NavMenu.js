@@ -76,7 +76,7 @@ class NavMenu extends React.Component {
       <Menu className={`nav-links ${className ? className : ''}`}>
         <LogoContainer>
           <Link to="/">
-            <img src={src} alt="logo" />
+            <img src={src} alt="logo" height="59" width="68" />
           </Link>
         </LogoContainer>
         <Media query="(min-width: 768px)">

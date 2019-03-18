@@ -84,7 +84,7 @@ const LogoContainer = styled.div`
   ${media.tablet`
     margin-left: 0;
   `}
-`
+`;
 
 const LinkWrapper = styled.div`
   display: flex;
