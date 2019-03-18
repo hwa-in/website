@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { LearnMore } from 'styledComponents';
 import {
   Container,
-  WaveContainer,
   HeroContent,
   Spacer,
   HeroText,
   ProductContainer,
 } from './styles';
-import Waves from '../Waves';
 
 class Hero extends React.Component {
 

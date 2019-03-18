@@ -1,13 +1,17 @@
-import React from 'react';
-import { graphql, navigate } from 'gatsby';
+import React, { Fragment } from 'react';
+import { Section, Container } from 'styledComponents';
+import { graphql } from 'gatsby';
+import JobSectionNav from 'components/JobSectionNav';
+import LearnMore from 'styledComponents/LearnMore';
 import {
   Wrapper,
   Header,
   Details,
-  Content
+  Content,
+  MoreInfo,
 } from './styles';
 
-const JobPostTemplate = (data) => {
+const JobPostTemplate = ({data, pageContext}) => {
   const {
     jobTitle,
     createdAt,
@@ -20,37 +24,47 @@ const JobPostTemplate = (data) => {
         html,
       },
     },
-  } = data.data.contentfulJobs;
+  } = data.contentfulJobs;
+  const { id } = pageContext;
   return (
-    <Wrapper>
-      <Header>
-        <button 
-          onClick={ () => navigate('/recruit')}
-          role="link"
-          tabIndex="0"
-        >
-          Go Back
-        </button>
-        <h1>{jobTitle}</h1>
-        <small>Posted {createdAt}</small>
-      </Header>
-      <Details>
-        <h2>Details</h2>
-        <ul>
-          <li>Job Type: {nature}</li>
-          <li>Location: {location}</li>
-          <li>Preferred Qualifications: {experience}</li>
-          <li>Education Experience: {education}</li>
-        </ul>
-      </Details>
-      <Content>
-        <h2>Job Description</h2>
-        <div dangerouslySetInnerHTML={{
-            __html: html,
-          }}
-        />
-      </Content>
-    </Wrapper>
+    <Fragment>
+      <Section>
+        <Container justifyCenter>
+          <JobSectionNav
+            jobName={jobTitle}
+            jobId={id}
+          />
+        </Container>
+      </Section>
+      <Wrapper>
+        <Header>
+          <h1>{jobTitle}</h1>
+          <small>Posted {createdAt}</small>
+          <MoreInfo>
+            <LearnMore to={`/contact`} state={{jobId: id, jobTitle: jobTitle}}>Apply Now</LearnMore>
+          </MoreInfo>
+        </Header>
+        <Details>
+          <h2>Details</h2>
+          <ul>
+            <li>Job Type: {nature}</li>
+            <li>Location: {location}</li>
+            <li>Preferred Qualifications: {experience}</li>
+            <li>Education Experience: {education}</li>
+          </ul>
+        </Details>
+        <Content>
+          <h2>Job Description</h2>
+          <div dangerouslySetInnerHTML={{
+              __html: html,
+            }}
+          />
+        </Content>
+        <MoreInfo>
+            <LearnMore to={`/contact`} state={{jobId: id, jobTitle: jobTitle}}>Apply Now</LearnMore>
+          </MoreInfo>
+      </Wrapper>
+    </Fragment>
   )
 };
 

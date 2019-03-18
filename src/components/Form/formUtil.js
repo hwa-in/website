@@ -13,6 +13,10 @@ const formUtil = {
       name: "General Inquery",
     },
     {
+      value: "jobInterest",
+      name: "Job Interest",
+    },
+    {
       value: "other",
       name: "Other",
     },

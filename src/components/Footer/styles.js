@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { Container, Section } from 'styledComponents';
-import { Link } from 'gatsby';
 import { variables, media } from 'style';
 
 const FooterContainer = styled.footer`

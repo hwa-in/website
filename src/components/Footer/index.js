@@ -6,7 +6,6 @@ import {
   FooterInfo,
   ContactInfo,
 } from './styles';
-import routes from '../../routes';
 
 const PureFooter = ({categories}) => {
   return (

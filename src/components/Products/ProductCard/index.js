@@ -11,7 +11,6 @@ import {
 import LearnMore from 'styledComponents/LearnMore';
 import { Link } from 'gatsby';
 
-
 const styles = (theme) => ({
   card: {
     maxWidth: 345,

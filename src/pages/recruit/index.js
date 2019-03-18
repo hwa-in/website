@@ -1,12 +1,18 @@
 import React, { Fragment } from 'react';
-import { Section } from 'styledComponents';
+import { Section, Container } from 'styledComponents';
 import { graphql } from 'gatsby';
 import { JobPreview } from 'components/previews';
+import JobSectionNav from 'components/JobSectionNav';
 
 const RecruitPage = ({ data }) => {
   const { jobs } = data.allContentfulJobs;
   return (
     <Fragment>
+      <Section noPadBottom>
+        <Container justifyCenter>
+          <JobSectionNav />
+        </Container>
+      </Section>
       <Section>
       {
         jobs.map(({ job }) => {

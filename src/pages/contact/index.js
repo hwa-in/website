@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
-import { Section, Container, LearnMore } from 'styledComponents';
+import { Section, Container } from 'styledComponents';
 import { Link, graphql } from 'gatsby';
 import {
   ContactHeader,
   ContactWrapper,
-  DiscoverMore,
 } from 'styledComponents/pages/Contact';
 import ContactForm from 'components/Form';
 import ContactInfo from 'components/ContactInfo';
@@ -29,7 +28,7 @@ const ContactPage = ({ data, location }) => {
               {/* Form  */}
               <div className="form">
                 <ContactForm 
-                  product={state && state}
+                  contactData={state && state}
                 />
               </div>
               {/* Contact info */}

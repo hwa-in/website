@@ -11,8 +11,6 @@ import { Link } from 'gatsby';
 import Media from "react-media";
 import MobileNav from './MobileNav';
 import ProductsModal from './ProductsModal';
-import InfoCenterModal from './InfoCenterModal';
-import Item from './MenuItem';
 
 const routes = [ 
   {

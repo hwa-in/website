@@ -64,6 +64,8 @@ class ContactForm extends React.Component {
     country: '',
     message: '',
     termsAndConditions: false,
+    productRequest: {},
+    jobInterest: {},
   }
 
   state = {
@@ -74,16 +76,38 @@ class ContactForm extends React.Component {
 
   componentDidMount() {
     Form.addValidationRule('isTruthy', value => value);
-    const { product } = this.props;
-    if (product.productTitle) {
-      this.setState({
-        topic: "product",
-        message: `I would like to request a demo for the following product:\n${product.productTitle}`,
-      })
+    const { contactData } = this.props;
+    if (contactData) {
+      this.setContactData(contactData)
     }
+
     this.setState({
       labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     });
+  }
+
+  setContactData = (contactData) => {
+    if (contactData.jobId) {
+      this.setState({
+        topic: "jobInterest",
+        message: `Job Title:\n${contactData.jobTitle}`,
+        jobInterest: {
+          jobTitle: contactData.jobTitle,
+          jobId: contactData.jobId,
+        }
+      })
+    } 
+    
+    if (contactData.productId) {
+      this.setState({
+        topic: "product",
+        message: `Product Request:\n${contactData.productTitle}`,
+        productRequest: {
+          productSlug: contactData.productId,
+          productName: contactData.productTitle,
+        }
+      })
+    }
   }
 
   handleSubmit = e => {
