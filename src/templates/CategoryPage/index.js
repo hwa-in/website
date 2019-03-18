@@ -66,7 +66,6 @@ class CategoryPage extends React.Component {
     const allProducts = products;
     let posterior = products.filter(product => product.subCategory === "Posterior")
     let anterior = products.filter(product => product.subCategory === "Anterior")
-    console.log(slug)
     return (
       <Section noPadBottom>
         <ProductNav

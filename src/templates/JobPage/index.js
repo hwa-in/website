@@ -21,7 +21,6 @@ const JobPostTemplate = (data) => {
       },
     },
   } = data.data.contentfulJobs;
-  console.log(data)
   return (
     <Wrapper>
       <Header>

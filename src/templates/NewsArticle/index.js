@@ -22,7 +22,6 @@ const NewsArticleTemplate = ({data}) => {
       description,
     }
   } = data.contentfulNewsStory;
-  console.log(data)
   return (
     <Section>
       <Section noPadTop>

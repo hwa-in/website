@@ -6,7 +6,6 @@ import {
 } from './styles';
 
 const InfoSectionNav = ({ sectionSlug, sectionName, pageName, pageSlug }) => {
-  console.log(sectionName)
   return (
     <NavList>
       <NavItem><Link to="/">Home</Link></NavItem>

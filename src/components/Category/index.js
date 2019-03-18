@@ -10,16 +10,11 @@ class Category extends React.Component {
 
   componentDidMount() {
     const { slug } = this.props
-    // console.log(`Mounted ${this.props.name}`, this.props.products)
     if (slug === 'lazer-systems') {
       this.setState(() => ({
         lazerSystem: true,
       }))
     }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-
   }
 
   handleClick = () => {

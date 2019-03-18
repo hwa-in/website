@@ -10,7 +10,6 @@ import InfoSectionNav from 'components/InfoSectionNav';
 
 const NewsPage = ({ data }) => {
   const { articles } = data.allContentfulNewsStory;
-  console.log(articles)
   return (
     <Section noPadTop>
       <Section noPadBottom>
