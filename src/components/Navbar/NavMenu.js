@@ -11,6 +11,8 @@ import { Link } from 'gatsby';
 import Media from "react-media";
 import MobileNav from './MobileNav';
 import ProductsModal from './ProductsModal';
+import InfoCenterModal from './InfoCenterModal';
+import Item from './MenuItem';
 
 const routes = [ 
   {
@@ -42,17 +44,32 @@ const routes = [
 
 class NavMenu extends React.Component {
   state = {
-    open: false,
+    showProducts: false,
+    showInfocenter: false,
   };
 
-  handleClickOpen = () => {
+  openProducts = () => {
     this.setState({
-      open: true,
+      showInfocenter: false,
+      showProducts: true,
     });
   };
 
-  handleClose = value => {
-    this.setState({ open: false });
+  closeProducts = () => {
+    this.setState({ showProducts: false });
+  };
+
+  openInfocenter = () => {
+    this.setState({
+      showInfocenter: true,
+      showProducts: false,
+    });
+  };
+
+  closeInfocenter = () => {
+    this.setState({ 
+      showInfocenter: false
+    });
   };
 
   render() {
@@ -70,7 +87,7 @@ class NavMenu extends React.Component {
                 <Fragment>
                 <LinkWrapper>
                   <NavLinks>
-                    <li onClick={this.handleClickOpen}>
+                    <li onClick={this.openProducts}>
                       <ProductButton>
                         Products
                       </ProductButton>
@@ -87,8 +104,8 @@ class NavMenu extends React.Component {
                   </NavLinks>
                 </LinkWrapper>
                 <ProductsModal
-                  open={this.state.open}
-                  onClose={this.handleClose}
+                  open={this.state.showProducts}
+                  onClose={this.closeProducts}
                   categories={categories}
                 />
                 </Fragment>
