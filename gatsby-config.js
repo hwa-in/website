@@ -40,6 +40,14 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'roboto',
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },

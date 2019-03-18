@@ -36,14 +36,10 @@ class RootIndex extends React.Component {
         superScript,
         subtitle,
         background: {
-          fluid: {
-            backgroundImg,
-          },
+          backgroundImage,
         },
         heroImage: {
-          fluid: {
-            heroImg,
-          },
+          hero,
         },
       },
       allContentfulNewsStory: {
@@ -61,8 +57,8 @@ class RootIndex extends React.Component {
       <Fragment>
         <Helmet title={siteTitle} />
         <Hero 
-          background={backgroundImg}
-          heroProduct={heroImg}
+          background={backgroundImage}
+          heroProduct={hero}
           id={id}
           title={title}
           superScript={superScript}
@@ -100,13 +96,13 @@ export const pageQuery = graphql`
       superScript
       subtitle
       background {
-        fluid {
-          backgroundImg: src
+        backgroundImage: fluid {
+          ...GatsbyContentfulFluid
         }
       }
       heroImage {
-        fluid {
-          heroImg: src
+        hero: fluid {
+          ...GatsbyContentfulFluid
       }
     }
 	}

@@ -5,7 +5,9 @@
   "author": "Andrew Locke <alocke12992@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "gatsby-image": "^2.0.13",
+    "@material-ui/icons": "^3.0.2",
+    "gatsby-image": "^2.0.34",
+    "gatsby-plugin-google-fonts": "^0.0.4",
     "gatsby-plugin-layout": "^1.0.12",
     "gatsby-plugin-material-ui": "^1.2.4",
     "gatsby-plugin-react-helmet": "^3.0.0",

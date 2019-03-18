@@ -7,22 +7,6 @@ const Form = styled(ValidatorForm)`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-
-  .jss34.jss35 .jss41 {
-    border-color: ${variables.darkGreen};
-  }
-
-  #standard-title {
-    border-color: ${variables.darkGreen} !important;
-  }
-
-  .jss20.jss21 {
-    color: ${variables.darkGreen};
-  }
-
-  #child {
-    width: 100%;
-  }
   
   .contact-hint {
     display: flex;

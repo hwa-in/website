@@ -1,16 +1,26 @@
 import styled from 'styled-components';
 import { variables, media } from 'style';
+import Img from 'gatsby-image';
 
 const Container = styled.div`
   height: 600px;
   min-height: 600px;
   position: relative;
   display: block;
-  background-image: url('${props => props.background}');
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
-  background-size: cover;
   transform: translateZ(0);
+`;
+
+const ImageContainer = styled.div`
+  height: 600px;
+  min-height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+`;
+
+const Background = styled(Img)`
+  height: 100%;
 `;
 
 const Spacer = styled.div`
@@ -110,20 +120,25 @@ const ProductContainer = styled.div`
     max-width: 58.33333%;
   `}
   position: relative;
+`;
 
-  img {
-    position: absolute;
-    bottom: 0;
-    z-index: 100;
-  }
+const ProductImage = styled(Img)`
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 `;
 
 
 export {
   Container,
+  ImageContainer,
+  Background,
   WaveContainer,
   Spacer,
   HeroContent,
   HeroText,
   ProductContainer,
+  ProductImage,
 };

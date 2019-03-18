@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Img from 'gatsby-image';
 import {
   Menu,
   NavLink,
@@ -71,12 +72,12 @@ class NavMenu extends React.Component {
   };
 
   render() {
-    const { src, className, categories} = this.props;
+    const { fixed, className, categories} = this.props;
     return (
       <Menu className={`nav-links ${className ? className : ''}`}>
         <LogoContainer>
           <Link to="/">
-            <img src={src} alt="logo" height="59" width="68" />
+            <Img fixed={fixed} />
           </Link>
         </LogoContainer>
         <Media query="(min-width: 768px)">

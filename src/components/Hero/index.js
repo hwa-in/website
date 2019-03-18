@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { LearnMore } from 'styledComponents';
 import {
   Container,
+  ImageContainer,
+  Background,
   HeroContent,
   Spacer,
   HeroText,
   ProductContainer,
+  ProductImage,
 } from './styles';
 
 class Hero extends React.Component {
@@ -19,7 +22,10 @@ class Hero extends React.Component {
   render () {
     const { background, heroProduct, title, superScript, subtitle } = this.props;
     return (
-      <Container background={background}>
+      <Container>
+        <ImageContainer>
+          <Background fluid={background} />
+        </ImageContainer>
         <Spacer />
         <HeroContent>
           <HeroText>
@@ -29,7 +35,7 @@ class Hero extends React.Component {
             <LearnMore to="/products">Learn More</LearnMore>
           </HeroText>
           <ProductContainer>
-            <img src={heroProduct}  alt="Lazer System"/>
+            <ProductImage fluid={heroProduct}  alt="Lazer System"/>
           </ProductContainer>
         </HeroContent>
         {/* <WaveContainer>

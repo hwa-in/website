@@ -91,7 +91,7 @@ class Navbar extends React.Component {
               image: file(relativePath: {eq: "logo.png"}){
                 childImageSharp {
                   fixed(width: 68, height: 59) {
-                    src
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }
@@ -101,8 +101,8 @@ class Navbar extends React.Component {
                     name
                     slug
                     categoryImage {
-                      fluid {
-                        src
+                      fluid(maxHeight: 650) {
+                        ...GatsbyContentfulFluid
                       }
                     }
                     products {
@@ -115,10 +115,10 @@ class Navbar extends React.Component {
             }
           `}
           render={({image, categorQuery}) => {
-            const { src } = image.childImageSharp.fixed;
+            const { fixed } = image.childImageSharp;
             return (
               <NavMenu
-                src={src}
+                fixed={fixed}
                 className={notHome && "not-home"}
                 location={pathname}
                 {...categorQuery}

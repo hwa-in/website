@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Section, Container } from 'styledComponents';
+import { graphql } from 'gatsby';
 import {
   Body,
   NewsSection,
