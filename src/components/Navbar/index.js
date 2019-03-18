@@ -95,33 +95,15 @@ class Navbar extends React.Component {
                   }
                 }
               }
-              categorQuery: allContentfulCategory {
-                categories: edges {
-                  category: node {
-                    name
-                    slug
-                    categoryImage {
-                      fluid(maxHeight: 650) {
-                        ...GatsbyContentfulFluid
-                      }
-                    }
-                    products {
-                      productTitle: title
-                      productSlug: slug
-                    }
-                  }
-                }
-              }
             }
           `}
-          render={({image, categorQuery}) => {
+          render={({image}) => {
             const { fixed } = image.childImageSharp;
             return (
               <NavMenu
                 fixed={fixed}
                 className={notHome && "not-home"}
                 location={pathname}
-                {...categorQuery}
               />
             )
           }}

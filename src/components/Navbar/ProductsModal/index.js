@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CategoryCard from './CategoryCard';
-import { navigate } from 'gatsby';
+import { navigate, StaticQuery, graphql } from 'gatsby';
 import {
   Dialog,
 } from '@material-ui/core';
@@ -32,15 +32,39 @@ class ProductsModal extends React.Component {
         }}
       >
         <div className={classes.categoryWrapper}>
-          {
-            categories.map(({category}, index) => (
+        <StaticQuery
+          query={graphql`
+            query ProductQuery {
+              categorQuery: allContentfulCategory {
+                categories: edges {
+                  category: node {
+                    name
+                    slug
+                    categoryImage {
+                      fluid(maxHeight: 650) {
+                        ...GatsbyContentfulFluid
+                      }
+                    }
+                    products {
+                      productTitle: title
+                      productSlug: slug
+                    }
+                  }
+                }
+              }
+            }
+          `}
+          render={({categorQuery}) => {
+            const { categories } = categorQuery;
+            return categories.map(({category}, index) => (
               <CategoryCard 
                 key={index}
                 {...category}
                 navigateTo={this.handleItemClick}
               />
             ))
-          }
+          }}
+        />
         </div>
         <div className={classes.learnMore}>
           <p className={classes.learnMoreText} onClick={() => this.handleItemClick('/products')}>All Products</p>

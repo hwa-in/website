@@ -72,7 +72,7 @@ class NavMenu extends React.Component {
   };
 
   render() {
-    const { fixed, className, categories} = this.props;
+    const { fixed, className } = this.props;
     return (
       <Menu className={`nav-links ${className ? className : ''}`}>
         <LogoContainer>
@@ -105,7 +105,6 @@ class NavMenu extends React.Component {
                 <ProductsModal
                   open={this.state.showProducts}
                   onClose={this.closeProducts}
-                  categories={categories}
                 />
                 </Fragment>
               ) : (
