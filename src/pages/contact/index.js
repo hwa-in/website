@@ -23,7 +23,7 @@ const ContactPage = ({ data, location }) => {
             <p>How can we support you? Please briefly describe your question.*</p>
           </ContactHeader>
         </Container>
-        <Container>
+        <Container style={{alignItems: 'center'}}>
           <Section>
             <ContactWrapper>
               {/* Form  */}
@@ -41,23 +41,6 @@ const ContactPage = ({ data, location }) => {
             </ContactWrapper>
           </Section>
             <p>The most frequently-asked questions about our products with answers are <Link to="/faq">here.</Link></p>
-        </Container>
-      </Section>
-      <Section 
-        dark
-        padBottom="60px"
-      >
-        <Container>
-          <DiscoverMore>
-            <h3>Discover our innovative products</h3>
-            <p>State-of-the-art eye laser systems, diagnostic systems, treatment tools and more.</p>
-            <LearnMore 
-              style={{width: '100px', marginTop: '2rem' }}
-              to="/products"
-              >
-            Products
-            </LearnMore>
-          </DiscoverMore>
         </Container>
       </Section>
     </Fragment>

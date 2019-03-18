@@ -75,7 +75,7 @@ class ContactForm extends React.Component {
   componentDidMount() {
     Form.addValidationRule('isTruthy', value => value);
     const { product } = this.props;
-    if (product) {
+    if (product.productTitle) {
       this.setState({
         topic: "product",
         message: `I would like to request a demo for the following product:\n${product.productTitle}`,
