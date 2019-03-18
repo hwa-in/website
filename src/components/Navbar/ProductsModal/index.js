@@ -13,13 +13,9 @@ class ProductsModal extends React.Component {
     this.props.onClose();
   };
 
-  handleListItemClick = () => {
+  handleItemClick = (route) => {
     this.props.onClose();
-  };
-
-  allProducts = () => {
-    this.handleClose()
-    navigate('/products');
+    navigate(route);
   };
 
   render() {
@@ -37,11 +33,17 @@ class ProductsModal extends React.Component {
       >
         <div className={classes.categoryWrapper}>
           {
-            categories.map(({category}, index) => <CategoryCard key={index} {...category} />)
+            categories.map(({category}, index) => (
+              <CategoryCard 
+                key={index}
+                {...category}
+                navigateTo={this.handleItemClick}
+              />
+            ))
           }
         </div>
         <div className={classes.learnMore}>
-          <p className={classes.learnMoreText} onClick={this.allProducts}>All Products</p>
+          <p className={classes.learnMoreText} onClick={() => this.handleItemClick('/products')}>All Products</p>
         </div>
       </Dialog>
     );

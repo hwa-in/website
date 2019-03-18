@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'gatsby';
 import { categoryCard } from './styles';
 import {
   Card,
@@ -8,7 +7,7 @@ import {
   CardMedia,
 } from '@material-ui/core';
 
-const CategoryCard = ({ classes, name, slug, categoryImage, products}) => {
+const CategoryCard = ({ classes, name, slug, categoryImage, products, navigateTo}) => {
   return (
     <Card
       raised={false}
@@ -21,16 +20,18 @@ const CategoryCard = ({ classes, name, slug, categoryImage, products}) => {
         className={classes.media}
       />
       <CardContent>
-        <Link to={`/products/${slug}`}><h1 className={classes.categoryTitle}>{name}</h1></Link>
+        <h1 onClick={() => navigateTo(`/products/${slug}`)} className={classes.categoryTitle}>{name}</h1>
           <div>
           {
-            products.map(({productSlug, productTitle}, index) => {
-              return (
-                <Link to={`/products/${slug}/${productSlug}`} key={index}>
-                  <p className={classes.productTitle}>{productTitle}</p>
-                </Link>
-              )
-            })
+            products.map(({productSlug, productTitle}, index) => (
+              <p 
+                key={index}
+                onClick={() => navigateTo(`/products/${slug}/${productSlug}`)} 
+                className={classes.productTitle}
+              >
+                {productTitle}
+              </p>
+            ))
           }
           </div>
       </CardContent>

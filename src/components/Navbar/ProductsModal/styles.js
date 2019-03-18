@@ -32,6 +32,7 @@ const categoryCard = theme => ({
     fontWeight: 600,
     margin: '1rem 0',
     transition: 'all .2s ease',
+    cursor: 'pointer',
     '&:hover': {
       color: `${variables.midGrey}`,
     },
@@ -43,6 +44,7 @@ const categoryCard = theme => ({
     marginBottom: '.5rem',
     color: `${variables.darkGrey}`,
     transition: 'all .2s ease-in-out',
+    cursor: 'pointer',
     '&:hover': {
       color: `${variables.lightGrey}`,
     },
