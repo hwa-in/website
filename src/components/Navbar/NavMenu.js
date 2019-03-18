@@ -11,11 +11,38 @@ import { Link } from 'gatsby';
 import Media from "react-media";
 import MobileNav from './MobileNav';
 import ProductsModal from './ProductsModal';
-import routes from '../../routes';
+
+const routes = [ 
+  {
+    title: 'About',
+    titleTemp: '關於我們',
+    route: 'about/',
+  },
+  {
+    title: 'Infocenter',
+    titleTemp: '信息中心',
+    route: 'infocenter/',
+  },
+  {
+    title: 'Jobs',
+    titleTemp: '人才招募',
+    route: 'recruit/',
+  },
+  {
+    title: 'FAQ',
+    titleTemp: 'FAQ',
+    route: 'faqs/',
+  },
+  {
+    title: 'Contact',
+    titleTemp: '聯絡我們',
+    route: 'contact/',
+  }
+];
 
 class NavMenu extends React.Component {
   state = {
-    open: true,
+    open: false,
   };
 
   handleClickOpen = () => {

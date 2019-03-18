@@ -34,9 +34,9 @@ class Hero extends React.Component {
             <img src={heroProduct}  alt="Lazer System"/>
           </ProductContainer>
         </HeroContent>
-        <WaveContainer>
+        {/* <WaveContainer>
           <Waves />
-        </WaveContainer>
+        </WaveContainer> */}
       </Container>
     )
   }

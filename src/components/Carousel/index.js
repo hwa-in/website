@@ -12,6 +12,11 @@ class Carousel extends React.Component {
     1024: { items: 3 },
   };
 
+  padding = {
+    paddingLeft: '5%',
+    paddingRight: '5%',
+  }
+
   render() {
     const items = this.props.products;
     return (
@@ -26,16 +31,17 @@ class Carousel extends React.Component {
           items={items}
           duration={400}
           autoPlay={false}
-          fadeOutAnimation={true}
-          mouseDragEnabled={true}
+          infinite={true}
+          fadeOutAnimation={true}          
           autoPlayInterval={3000}
           autoPlayDirection="rtl"
-          responsive={this.responsive}
           disableAutoPlayOnAction={true}
           stopAutoPlayOnHover={true}
           buttonsDisabled={true}
           dotsDisabled={true}
           ref={ el => this.Carousel = el }
+          stagePadding={this.padding}
+          responsive={this.responsive}
         />
         <CarouselButton 
           className="next"

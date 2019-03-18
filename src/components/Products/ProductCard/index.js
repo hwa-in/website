@@ -16,6 +16,7 @@ const styles = (theme) => ({
   card: {
     maxWidth: 345,
     height: 445,
+    margin: '0 1rem',
     [theme.breakpoints.down('sm')]: {
       marginBottom: '2rem',
     },
