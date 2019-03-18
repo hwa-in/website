@@ -12,24 +12,26 @@ const VideoPage = ({ data }) => {
   return (
     <Fragment>
       <Section>
-        <Section noPadBottom>
+        <Section noPad>
           <Container justifyCenter>
             <InfoSectionNav 
               sectionName="Videos"
             />
           </Container>
         </Section>
-        <Wrapper>
-          {
-            videos.map(({ video }, index) => (
-            <VideoPreview
-              key={index}
-              {...video}
-              />
+        <Section noPadBottom>
+          <Wrapper>
+            {
+              videos.map(({ video }, index) => (
+              <VideoPreview
+                key={index}
+                {...video}
+                />
+                )
               )
-            )
-          }
-        </Wrapper>
+            }
+          </Wrapper>
+        </Section>
       </Section>
     </Fragment>
   )
