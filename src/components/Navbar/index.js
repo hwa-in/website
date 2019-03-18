@@ -88,13 +88,6 @@ class Navbar extends React.Component {
         <StaticQuery
           query={graphql`
             query NavQuery {
-              image: file(relativePath: {eq: "logo.png"}){
-                childImageSharp {
-                  fixed(width: 68, height: 59) {
-                    src
-                  }
-                }
-              }
               categorQuery: allContentfulCategory {
                 categories: edges {
                   category: node {
@@ -114,11 +107,9 @@ class Navbar extends React.Component {
               }
             }
           `}
-          render={({image, categorQuery}) => {
-            const { src } = image.childImageSharp.fixed;
+          render={({categorQuery}) => {
             return (
               <NavMenu
-                src={src}
                 className={notHome && "not-home"}
                 location={pathname}
                 {...categorQuery}
