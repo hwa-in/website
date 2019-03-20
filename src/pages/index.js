@@ -56,7 +56,7 @@ class RootIndex extends React.Component {
     return (
       <Fragment>
         <Helmet title={siteTitle} />
-        <Hero 
+        <Hero
           background={backgroundImage}
           heroProduct={hero}
           id={id}
