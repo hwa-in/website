@@ -31,27 +31,27 @@ const PureFooter = ({categories}) => {
           <h4>General</h4>
             <ul>
               <li>
-                <Link to='/infocenter'>
+                <Link to='/infocenter/'>
                   Infocenter
                 </Link>
               </li>
               <li>
-                <Link to='/infocenter/news'>
+                <Link to='/infocenter/news/'>
                   News
                 </Link>
               </li>
               <li>
-                <Link to='/infocenter/events'>
+                <Link to='/infocenter/events/'>
                   Events
                 </Link>
               </li>
               <li>
-                <Link to='/recruit'>
+                <Link to='/recruit/'>
                   Jobs and Careers
                 </Link>
               </li>
               <li>
-                <Link to='/faqs'>
+                <Link to='/faqs/'>
                   FAQs
                 </Link>
               </li>
@@ -59,7 +59,7 @@ const PureFooter = ({categories}) => {
         </RouteSection>
       </FooterInfo>
       <ContactInfo>
-        <Link to='/contact'><h4>Contact</h4></Link>
+        <Link to='/contact/'><h4>Contact</h4></Link>
         <ul>
           <li>客服專線：02-2762-2100</li>
           <li>傳真：02-2760-7630</li>

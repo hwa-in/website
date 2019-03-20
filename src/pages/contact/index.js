@@ -27,7 +27,7 @@ const ContactPage = ({ data, location }) => {
             <ContactWrapper>
               {/* Form  */}
               <div className="form">
-                <ContactForm 
+                <ContactForm
                   contactData={state && state}
                 />
               </div>
@@ -39,7 +39,7 @@ const ContactPage = ({ data, location }) => {
               </div>
             </ContactWrapper>
           </Section>
-            <p>The most frequently-asked questions about our products with answers are <Link to="/faq">here.</Link></p>
+            <p>The most frequently-asked questions about our products with answers are <Link to="/faqs/">here.</Link></p>
         </Container>
       </Section>
     </Fragment>
