@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Img from 'gatsby-image';
 import {
   Card,
   CardActions,
@@ -10,6 +9,9 @@ import {
 } from '@material-ui/core';
 import LearnMore from 'styledComponents/LearnMore';
 import { Link } from 'gatsby';
+import {
+  ProductImage,
+} from './styles';
 
 
 const styles = (theme) => ({
@@ -44,10 +46,9 @@ const ProductCard = (props) => {
   }
   return (
     <Card className={classes.card}>
-        {imagePreview && 
-          <Img
+        {imagePreview &&
+          <ProductImage
             alt={title}
-            className={classes.media}
             height="50%"
             fluid={imagePreview.fluid}
           />

@@ -28,7 +28,9 @@ const ImageContainer = styled.div`
 const CategoryImage = styled(Img)`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  img {
+    object-fit: contain !important;
+  }
 `;
 
 const DetailsContainer = styled.div`
@@ -42,10 +44,10 @@ const DetailsContainer = styled.div`
   justify-content: center;
 
   h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
     color: ${variables.darkGreen};
-    font-size: 3rem;
     font-weight: 400;
-    line-height: 3.375rem;
     margin: .5rem 0 1.5rem;
   }
 
@@ -63,6 +65,11 @@ const DetailsContainer = styled.div`
 
   @media (min-width: 990px) {
     width: 50%;
+
+    h1 {
+      font-size: 3rem;
+      line-height: 3.375rem;
+    }
   }
 `;
 
@@ -72,10 +79,18 @@ const ProductsWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const ProductImage = styled(Img)`
+  img {
+    object-fit: contain !important;
+    padding: 1rem;
+  }
+`;
+
 export {
   Wrapper,
   ImageContainer,
   CategoryImage,
   DetailsContainer,
   ProductsWrapper,
+  ProductImage,
 };

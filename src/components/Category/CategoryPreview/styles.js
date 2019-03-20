@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { variables } from 'style';
+import Img from 'gatsby-image'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 
 const ImageContainer = styled.div`
   @media (min-width: 990px) {
-    width: 25%; 
+    width: 25%;
     width: ${props => props.width ? props.width : undefined};
     display: flex;
     align-items: center;
@@ -25,6 +26,15 @@ const ImageContainer = styled.div`
       height: 100%;
       object-fit: cover;
     }
+  }
+`;
+
+const Image = styled(Img)`
+  width: 100%;
+  height: 100%;
+
+  img {
+    object-fit: contain !important;
   }
 `;
 
@@ -94,4 +104,5 @@ export {
   DetailsContainer,
   MoreInfo,
   ReadMore,
+  Image,
 }

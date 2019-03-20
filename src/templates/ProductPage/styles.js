@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { variables, media } from 'style';
+import Img from 'gatsby-image';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -26,6 +27,15 @@ const ImageContainer = styled.div`
       height: 100%;
       object-fit: contain;
     }
+  }
+`;
+
+const Image = styled(Img)`
+  height: 100%;
+  width: 100%;
+
+  img {
+    object-fit: contain !important;
   }
 `;
 
@@ -65,7 +75,7 @@ const DetailsContainer = styled.div`
 `;
 
 const MoreInfo = styled.div`
-  
+
 `;
 
 const BenefitsWrapper = styled.div`
@@ -196,4 +206,5 @@ export {
   FeaturesWrapper,
   Feature,
   MoreProducts,
+  Image,
 }

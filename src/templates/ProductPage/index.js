@@ -16,6 +16,7 @@ import {
   FeaturesWrapper,
   Feature,
   MoreProducts,
+  Image,
 } from './styles';
 
 const ProductPageTemplate  = ({ data, pageContext }) => {
@@ -33,7 +34,7 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
       <Container>
         <Wrapper>
           <ImageContainer>
-            {imagePreview && <img src={imagePreview.fluid.src} alt={title} />}
+            {imagePreview && <Image fluid={imagePreview.fluid} alt={title} />}
           </ImageContainer>
           <DetailsContainer>
             <CatName>{categoryName}</CatName>
@@ -46,26 +47,26 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
           </DetailsContainer>
         </Wrapper>
       </Container>
-      { benefits && 
+      { benefits &&
         <Section dark>
           <Container>
             <BenefitsWrapper>
               <Benefits>
                 <h2>Benefits at a glance</h2>
-                <div className="benefit-content" dangerouslySetInnerHTML={{__html: 
+                <div className="benefit-content" dangerouslySetInnerHTML={{__html:
                   benefits.childMarkdownRemark.html,}
                 } />
               </Benefits>
               <BenefitImage>
-                {benefitImage && <img src={benefitImage.fluid.src} alt="Benefits" />}
+                {benefitImage && <Image fluid={benefitImage.fluid} alt="Benefits" />}
                 {benefitImage.description && <p>{benefitImage.description}</p>}
               </BenefitImage>
             </BenefitsWrapper>
           </Container>
-        </Section> 
+        </Section>
       }
 
-      {features && 
+      {features &&
         <Section>
           <Container>
             <FeaturesWrapper>
@@ -82,7 +83,7 @@ const ProductPageTemplate  = ({ data, pageContext }) => {
           </Container>
         </Section>
       }
-      {products && 
+      {products &&
         <Section dark>
           <Container row>
             <MoreProducts>More Products</MoreProducts>
@@ -117,7 +118,7 @@ export const pageQuery = graphql`
       benefitImage {
         description
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       features {

@@ -29,7 +29,7 @@ const ProductsPage = ({data}) => {
                 return (
                 <Category
                   key={index}
-                  {...category} 
+                  {...category}
                 />
               )})
             }
@@ -54,7 +54,7 @@ export const ProductQuery = graphql`
           }
           categoryImage {
             fluid {
-              src
+              ...GatsbyContentfulFluid
             }
           }
           products {

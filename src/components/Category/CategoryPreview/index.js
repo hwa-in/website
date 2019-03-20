@@ -5,8 +5,9 @@ import LearnMore from 'styledComponents/LearnMore';
 import {
   Wrapper,
   ImageContainer,
-  DetailsContainer, 
+  DetailsContainer,
   ReadMore,
+  Image
 } from './styles';
 import PropTypes from 'prop-types';
 
@@ -22,7 +23,7 @@ const CategoryPreview = ({
   return (
     <Wrapper>
       <ImageContainer width={lazerSystem && "66%"}>
-        <img src={image} alt={categoryTitle} />
+        <Image fluid={image} alt={categoryTitle} />
       </ImageContainer>
       <DetailsContainer width={lazerSystem && "33%"}>
         <LearnMore to={`/products/${slug}`}>{name}</LearnMore>

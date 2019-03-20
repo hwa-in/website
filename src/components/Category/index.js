@@ -28,12 +28,12 @@ class Category extends React.Component {
       return (
         <Fragment>
           <CategoryContainer>
-            <CategoryPreview 
+            <CategoryPreview
               slug={slug}
               categoryTitle={categoryTitle}
               name={name}
               description={description.description}
-              image={categoryImage.fluid.src}
+              image={categoryImage.fluid}
               lazerSystem={lazerSystem}
               showProducts={this.handleClick}
             />
