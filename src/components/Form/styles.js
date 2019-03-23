@@ -7,7 +7,7 @@ const Form = styled(ValidatorForm)`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  
+
   .contact-hint {
     display: flex;
     flex-direction: row;
@@ -94,10 +94,65 @@ const SubmitMessage = styled.p`
 
 const ErrorMessage = styled.p`
   color: red;
-`
+`;
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    minWidth: 120,
+    margin: theme.spacing.unit,
+    [theme.breakpoints.down('sm')]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up('md')]: {
+      width: "45%",
+    },
+  },
+  textField: {
+    minWidth: 240,
+    width: "100%",
+    margin: theme.spacing.unit,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
+  },
+  colorSwitchBase: {
+    color: variables.lightGreen,
+    '&$colorChecked': {
+      color: variables.darkGreen,
+      '& + $colorBar': {
+        backgroundColor: variables.darkGreen,
+      },
+    },
+  },
+  colorBar: {},
+  colorChecked: {},
+  cssLabel: {
+    '&$cssFocused': {
+      color: variables.darkGreen,
+    },
+  },
+  cssFocused: {},
+  cssUnderline: {
+    '&:after': {
+      borderBottomColor: variables.darkGreen,
+    },
+  },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: variables.darkGreen,
+    },
+  },
+  notchedOutline: {},
+});
+
 
 export {
   Form,
   SubmitMessage,
   ErrorMessage,
+  styles,
 };

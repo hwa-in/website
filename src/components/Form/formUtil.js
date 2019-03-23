@@ -3,7 +3,7 @@ const formUtil = {
     {
       value: "product",
       name: "Request a demo",
-    },          
+    },
     {
       value: "technical",
       name: "Technical Question",
